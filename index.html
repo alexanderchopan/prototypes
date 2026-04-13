@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>prototypes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #141414;
+    color: #e5e5e5;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  h1 {
+    font-family: 'DM Mono', monospace;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 2rem;
+    letter-spacing: 0.02em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    max-width: 520px;
+    width: 100%;
+  }
+
+  @media (max-width: 520px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: #1c1c1c;
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    text-decoration: none;
+    color: #e5e5e5;
+    transition: border-color 0.2s, background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .card:hover {
+    border-color: #555;
+    background: #1f1f1f;
+  }
+
+  .card-title {
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+  <h1>interactive product prototypes</h1>
+  <div class="grid">
+    <a href="interspace-consumer-account-manager.html" class="card">
+      <span class="card-title">interspace consumer account manager</span>
+    </a>
+    <a href="machines-consumer-desktop-web.html" class="card">
+      <span class="card-title">machines consumer desktop web</span>
+    </a>
+    <a href="machines-consumer-extension.html" class="card">
+      <span class="card-title">machines consumer extension</span>
+    </a>
+    <a href="machines-consumer-mobile.html" class="card">
+      <span class="card-title">machines consumer mobile web</span>
+    </a>
+    <a href="machines-corporate-accounts-desktop.html" class="card">
+      <span class="card-title">machines corporate accounts desktop</span>
+    </a>
+  </div>
+</body>
+</html>
