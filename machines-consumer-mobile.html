@@ -1,9 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>machines.cash</title>
+<style>*{box-sizing:border-box;margin:0;padding:0;}body{background:#111;display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:'DM Sans',sans-serif;}</style>
+</head>
+<body>
+<div id="root"></div>
 <script>/**
  * @license React
  * react.production.min.js
@@ -35,6 +39,10 @@ render:a}};c.isValidElement=M;c.lazy=function(a){return{$$typeof:Aa,_payload:{_s
 c.useEffect=function(a,b){return g.current.useEffect(a,b)};c.useId=function(){return g.current.useId()};c.useImperativeHandle=function(a,b,c){return g.current.useImperativeHandle(a,b,c)};c.useInsertionEffect=function(a,b){return g.current.useInsertionEffect(a,b)};c.useLayoutEffect=function(a,b){return g.current.useLayoutEffect(a,b)};c.useMemo=function(a,b){return g.current.useMemo(a,b)};c.useReducer=function(a,b,c){return g.current.useReducer(a,b,c)};c.useRef=function(a){return g.current.useRef(a)};
 c.useState=function(a){return g.current.useState(a)};c.useSyncExternalStore=function(a,b,c){return g.current.useSyncExternalStore(a,b,c)};c.useTransition=function(){return g.current.useTransition()};c.version="18.3.1"});
 })();
+</script>
+<script>
+// Make React available for ReactDOM UMD
+window.React = React;
 </script>
 <script>/**
  * @license React
@@ -304,21 +312,21 @@ var d=null!=c&&c.hydratedSources||null,e=!1,f="",g=aj;null!==c&&void 0!==c&&(!0=
 function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmountComponentAtNode=function(a){if(!Vd(a))throw Error(m(40));return a._reactRootContainer?(yb(function(){Wd(null,null,a,!1,function(){a._reactRootContainer=null;a[Ja]=null})}),!0):!1};Q.unstable_batchedUpdates=Tf;Q.unstable_renderSubtreeIntoContainer=function(a,b,c,d){if(!Vd(c))throw Error(m(200));if(null==a||void 0===a._reactInternals)throw Error(m(38));return Wd(a,b,c,!1,d)};Q.version="18.3.1-next-f1338f8080-20240426"});
 })();
 </script>
-<style>* { box-sizing: border-box; margin: 0; padding: 0; }</style>
-</head>
-<body>
-<div id="root"></div>
 <script>
+var exports = {};
+var module = { exports: exports };
+function require(m) {
+  if (m === 'react') return React;
+  if (m === 'react-dom') return ReactDOM;
+  return {};
+}
+"use strict";
 
-var useState = React.useState;
-var useEffect = React.useEffect;
-var useRef = React.useRef;
-var useContext = React.useContext;
-var useCallback = React.useCallback;
-var useMemo = React.useMemo;
-var useReducer = React.useReducer;
-var createContext = React.createContext;
-
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = App;
+var _react = require("react");
 const MACHINES_LOGO = "data:image/png;base64,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";
 const C = {
   bg: "#000000",
@@ -410,8 +418,8 @@ function BottomTray({
   favorites,
   onToggleFav
 }) {
-  const [vis, setVis] = useState(false);
-  useEffect(() => {
+  const [vis, setVis] = (0, _react.useState)(false);
+  (0, _react.useEffect)(() => {
     if (open) requestAnimationFrame(() => setVis(true));else setVis(false);
   }, [open]);
   if (!open) return null;
@@ -570,7 +578,7 @@ const ToastCtx = React.createContext ? React.createContext() : {
 function ToastProvider({
   children
 }) {
-  const [toasts, setToasts] = useState([]);
+  const [toasts, setToasts] = (0, _react.useState)([]);
   const show = (msg, type = "success") => {
     const id = Date.now();
     setToasts(t => [...t, {
@@ -788,9 +796,9 @@ const fK = n => n >= 10000 ? `${(n / 1000).toFixed(0)}k` : n >= 1000 ? `${(n / 1
   maximumFractionDigits: 0
 });
 function useCounter(target, duration = 700, deps = []) {
-  const [val, setVal] = useState(0);
-  const raf = useRef(null);
-  useEffect(() => {
+  const [val, setVal] = (0, _react.useState)(0);
+  const raf = (0, _react.useRef)(null);
+  (0, _react.useEffect)(() => {
     cancelAnimationFrame(raf.current);
     const start = performance.now();
     const tick = now => {
@@ -964,14 +972,15 @@ function ULineChart({
   series,
   id
 }) {
-  const ref = useRef(null);
-  const [dims, setDims] = useState({
+  var _series$;
+  const ref = (0, _react.useRef)(null);
+  const [dims, setDims] = (0, _react.useState)({
     w: 0,
     h: 0
   });
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef(null);
-  useEffect(() => {
+  const [progress, setProgress] = (0, _react.useState)(0);
+  const rafRef = (0, _react.useRef)(null);
+  (0, _react.useEffect)(() => {
     if (!ref.current) return;
     const ro = new ResizeObserver(es => {
       const r = es[0].contentRect;
@@ -983,7 +992,7 @@ function ULineChart({
     ro.observe(ref.current);
     return () => ro.disconnect();
   }, []);
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     setProgress(0);
     const start = performance.now();
     const tick = now => {
@@ -1002,7 +1011,7 @@ function ULineChart({
     padB = 8,
     chartH = cH - padT - padB;
   const mx = Math.max(...series.flatMap(s => s.v)) * 1.12 || 1;
-  const n = series[0]?.v.length || 0;
+  const n = ((_series$ = series[0]) === null || _series$ === void 0 ? void 0 : _series$.v.length) || 0;
   const gx = i => n > 1 ? i / (n - 1) * cW : cW / 2;
   const gy = v => padT + chartH - chartH * (v / mx);
   const makeLine = vals => {
@@ -1092,14 +1101,14 @@ function UBarChart({
   labels,
   id
 }) {
-  const ref = useRef(null);
-  const [dims, setDims] = useState({
+  const ref = (0, _react.useRef)(null);
+  const [dims, setDims] = (0, _react.useState)({
     w: 0,
     h: 0
   });
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef(null);
-  useEffect(() => {
+  const [progress, setProgress] = (0, _react.useState)(0);
+  const rafRef = (0, _react.useRef)(null);
+  (0, _react.useEffect)(() => {
     if (!ref.current) return;
     const ro = new ResizeObserver(es => {
       const r = es[0].contentRect;
@@ -1111,7 +1120,7 @@ function UBarChart({
     ro.observe(ref.current);
     return () => ro.disconnect();
   }, []);
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     setProgress(0);
     const start = performance.now();
     const tick = now => {
@@ -1216,14 +1225,14 @@ function UDonutChart({
   totalValue,
   id
 }) {
-  const ref = useRef(null);
-  const [dims, setDims] = useState({
+  const ref = (0, _react.useRef)(null);
+  const [dims, setDims] = (0, _react.useState)({
     w: 0,
     h: 0
   });
-  const [progress, setProgress] = useState(0);
-  const rafRef = useRef(null);
-  useEffect(() => {
+  const [progress, setProgress] = (0, _react.useState)(0);
+  const rafRef = (0, _react.useRef)(null);
+  (0, _react.useEffect)(() => {
     if (!ref.current) return;
     const ro = new ResizeObserver(es => {
       const r = es[0].contentRect;
@@ -1235,7 +1244,7 @@ function UDonutChart({
     ro.observe(ref.current);
     return () => ro.disconnect();
   }, []);
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     setProgress(0);
     const start = performance.now();
     const tick = now => {
@@ -1317,8 +1326,8 @@ function LiquidBar({
   color,
   delay = 0
 }) {
-  const [w, setW] = useState(0);
-  useEffect(() => {
+  const [w, setW] = (0, _react.useState)(0);
+  (0, _react.useEffect)(() => {
     const t = setTimeout(() => setW(Math.min(pct, 100)), 50 + delay);
     return () => clearTimeout(t);
   }, [pct, delay]);
@@ -1347,7 +1356,7 @@ function HeroWidget({
   setCardIdx
 }) {
   const privacy = usePrivacy();
-  const [p, setP] = useState("m");
+  const [p, setP] = (0, _react.useState)("m");
   const totalSlides = U_CARDS.length + 1;
   const sel = cardIdx === 0 ? null : cardIdx - 1;
   const a = AD[p],
@@ -1648,7 +1657,7 @@ const MerchantIcon = React.memo(function MerchantIcon({
   name,
   size = 38
 }) {
-  const [failed, setFailed] = useState(false);
+  const [failed, setFailed] = (0, _react.useState)(false);
   const url = MERCHANT_LOGOS[name];
   const bg = MERCHANT_COLORS[name] || `${C.orange}20`;
   // always try favicon — for known brands and unknown ones
@@ -1704,8 +1713,8 @@ function TxRow({
   hideSubMatch = null
 }) {
   const privacy = usePrivacy();
-  const [vis, setVis] = useState(false);
-  useEffect(() => {
+  const [vis, setVis] = (0, _react.useState)(false);
+  (0, _react.useEffect)(() => {
     const t = setTimeout(() => setVis(true), mounted ? 40 + idx * 35 : 0);
     return () => clearTimeout(t);
   }, [idx, mounted]);
@@ -1922,7 +1931,7 @@ function UpcomingBills({
   onSelect
 }) {
   const privacy = usePrivacy();
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = (0, _react.useState)(null);
   return /*#__PURE__*/React.createElement("div", null, bills.slice(0, 3).map((bill, i) => {
     const uc = urgencyColor(bill.dueIn);
     const isSel = selected === bill.id;
@@ -2286,19 +2295,20 @@ function AgentHalfSheet({
   setAgentHistory,
   bills
 }) {
-  const [vis, setVis] = useState(false);
-  const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [agentError, setAgentError] = useState(false);
-  const [isOnline, setIsOnline] = useState(true);
-  const [pendingFlow, setPendingFlow] = useState(null);
-  const [step, setStep] = useState(null);
-  const [copied, setCopied] = useState(false);
-  const [inputPlaceholder, setInputPlaceholder] = useState("ask agent...");
-  const inputRef = useRef(null);
-  const [showHistory, setShowHistory] = useState(false);
-  useEffect(() => {
+  var _messages$, _messages$2;
+  const [vis, setVis] = (0, _react.useState)(false);
+  const [input, setInput] = (0, _react.useState)("");
+  const [messages, setMessages] = (0, _react.useState)([]);
+  const [loading, setLoading] = (0, _react.useState)(false);
+  const [agentError, setAgentError] = (0, _react.useState)(false);
+  const [isOnline, setIsOnline] = (0, _react.useState)(true);
+  const [pendingFlow, setPendingFlow] = (0, _react.useState)(null);
+  const [step, setStep] = (0, _react.useState)(null);
+  const [copied, setCopied] = (0, _react.useState)(false);
+  const [inputPlaceholder, setInputPlaceholder] = (0, _react.useState)("ask agent...");
+  const inputRef = (0, _react.useRef)(null);
+  const [showHistory, setShowHistory] = (0, _react.useState)(false);
+  (0, _react.useEffect)(() => {
     const goOnline = () => setIsOnline(true);
     const goOffline = () => setIsOnline(false);
     window.addEventListener("online", goOnline);
@@ -2560,7 +2570,7 @@ function AgentHalfSheet({
       options: screenChips.map(c => c.charAt(0).toUpperCase() + c.slice(1))
     };
   };
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     if (open) {
       setInput("");
       setMessages([]);
@@ -3134,7 +3144,7 @@ function AgentHalfSheet({
       padding: "0 18px 40px",
       minHeight: "35%",
       maxHeight: "70%",
-      height: messages.length <= 1 && !messages[0]?.options && !messages[0]?.identity ? "auto" : "55%",
+      height: messages.length <= 1 && !((_messages$ = messages[0]) !== null && _messages$ !== void 0 && _messages$.options) && !((_messages$2 = messages[0]) !== null && _messages$2 !== void 0 && _messages$2.identity) ? "auto" : "55%",
       display: "flex",
       flexDirection: "column"
     }
@@ -3623,10 +3633,131 @@ function TabBar({
   onAction,
   activeTab,
   setActiveTab,
-  agentProps
+  agentProps,
+  fabExpanded,
+  onFabToggle,
+  onShortcut
 }) {
   const nudge = agentProps && agentProps.nudge;
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
+  const shortcuts = [{
+    key: "search",
+    label: "Search",
+    bg: "linear-gradient(145deg,#2563eb,#1d4ed8)",
+    shadow: "rgba(37,99,235,0.5)",
+    icon: /*#__PURE__*/React.createElement("svg", {
+      width: "18",
+      height: "18",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "#fff",
+      strokeWidth: "2.5",
+      strokeLinecap: "round"
+    }, /*#__PURE__*/React.createElement("circle", {
+      cx: "11",
+      cy: "11",
+      r: "7"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "16.5",
+      y1: "16.5",
+      x2: "21",
+      y2: "21"
+    }))
+  }, {
+    key: "agent",
+    label: "Agent",
+    bg: "linear-gradient(145deg,#7B2FFF,#5a1fd4)",
+    shadow: "rgba(123,47,255,0.5)",
+    icon: /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 11,
+        height: 11,
+        borderRadius: "50%",
+        background: "#FF4500",
+        boxShadow: "0 0 8px rgba(255,69,0,1)"
+      }
+    })
+  }, {
+    key: "card",
+    label: "New Card",
+    bg: "linear-gradient(145deg,#FF4500,#c44e15)",
+    shadow: "rgba(255,69,0,0.5)",
+    icon: /*#__PURE__*/React.createElement("svg", {
+      width: "17",
+      height: "17",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "#fff",
+      strokeWidth: "2",
+      strokeLinecap: "round"
+    }, /*#__PURE__*/React.createElement("rect", {
+      x: "2",
+      y: "5",
+      width: "20",
+      height: "14",
+      rx: "2.5"
+    }), /*#__PURE__*/React.createElement("line", {
+      x1: "2",
+      y1: "10",
+      x2: "22",
+      y2: "10"
+    }))
+  }];
+  return /*#__PURE__*/React.createElement(React.Fragment, null, fabExpanded && /*#__PURE__*/React.createElement("div", {
+    onClick: () => onFabToggle && onFabToggle(),
+    style: {
+      position: "absolute",
+      inset: 0,
+      zIndex: 28,
+      background: "rgba(0,0,0,0.55)",
+      backdropFilter: "blur(12px)",
+      WebkitBackdropFilter: "blur(12px)",
+      animation: "fadeIn 0.2s ease"
+    }
+  }), fabExpanded && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      bottom: 100,
+      right: 16,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 18,
+      zIndex: 32
+    }
+  }, shortcuts.map((s, idx) => /*#__PURE__*/React.createElement("div", {
+    key: s.key,
+    onClick: () => {
+      onFabToggle && onFabToggle();
+      onShortcut && onShortcut(s.key);
+    },
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 5,
+      cursor: "pointer",
+      animation: `fabShortcutIn 0.25s cubic-bezier(0.2,0.8,0.2,1) ${idx * 0.06}s both`
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 44,
+      height: 44,
+      borderRadius: "50%",
+      background: s.bg,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: `0 6px 20px ${s.shadow}`
+    }
+  }, s.icon), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 10,
+      fontWeight: 700,
+      color: "rgba(255,255,255,0.7)",
+      whiteSpace: "nowrap",
+      letterSpacing: "0.02em"
+    }
+  }, s.label)))), /*#__PURE__*/React.createElement("div", {
     style: {
       position: "absolute",
       bottom: 0,
@@ -3634,7 +3765,11 @@ function TabBar({
       right: 0,
       zIndex: 30,
       background: "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 25%, rgba(0,0,0,0.97) 100%)",
-      paddingTop: 8
+      paddingTop: 8,
+      transition: "opacity 0.2s ease, transform 0.2s ease",
+      opacity: fabExpanded ? 0 : 1,
+      transform: fabExpanded ? "translateY(8px)" : "translateY(0)",
+      pointerEvents: fabExpanded ? "none" : "auto"
     }
   }, agentProps && agentProps.chips.length > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -3643,14 +3778,14 @@ function TabBar({
   }, /*#__PURE__*/React.createElement("div", {
     onClick: agentProps.onOpen,
     style: {
-      background: "rgba(255,69,0,0.06)",
-      border: "1px solid rgba(255,69,0,0.15)",
+      background: "rgba(255,255,255,0.05)",
+      border: "1px solid rgba(255,255,255,0.08)",
       borderRadius: 99,
       display: "flex",
       alignItems: "center",
       padding: "7px 12px",
       gap: 8,
-      boxShadow: "0 0 20px rgba(255,69,0,0.05), inset 0 1px 0 rgba(255,69,0,0.08)",
+      boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
       cursor: "pointer",
       backdropFilter: "blur(20px)",
       WebkitBackdropFilter: "blur(20px)",
@@ -3662,8 +3797,8 @@ function TabBar({
       width: 22,
       height: 22,
       borderRadius: "50%",
-      background: "rgba(255,69,0,0.15)",
-      border: "1px solid rgba(255,69,0,0.25)",
+      background: "rgba(255,255,255,0.06)",
+      border: "1px solid rgba(255,255,255,0.1)",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -3696,7 +3831,7 @@ function TabBar({
     style: {
       width: 1,
       height: 16,
-      background: "rgba(255,69,0,0.2)",
+      background: "rgba(255,255,255,0.08)",
       flexShrink: 0
     }
   }), /*#__PURE__*/React.createElement("div", {
@@ -3861,26 +3996,55 @@ function TabBar({
         transition: "all 0.2s"
       }
     }, tab.label));
-  })), /*#__PURE__*/React.createElement("button", {
-    className: "press-scale",
-    onClick: () => onAction && onAction("addMoney"),
+  })), /*#__PURE__*/React.createElement("div", {
     style: {
+      width: 52,
+      height: 52,
+      marginLeft: 6,
+      flexShrink: 0
+    }
+  }))), /*#__PURE__*/React.createElement("button", {
+    className: "press-scale",
+    onClick: () => onFabToggle ? onFabToggle() : onAction && onAction("addMoney"),
+    style: {
+      position: "absolute",
+      bottom: 34,
+      right: 16,
       width: 52,
       height: 52,
       borderRadius: "50%",
       border: "none",
-      background: `linear-gradient(165deg, ${C.green} 0%, #00994D 100%)`,
+      background: fabExpanded ? "rgba(20,20,20,0.95)" : `linear-gradient(165deg, ${C.green} 0%, #00994D 100%)`,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      flexShrink: 0,
       cursor: "pointer",
       padding: 0,
-      border: `1px solid rgba(255,255,255,0.15)`,
-      boxShadow: `0 4px 20px ${C.green}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
-      animation: "fabBreathe 3s ease-in-out infinite"
+      zIndex: 33,
+      border: fabExpanded ? "1.5px solid rgba(255,255,255,0.15)" : `1px solid rgba(255,255,255,0.15)`,
+      boxShadow: fabExpanded ? "0 4px 16px rgba(0,0,0,0.6)" : `0 4px 20px ${C.green}40, inset 0 1px 0 rgba(255,255,255,0.2)`,
+      animation: fabExpanded ? "none" : "fabBreathe 3s ease-in-out infinite",
+      transition: "background 0.25s, box-shadow 0.25s"
     }
-  }, /*#__PURE__*/React.createElement("svg", {
+  }, fabExpanded ? /*#__PURE__*/React.createElement("svg", {
+    width: "16",
+    height: "16",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "rgba(255,255,255,0.7)",
+    strokeWidth: "2.5",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "18",
+    y1: "6",
+    x2: "6",
+    y2: "18"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "6",
+    y1: "6",
+    x2: "18",
+    y2: "18"
+  })) : /*#__PURE__*/React.createElement("svg", {
     width: "18",
     height: "18",
     viewBox: "0 0 24 24",
@@ -3898,16 +4062,18 @@ function TabBar({
     y1: "12",
     x2: "19",
     y2: "12"
-  }))))));
+  }))));
 }
 function BalancePill({
-  progress
+  progress,
+  onAdd,
+  onWithdraw
 }) {
   const balance = 3240;
   const privacy = usePrivacy();
-  const [hovering, setHovering] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
+  const [hovering, setHovering] = (0, _react.useState)(false);
+  const [mounted, setMounted] = (0, _react.useState)(false);
+  (0, _react.useEffect)(() => {
     const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
@@ -3917,7 +4083,6 @@ function BalancePill({
   })}`;
   const digits = formatted.split("");
   return /*#__PURE__*/React.createElement("div", {
-    onClick: () => privacy.toggle && privacy.toggle(),
     onMouseEnter: () => setHovering(true),
     onMouseLeave: () => setHovering(false),
     onTouchStart: () => setHovering(true),
@@ -3930,13 +4095,12 @@ function BalancePill({
       borderRadius: 20,
       border: "1px solid rgba(255,255,255,0.08)",
       boxShadow: "inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.1), 0 8px 32px rgba(0,0,0,0.3)",
-      padding: "16px 20px",
+      padding: "10px 12px 10px 16px",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       position: "relative",
-      overflow: "hidden",
-      cursor: "pointer"
+      overflow: "hidden"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -3960,6 +4124,15 @@ function BalancePill({
       zIndex: 3
     }
   }), /*#__PURE__*/React.createElement("div", {
+    onClick: () => privacy.toggle && privacy.toggle(),
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 12,
+      flex: 1,
+      cursor: "pointer"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
     style: {
       fontSize: 28,
       fontWeight: 700,
@@ -3981,20 +4154,110 @@ function BalancePill({
     style: {
       animationDelay: `${i * 0.05}s`
     }
-  }, d))), /*#__PURE__*/React.createElement("div", {
+  }, d)))), /*#__PURE__*/React.createElement("div", {
     style: {
-      textAlign: "right"
+      display: "flex",
+      flexDirection: "row",
+      gap: 10,
+      flexShrink: 0,
+      zIndex: 4,
+      paddingRight: 2
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: e => {
+      e.stopPropagation();
+      onAdd && onAdd();
+    },
+    className: "press-scale",
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 4,
+      cursor: "pointer"
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
-      fontSize: 13,
-      fontWeight: 700,
-      color: C.green,
-      letterSpacing: "0.08em",
-      textTransform: "uppercase",
-      lineHeight: 1.3
+      width: 38,
+      height: 38,
+      borderRadius: "50%",
+      background: "linear-gradient(145deg, #00CC66, #009944)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 14px rgba(0,204,102,0.4)"
     }
-  }, "Cash", /*#__PURE__*/React.createElement("br", null), "Balance")));
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "15",
+    height: "15",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#fff",
+    strokeWidth: "2.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "17 11 12 6 7 11"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "12",
+    y1: "6",
+    x2: "12",
+    y2: "18"
+  }))), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: "rgba(0,204,102,0.7)",
+      letterSpacing: "0.04em"
+    }
+  }, "Add")), /*#__PURE__*/React.createElement("div", {
+    onClick: e => {
+      e.stopPropagation();
+      onWithdraw && onWithdraw();
+    },
+    className: "press-scale",
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 4,
+      cursor: "pointer"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: 38,
+      height: 38,
+      borderRadius: "50%",
+      background: "linear-gradient(145deg, #7B2FFF, #5a1fd4)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      boxShadow: "0 4px 14px rgba(123,47,255,0.4)"
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "15",
+    height: "15",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "#fff",
+    strokeWidth: "2.5",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "7 13 12 18 17 13"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "12",
+    y1: "18",
+    x2: "12",
+    y2: "6"
+  }))), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 9,
+      fontWeight: 700,
+      color: "rgba(123,47,255,0.7)",
+      letterSpacing: "0.04em"
+    }
+  }, "Withdraw"))));
 }
 function SectionLabel({
   left,
@@ -4042,12 +4305,14 @@ function HomeScreen({
   onHistory,
   bills,
   onTxDetail,
-  onAddReminder
+  onAddReminder,
+  onAdd,
+  onWithdraw
 }) {
-  const [progress, setProgress] = useState(0);
-  const [cardIdx, setCardIdx] = useState(0);
-  const [histFilter, setHistFilter] = useState("Transactions");
-  useEffect(() => {
+  const [progress, setProgress] = (0, _react.useState)(0);
+  const [cardIdx, setCardIdx] = (0, _react.useState)(0);
+  const [histFilter, setHistFilter] = (0, _react.useState)("Transactions");
+  (0, _react.useEffect)(() => {
     const t = setTimeout(() => {
       let start = null;
       const run = ts => {
@@ -4109,7 +4374,9 @@ function HomeScreen({
       flexShrink: 0
     }
   }, /*#__PURE__*/React.createElement(BalancePill, {
-    progress: progress
+    progress: progress,
+    onAdd: onAdd,
+    onWithdraw: onWithdraw
   })), /*#__PURE__*/React.createElement("div", {
     style: {
       flex: 1,
@@ -4327,11 +4594,12 @@ function RemindersScreen({
   setBills,
   initialView = "list"
 }) {
+  var _ADD_CARDS$find, _ADD_CARDS$find2;
   const privacy = usePrivacy();
-  const [view, setView] = useState(initialView);
-  const [selectedDay, setSelectedDay] = useState(null);
-  const [editingId, setEditingId] = useState(null);
-  const [form, setForm] = useState({
+  const [view, setView] = (0, _react.useState)(initialView);
+  const [selectedDay, setSelectedDay] = (0, _react.useState)(null);
+  const [editingId, setEditingId] = (0, _react.useState)(null);
+  const [form, setForm] = (0, _react.useState)({
     name: "",
     amount: "",
     dueDay: 8,
@@ -4342,7 +4610,7 @@ function RemindersScreen({
     cardId: "7917",
     memo: ""
   });
-  const [calExpanded, setCalExpanded] = useState(true);
+  const [calExpanded, setCalExpanded] = (0, _react.useState)(true);
   const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   const billsOnDay = day => bills.filter(b => b.dueDay === day && b.duration !== "Weekly");
@@ -5267,7 +5535,7 @@ function RemindersScreen({
       width: 8,
       height: 8,
       borderRadius: "50%",
-      background: ADD_CARDS.find(c => c.id === form.cardId)?.color || C.orange
+      background: ((_ADD_CARDS$find = ADD_CARDS.find(c => c.id === form.cardId)) === null || _ADD_CARDS$find === void 0 ? void 0 : _ADD_CARDS$find.color) || C.orange
     }
   }), /*#__PURE__*/React.createElement("span", {
     style: {
@@ -5275,7 +5543,7 @@ function RemindersScreen({
       fontWeight: 600,
       color: C.text
     }
-  }, ADD_CARDS.find(c => c.id === form.cardId)?.name || "Select")), /*#__PURE__*/React.createElement("svg", {
+  }, ((_ADD_CARDS$find2 = ADD_CARDS.find(c => c.id === form.cardId)) === null || _ADD_CARDS$find2 === void 0 ? void 0 : _ADD_CARDS$find2.name) || "Select")), /*#__PURE__*/React.createElement("svg", {
     width: "14",
     height: "14",
     viewBox: "0 0 24 24",
@@ -5356,8 +5624,8 @@ const CARD_COLORS = ["#000000", "#FF4500", "#a78bfa", "#6ee7b7", "#f59e0b", "#3b
 function CreateCardScreen({
   onBack
 }) {
-  const [last4] = useState(() => String(Math.floor(1000 + Math.random() * 9000)));
-  const [form, setForm] = useState({
+  const [last4] = (0, _react.useState)(() => String(Math.floor(1000 + Math.random() * 9000)));
+  const [form, setForm] = (0, _react.useState)({
     name: "",
     color: "#000000",
     recurring: true,
@@ -5601,7 +5869,7 @@ function CreateCardScreen({
       left: 0,
       right: 0,
       zIndex: 10,
-      padding: "0 18px 96px",
+      padding: "0 18px 160px",
       paddingTop: 16,
       background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 40%)"
     }
@@ -6502,8 +6770,8 @@ function EditPinSub({
   onBack,
   onSave
 }) {
-  const [pin, setPin] = useState(["", "", "", ""]);
-  const [idx, setIdx] = useState(0);
+  const [pin, setPin] = (0, _react.useState)(["", "", "", ""]);
+  const [idx, setIdx] = (0, _react.useState)(0);
   const allFilled = pin.every(d => d !== "");
   return /*#__PURE__*/React.createElement(SubScreenShell, {
     title: "Edit Pin",
@@ -6642,8 +6910,8 @@ function AddLimitSub({
   onBack,
   onSave
 }) {
-  const [amt, setAmt] = useState("100");
-  const [per, setPer] = useState("Daily");
+  const [amt, setAmt] = (0, _react.useState)("100");
+  const [per, setPer] = (0, _react.useState)("Daily");
   return /*#__PURE__*/React.createElement(SubScreenShell, {
     title: "Add Spending Limit",
     onBack: onBack
@@ -6740,7 +7008,7 @@ function AddMemoSub({
   initialValue,
   onSave
 }) {
-  const [memo, setMemo] = useState(initialValue || "");
+  const [memo, setMemo] = (0, _react.useState)(initialValue || "");
   return /*#__PURE__*/React.createElement(SubScreenShell, {
     title: initialValue ? "Edit Memo" : "Add Memo",
     onBack: onBack
@@ -6804,7 +7072,7 @@ function EditLabelSub({
   initialValue,
   onSave
 }) {
-  const [label, setLabel] = useState(initialValue || "Daily Driver");
+  const [label, setLabel] = (0, _react.useState)(initialValue || "Daily Driver");
   return /*#__PURE__*/React.createElement(SubScreenShell, {
     title: "Edit Label",
     onBack: onBack
@@ -6932,7 +7200,7 @@ function AddFolderSub({
   onBack,
   onAdd
 }) {
-  const [folderName, setFolderName] = useState("");
+  const [folderName, setFolderName] = (0, _react.useState)("");
   return /*#__PURE__*/React.createElement(SubScreenShell, {
     title: "Create Folder",
     onBack: onBack
@@ -6994,7 +7262,7 @@ function EditColorSub({
   initialValue,
   onSave
 }) {
-  const [sel, setSel] = useState(initialValue || "#FF4500");
+  const [sel, setSel] = (0, _react.useState)(initialValue || "#FF4500");
   const colors = [{
     name: "Orange",
     v: "#FF4500"
@@ -7106,25 +7374,32 @@ function CardControlsView({
   activeCardIdx,
   dealingIn,
   onPrev,
-  onNext
+  onNext,
+  onAdd,
+  onWithdraw
 }) {
   const privacy = usePrivacy();
-  const [sub, setSub] = useState(null);
-  const [locked, setLocked] = useState(false);
-  const [revealed, setRevealed] = useState(false);
-  const [flipped, setFlipped] = useState(false);
-  const [limit, setLimit] = useState(null);
-  const [limitPer, setLimitPer] = useState("Monthly");
-  const [memo, setMemo] = useState("");
-  const [pin, setPin] = useState(null);
-  const [cardLabel, setCardLabel] = useState(card.name);
-  const [cardColor, setCardColor] = useState(card.color);
-  const [filter, setFilter] = useState("Transactions");
-  const [cardSwipe, setCardSwipe] = useState(null); // "left" | "right" | null
-  const cardSwipeRef = useRef(null);
+  const [sub, setSub] = (0, _react.useState)(null);
+  const [locked, setLocked] = (0, _react.useState)(false);
+  const [revealed, setRevealed] = (0, _react.useState)(false);
+  const [flipped, setFlipped] = (0, _react.useState)(false);
+  const [limit, setLimit] = (0, _react.useState)(null);
+  const [limitPer, setLimitPer] = (0, _react.useState)("Monthly");
+  const [memo, setMemo] = (0, _react.useState)("");
+  const [pin, setPin] = (0, _react.useState)(null);
+  const [cardLabel, setCardLabel] = (0, _react.useState)(card.name);
+  const [cardColor, setCardColor] = (0, _react.useState)(card.color);
+  const [filter, setFilter] = (0, _react.useState)("Transactions");
+  const [cardSwipe, setCardSwipe] = (0, _react.useState)(null);
+  const cardInnerRef = (0, _react.useRef)(null);
+  const cardIncomingRef = (0, _react.useRef)(null);
+  const swipeDxRef = (0, _react.useRef)(0);
+  const cardSwipeRef = (0, _react.useRef)(null);
+  const swipeInProgressRef = (0, _react.useRef)(false);
+  const [swipeDir, setSwipeDir] = (0, _react.useState)(null); // "left"|"right" while animating
 
   // sync label/color when card prop changes (parent switched cards)
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     setCardLabel(card.name);
     setCardColor(card.color);
     setFlipped(false);
@@ -7307,102 +7582,129 @@ function CardControlsView({
     },
     className: "no-scroll"
   }, /*#__PURE__*/React.createElement(BalancePill, {
-    progress: 1
+    progress: 1,
+    onAdd: onAdd,
+    onWithdraw: onWithdraw
   }), /*#__PURE__*/React.createElement("div", {
     style: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "flex-end",
-      marginTop: 16,
-      marginBottom: 8,
-      gap: 12
-    }
-  }, onCreateCard && /*#__PURE__*/React.createElement("span", {
-    onClick: onCreateCard,
-    style: {
-      width: 22,
-      height: 22,
-      borderRadius: "50%",
-      background: "rgba(255,255,255,0.04)",
-      border: "1px solid rgba(255,255,255,0.07)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      cursor: "pointer"
-    }
-  }, /*#__PURE__*/React.createElement("svg", {
-    width: "11",
-    height: "11",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: C.orange,
-    strokeWidth: "2.5",
-    strokeLinecap: "round"
-  }, /*#__PURE__*/React.createElement("line", {
-    x1: "12",
-    y1: "5",
-    x2: "12",
-    y2: "19"
-  }), /*#__PURE__*/React.createElement("line", {
-    x1: "5",
-    y1: "12",
-    x2: "19",
-    y2: "12"
-  }))), /*#__PURE__*/React.createElement("span", {
-    onClick: onSeeAll,
-    className: "link-slide",
-    style: {
-      fontSize: 11,
-      color: C.orange,
-      cursor: "pointer",
-      display: "inline-block",
-      transition: "transform 0.15s ease"
-    }
-  }, "See All \u2192")), /*#__PURE__*/React.createElement("div", {
-    style: {
       position: "relative",
-      touchAction: "pan-y",
-      overflow: "hidden"
+      overflow: "hidden",
+      marginTop: 12,
+      touchAction: "none"
     },
     onPointerDown: e => {
-      if (flipped) return; // don't swipe when settings are open
+      if (flipped) return;
+      e.currentTarget.setPointerCapture(e.pointerId);
       cardSwipeRef.current = {
         x: e.clientX,
         y: e.clientY,
-        t: Date.now()
+        t: Date.now(),
+        active: true,
+        locked: false
       };
+      swipeDxRef.current = 0;
+    },
+    onPointerMove: e => {
+      const s = cardSwipeRef.current;
+      if (!(s !== null && s !== void 0 && s.active)) return;
+      const dx = e.clientX - s.x;
+      const dy = e.clientY - s.y;
+      // lock to vertical scroll if clear vertical intent
+      if (!s.locked && Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx) * 1.5) {
+        s.active = false;
+        if (cardInnerRef.current) {
+          cardInnerRef.current.style.transition = "transform 0.2s cubic-bezier(0.25,0.1,0.25,1)";
+          cardInnerRef.current.style.transform = "translateX(0)";
+          cardInnerRef.current.style.opacity = "1";
+        }
+        return;
+      }
+      swipeDxRef.current = dx;
+      if (cardInnerRef.current) {
+        cardInnerRef.current.style.transition = "none";
+        cardInnerRef.current.style.transform = `translateX(${dx}px) rotate(${dx * 0.012}deg)`;
+        cardInnerRef.current.style.opacity = String(1 - Math.abs(dx) / 420);
+      }
     },
     onPointerUp: e => {
-      if (!cardSwipeRef.current) return;
-      const dx = e.clientX - cardSwipeRef.current.x;
-      const dy = Math.abs(e.clientY - cardSwipeRef.current.y);
-      const rawDy = e.clientY - cardSwipeRef.current.y;
-      const dt = Date.now() - cardSwipeRef.current.t;
+      const s = cardSwipeRef.current;
+      if (!s) return;
+      const dx = e.clientX - s.x;
+      const dy = Math.abs(e.clientY - s.y);
+      const rawDy = e.clientY - s.y;
+      const dt = Date.now() - s.t;
       cardSwipeRef.current = null;
-      // horizontal swipe: switch cards
-      if (Math.abs(dx) > 40 && dy < 60 && dt < 500) {
-        if (dx < 0 && onNext) {
-          setCardSwipe("left");
+      const threshold = 55;
+      if (s.active && Math.abs(dx) > threshold && dy < 60 && dt < 500) {
+        // commit swipe
+        const dir = dx < 0 ? "left" : "right";
+        const canGo = dir === "left" ? !!onNext : !!onPrev;
+        if (canGo) {
+          // position incoming card off-screen on opposite side
+          const incomingStartX = dir === "left" ? "115%" : "-115%";
+          if (cardIncomingRef.current) {
+            cardIncomingRef.current.style.transition = "none";
+            cardIncomingRef.current.style.transform = `translateX(${incomingStartX})`;
+            cardIncomingRef.current.style.opacity = "1";
+            cardIncomingRef.current.style.display = "block";
+          }
+          // animate current card out + incoming card in simultaneously
+          requestAnimationFrame(() => {
+            const outX = dir === "left" ? "-115%" : "115%";
+            const outRot = dir === "left" ? "-5deg" : "5deg";
+            if (cardInnerRef.current) {
+              cardInnerRef.current.style.transition = "transform 0.3s cubic-bezier(0.4,0,0.15,1), opacity 0.3s ease";
+              cardInnerRef.current.style.transform = `translateX(${outX}) rotate(${outRot})`;
+              cardInnerRef.current.style.opacity = "0";
+            }
+            if (cardIncomingRef.current) {
+              cardIncomingRef.current.style.transition = "transform 0.3s cubic-bezier(0.4,0,0.15,1)";
+              cardIncomingRef.current.style.transform = "translateX(0)";
+            }
+          });
+          setSwipeDir(dir);
+          swipeInProgressRef.current = true;
           setTimeout(() => {
-            onNext();
-            setCardSwipe(null);
-          }, 250);
+            if (dir === "left") onNext();else onPrev();
+            setSwipeDir(null);
+            if (cardInnerRef.current) {
+              cardInnerRef.current.style.transition = "none";
+              cardInnerRef.current.style.transform = "translateX(0)";
+              cardInnerRef.current.style.opacity = "1";
+            }
+            if (cardIncomingRef.current) {
+              cardIncomingRef.current.style.display = "none";
+            }
+            setTimeout(() => {
+              swipeInProgressRef.current = false;
+            }, 50);
+          }, 300);
+        } else {
+          // no card in that direction — rubber band back
+          if (cardInnerRef.current) {
+            cardInnerRef.current.style.transition = "transform 0.3s cubic-bezier(0.25,0.1,0.25,1), opacity 0.3s ease";
+            cardInnerRef.current.style.transform = "translateX(0)";
+            cardInnerRef.current.style.opacity = "1";
+          }
         }
-        if (dx > 0 && onPrev) {
-          setCardSwipe("right");
-          setTimeout(() => {
-            onPrev();
-            setCardSwipe(null);
-          }, 250);
+      } else {
+        // spring back
+        if (cardInnerRef.current) {
+          cardInnerRef.current.style.transition = "transform 0.3s cubic-bezier(0.25,0.1,0.25,1), opacity 0.3s ease";
+          cardInnerRef.current.style.transform = "translateX(0)";
+          cardInnerRef.current.style.opacity = "1";
         }
-      }
-      // vertical swipe down: reveal card stack
-      if (rawDy > 60 && Math.abs(dx) < 40 && dt < 500 && onSeeAll) {
-        onSeeAll();
+        // vertical swipe down
+        if (rawDy > 60 && Math.abs(dx) < 50 && dt < 500 && onSeeAll) onSeeAll();
       }
     },
     onPointerCancel: () => {
       cardSwipeRef.current = null;
+      if (cardInnerRef.current) {
+        cardInnerRef.current.style.transition = "transform 0.3s cubic-bezier(0.25,0.1,0.25,1), opacity 0.3s ease";
+        cardInnerRef.current.style.transform = "translateX(0)";
+        cardInnerRef.current.style.opacity = "1";
+      }
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -7418,13 +7720,30 @@ function CardControlsView({
       animation: "breatheGlow 4s ease-in-out infinite"
     }
   }), /*#__PURE__*/React.createElement("div", {
+    ref: cardIncomingRef,
+    style: {
+      position: "absolute",
+      inset: 0,
+      zIndex: 0,
+      display: "none",
+      pointerEvents: "none"
+    }
+  }, swipeDir === "left" && onNext && allCards[activeCardIdx + 1] && /*#__PURE__*/React.createElement(MachinesCard, {
+    name: allCards[activeCardIdx + 1].name,
+    last4: allCards[activeCardIdx + 1].last4,
+    color: allCards[activeCardIdx + 1].color,
+    active: false
+  }), swipeDir === "right" && onPrev && allCards[activeCardIdx - 1] && /*#__PURE__*/React.createElement(MachinesCard, {
+    name: allCards[activeCardIdx - 1].name,
+    last4: allCards[activeCardIdx - 1].last4,
+    color: allCards[activeCardIdx - 1].color,
+    active: false
+  })), /*#__PURE__*/React.createElement("div", {
+    ref: cardInnerRef,
     style: {
       position: "relative",
       zIndex: 1,
-      transition: cardSwipe ? "transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.25s ease" : "none",
-      transform: cardSwipe === "left" ? "translateX(-110%) rotate(-3deg)" : cardSwipe === "right" ? "translateX(110%) rotate(3deg)" : "translateX(0)",
-      opacity: cardSwipe ? 0 : 1,
-      animation: dealingIn && !cardSwipe ? "cardDealIn 0.5s cubic-bezier(0.2,0.8,0.2,1)" : "none"
+      animation: dealingIn && !swipeInProgressRef.current ? "cardDealIn 0.5s cubic-bezier(0.2,0.8,0.2,1)" : "none"
     }
   }, /*#__PURE__*/React.createElement(MachinesCard, {
     name: cardLabel,
@@ -7514,7 +7833,59 @@ function CardControlsView({
     strokeLinecap: "round"
   }, /*#__PURE__*/React.createElement("polyline", {
     points: "9 6 15 12 9 18"
-  }))))), allCards && allCards.length > 1 && /*#__PURE__*/React.createElement("div", {
+  }))))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "flex-end",
+      marginTop: 10,
+      marginBottom: 2,
+      gap: 8
+    }
+  }, onCreateCard && /*#__PURE__*/React.createElement("div", {
+    onClick: onCreateCard,
+    style: {
+      padding: "6px 12px",
+      borderRadius: 99,
+      background: `${C.orange}15`,
+      border: `1px solid ${C.orange}30`,
+      fontSize: 11,
+      fontWeight: 600,
+      color: C.orange,
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      gap: 4
+    }
+  }, /*#__PURE__*/React.createElement("svg", {
+    width: "10",
+    height: "10",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: C.orange,
+    strokeWidth: "2.5",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("line", {
+    x1: "12",
+    y1: "5",
+    x2: "12",
+    y2: "19"
+  }), /*#__PURE__*/React.createElement("line", {
+    x1: "5",
+    y1: "12",
+    x2: "19",
+    y2: "12"
+  })), "Card"), /*#__PURE__*/React.createElement("span", {
+    onClick: onSeeAll,
+    className: "link-slide",
+    style: {
+      fontSize: 11,
+      color: C.orange,
+      cursor: "pointer",
+      display: "inline-block",
+      transition: "transform 0.15s ease"
+    }
+  }, "See All \u2192")), allCards && allCards.length > 1 && /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       justifyContent: "center",
@@ -7688,7 +8059,7 @@ function FolderPickerSub({
     id: "shopping",
     name: "Shopping"
   }];
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = (0, _react.useState)(null);
   return /*#__PURE__*/React.createElement(SubScreenShell, {
     title: "Add to Folder",
     onBack: onBack
@@ -7868,23 +8239,30 @@ function PeekCardShell({
 }
 function CardsScreen({
   onCreateCard,
-  onTxDetail
+  onTxDetail,
+  onAdd,
+  onWithdraw
 }) {
-  const [showList, setShowList] = useState(false);
-  const [showDeleted, setShowDeleted] = useState(false);
-  const [showFolder, setShowFolder] = useState(false);
-  const [activeCardIdx, setActiveCardIdx] = useState(0);
-  const [subCards, setSubCards] = useState(CARD_GROUPS[1].cards);
-  const [mounted, setMounted] = useState(false);
-  const [hasCards] = useState(true);
-  const [folders, setFolders] = useState([{
+  const [showList, setShowList] = (0, _react.useState)(false);
+  const [showDeleted, setShowDeleted] = (0, _react.useState)(false);
+  const [activeCardIdx, setActiveCardIdx] = (0, _react.useState)(0);
+  const [subCards] = (0, _react.useState)(CARD_GROUPS[1].cards);
+  const [dealingIn, setDealingIn] = (0, _react.useState)(false);
+  const [listVisible, setListVisible] = (0, _react.useState)(false);
+  const cardSwipeRef = (0, _react.useRef)(null);
+  const [hasCards] = (0, _react.useState)(true);
+
+  // folder state
+  const [folders, setFolders] = (0, _react.useState)([{
     id: "subs",
-    name: "Subscriptions"
+    name: "Subscriptions",
+    color: "#7B2FFF"
   }, {
     id: "shopping",
-    name: "Shopping"
+    name: "Shopping",
+    color: "#2563eb"
   }]);
-  const [cardFolders, setCardFolders] = useState({
+  const [cardFolders, setCardFolders] = (0, _react.useState)({
     "5838": "subs",
     "4276": "subs",
     "5433": "subs",
@@ -7893,371 +8271,42 @@ function CardsScreen({
     "8895": "shopping",
     "9042": "shopping"
   });
-  const [expandedFolders, setExpandedFolders] = useState({
-    "subs": false,
+  const [expandedFolders, setExpandedFolders] = (0, _react.useState)({
+    "subs": true,
     "shopping": false
   });
-  const [cardH, setCardH] = useState(180);
-  const [cardOrder, setCardOrder] = useState(null); // null = default order
-  const [tossedCard, setTossedCard] = useState(null);
-  const [dealingIn, setDealingIn] = useState(false);
-  const [swipeDir, setSwipeDir] = useState(null);
-  const swipeTouchRef = useRef(null);
-  const stackRef = useRef(null);
-  const itemsRef = useRef([]);
-  const dragRef = useRef({
-    idx: null,
-    over: null
-  });
+  const [showFolderSheet, setShowFolderSheet] = (0, _react.useState)(false);
+  const [newFolderName, setNewFolderName] = (0, _react.useState)("");
+  const newFolderInputRef = (0, _react.useRef)(null);
+  const [swipingFolder, setSwipingFolder] = (0, _react.useState)(null); // { id, x }
+  const [dropFlash, setDropFlash] = (0, _react.useState)(null); // folderId that just received a card
 
-  // Listen for custom drag-reorder events from the external drag script
-  useEffect(() => {
-    function onReorder(e) {
-      if (e.detail && typeof e.detail.from === "number" && typeof e.detail.to === "number") {
-        const items = itemsRef.current;
-        if (!items || !items.length) return;
-        const keys = items.map(it => it.type === "folder" ? `f-${it.id}` : it.last4);
-        const [moved] = keys.splice(e.detail.from, 1);
-        keys.splice(e.detail.to, 0, moved);
-        setCardOrder(keys);
-      }
-    }
-    function onFolderMove(e) {
-      if (e.detail && e.detail.cardId && e.detail.folderId !== undefined) {
-        moveCardToFolder(e.detail.cardId, e.detail.folderId);
-      }
-    }
-    window.addEventListener("card-reorder", onReorder);
-    window.addEventListener("card-to-folder", onFolderMove);
-    return () => {
-      window.removeEventListener("card-reorder", onReorder);
-      window.removeEventListener("card-to-folder", onFolderMove);
-    };
-  }, []);
-  const moveCardToFolder = (cardLast4, toFolderId) => {
-    setCardFolders(prev => {
-      const next = {
-        ...prev
-      };
-      if (toFolderId === null) {
-        delete next[cardLast4];
-      } else {
-        next[cardLast4] = toFolderId;
-      }
-      return next;
-    });
-  };
-  useEffect(() => {
-    requestAnimationFrame(() => setMounted(true));
+  // drag state
+  const [dragState, setDragState] = (0, _react.useState)(null);
+  const [dropTarget, setDropTarget] = (0, _react.useState)(null);
+  const autoScrollRef = (0, _react.useRef)(null);
+  const scrollRef = (0, _react.useRef)(null);
+  const folderRefs = (0, _react.useRef)({});
+  const stackContainerRef = (0, _react.useRef)(null);
+  const [cardW, setCardW] = (0, _react.useState)(288);
+  (0, _react.useEffect)(() => {
     const measure = () => {
-      if (stackRef.current) {
-        const w = stackRef.current.offsetWidth;
-        setCardH(Math.round(w / 1.586));
-      }
+      if (stackContainerRef.current) setCardW(stackContainerRef.current.offsetWidth);
     };
     measure();
     window.addEventListener("resize", measure);
-    return () => {
-      window.removeEventListener("resize", measure);
-    };
-  }, []);
+    return () => window.removeEventListener("resize", measure);
+  }, [showList]);
+  const cardH = Math.round(cardW / 1.586);
 
-  // ── Pointer-based drag-and-drop engine ──
-  useEffect(() => {
-    const container = stackRef.current;
-    if (!container) return;
-    let drag = null;
-    const THRESHOLD = 8;
-    let pending = null;
-    function getItems() {
-      return Array.from(container.querySelectorAll("[data-stackitem]"));
+  // animate list in on open
+  (0, _react.useEffect)(() => {
+    if (showList) {
+      setListVisible(false);
+      const t = setTimeout(() => setListVisible(true), 50);
+      return () => clearTimeout(t);
     }
-    function down(e) {
-      // use coordinates to find which card's peek zone the pointer is in
-      const y = e.clientY;
-      const items = getItems();
-      let row = null;
-      for (let idx = 0; idx < items.length; idx++) {
-        const it = items[idx];
-        if (!it.hasAttribute("data-draggable")) continue;
-        const r = it.getBoundingClientRect();
-        if (y >= r.top && y < r.top + peekHeight) {
-          row = it;
-          break;
-        }
-      }
-      if (!row) return;
-      const cardId = row.getAttribute("data-card-id");
-      if (!cardId) return;
-      e.preventDefault();
-      pending = {
-        el: row,
-        id: cardId,
-        sy: e.clientY,
-        sx: e.clientX,
-        pid: e.pointerId
-      };
-    }
-    function move(e) {
-      if (!pending && !drag) return;
-      if (pending && !drag) {
-        if (Math.abs(e.clientY - pending.sy) < THRESHOLD && Math.abs(e.clientX - pending.sx) < THRESHOLD) return;
-        const {
-          el,
-          id,
-          sy
-        } = pending;
-        const rect = el.getBoundingClientRect();
-        const items = getItems();
-        const idx = items.indexOf(el);
-        pending = null;
-
-        // clone — card-shaped with lift animation
-        const cardId = el.getAttribute("data-card-id");
-        const clone = document.createElement("div");
-        const cloneW = rect.width;
-        const cloneH = Math.round(cloneW / 1.586);
-        clone.style.cssText = "position:fixed;left:" + rect.left + "px;top:" + rect.top + "px;width:" + cloneW + "px;height:" + cloneH + "px;z-index:9999;pointer-events:none;border-radius:18px;overflow:hidden;will-change:transform,box-shadow;transition:box-shadow 0.3s,transform 0.15s cubic-bezier(0.2,0.8,0.2,1);transform:scale(1);box-shadow:0 4px 12px rgba(0,0,0,0.3);";
-        // copy the inner card face
-        const inner = el.querySelector("div[style*='aspect-ratio']") || el.firstElementChild;
-        if (inner) {
-          const innerClone = inner.cloneNode(true);
-          innerClone.style.width = "100%";
-          innerClone.style.height = "100%";
-          innerClone.style.aspectRatio = "";
-          clone.appendChild(innerClone);
-        }
-        document.body.appendChild(clone);
-        // trigger lift animation on next frame
-        requestAnimationFrame(() => {
-          clone.style.boxShadow = "0 24px 56px rgba(0,0,0,0.55), 0 0 0 2px " + C.orange + "40";
-          clone.style.transform = "scale(1.04) rotate(-1deg)";
-        });
-
-        // gap placeholder — card-shaped outline at peek height
-        const gap = document.createElement("div");
-        gap.setAttribute("data-drag-gap", "1");
-        const gapFullH = Math.round(rect.width / 1.586);
-        gap.style.cssText = "height:" + gapFullH + "px;margin-bottom:-" + (gapFullH - peekHeight) + "px;border-radius:18px;border:2px dashed " + C.orange + "25;background:" + C.orange + "04;position:relative;z-index:0;pointer-events:none;opacity:0;transition:opacity 0.2s;";
-        el.parentNode.insertBefore(gap, el);
-        requestAnimationFrame(() => {
-          gap.style.opacity = "1";
-        });
-        el.style.display = "none";
-        window._cardDragged = true;
-        drag = {
-          el,
-          id,
-          clone,
-          gap,
-          sy,
-          rect,
-          startIdx: idx,
-          overEl: null,
-          lastTarget: null,
-          lastY: sy
-        };
-      }
-      if (!drag) return;
-      e.preventDefault();
-      const dy = e.clientY - drag.sy;
-      const velocity = e.clientY - (drag.lastY || e.clientY);
-      drag.lastY = e.clientY;
-      // tilt based on drag direction, clamped
-      const tilt = Math.max(-3, Math.min(3, velocity * 0.3));
-      // rubber-band: the clone follows with slight lag via CSS transition
-      // and stretches at the edges of the container
-      const containerRect = container.getBoundingClientRect();
-      const rawTop = drag.rect.top + dy;
-      const minY = containerRect.top - 20;
-      const maxY = containerRect.bottom - peekHeight + 20;
-      let clampedTop = rawTop;
-      if (rawTop < minY) clampedTop = minY - (minY - rawTop) * 0.3; // rubber-band top
-      if (rawTop > maxY) clampedTop = maxY + (rawTop - maxY) * 0.3; // rubber-band bottom
-      if (!drag.springInit) {
-        drag.clone.style.transition = "transform 0.08s cubic-bezier(0.2,0.8,0.2,1)";
-        drag.springInit = true;
-      }
-      drag.clone.style.top = clampedTop + "px";
-      drag.clone.style.transform = "scale(1.04) rotate(" + tilt.toFixed(1) + "deg)";
-
-      // find drop target using pointer position
-      const items = getItems();
-      const pointerY = e.clientY;
-      const pointerX = drag.rect.left + drag.rect.width / 2;
-      let target = null;
-      // walk items and find which peek zone the pointer is in
-      for (let i = 0; i < items.length; i++) {
-        const it = items[i];
-        if (it === drag.el || it.hasAttribute("data-drag-gap")) continue;
-        const r = it.getBoundingClientRect();
-        if (pointerY >= r.top && pointerY < r.top + peekHeight) {
-          target = it;
-          break;
-        }
-      }
-
-      // clear previous folder highlight
-      if (drag.overEl && drag.overEl !== target) {
-        drag.overEl.style.outline = "";
-        drag.overEl.style.outlineOffset = "";
-        drag.overEl.style.transform = "";
-      }
-
-      // highlight folder if hovering over one
-      if (target && target.hasAttribute("data-folder-id")) {
-        target.style.outline = "2px solid " + C.orange;
-        target.style.outlineOffset = "2px";
-        target.style.transform = "scale(1.02)";
-        target.style.transition = "all 0.2s cubic-bezier(0.2,0.8,0.2,1)";
-        drag.overEl = target;
-        // don't move the gap when over a folder
-      } else {
-        drag.overEl = target;
-        if (target && target !== drag.gap) {
-          // debounce: only move gap if target changed
-          if (target !== drag.lastTarget) {
-            drag.lastTarget = target;
-            const tRect = target.getBoundingClientRect();
-            const tMid = tRect.top + peekHeight / 2;
-            if (pointerY < tMid) {
-              target.parentNode.insertBefore(drag.gap, target);
-            } else if (target.nextSibling !== drag.gap) {
-              target.parentNode.insertBefore(drag.gap, target.nextSibling);
-            }
-          }
-        }
-      }
-    }
-    function up(e) {
-      if (pending) {
-        try {
-          pending.el.releasePointerCapture(pending.pid);
-        } catch {}
-        pending = null;
-        return;
-      }
-      if (!drag) return;
-      const {
-        el,
-        clone,
-        gap,
-        startIdx,
-        overEl
-      } = drag;
-
-      // clear any folder highlight
-      if (overEl) {
-        overEl.style.outline = "";
-        overEl.style.outlineOffset = "";
-        overEl.style.transform = "";
-      }
-
-      // check if dropping onto a folder
-      const dropFolderId = overEl ? overEl.getAttribute("data-folder-id") : null;
-      if (dropFolderId) {
-        // animate clone into folder center
-        const fRect = overEl.getBoundingClientRect();
-        const cx = fRect.left + fRect.width / 2 - drag.rect.width / 2;
-        const cy = fRect.top;
-        clone.style.transition = "all 0.35s cubic-bezier(0.4,0,0.2,1)";
-        clone.style.top = cy + "px";
-        clone.style.left = cx + "px";
-        clone.style.transform = "scale(0.3) rotate(-8deg)";
-        clone.style.opacity = "0";
-        clone.style.borderRadius = "24px";
-        // folder glow pulse
-        overEl.style.transition = "all 0.3s cubic-bezier(0.2,0.8,0.2,1)";
-        overEl.style.outline = "2px solid " + C.orange;
-        overEl.style.outlineOffset = "2px";
-        overEl.style.transform = "scale(1.03)";
-        setTimeout(() => {
-          overEl.style.outline = "";
-          overEl.style.outlineOffset = "";
-          overEl.style.transform = "";
-        }, 200);
-        setTimeout(() => {
-          clone.remove();
-          gap.remove();
-          el.style.display = "";
-          window.dispatchEvent(new CustomEvent("card-to-folder", {
-            detail: {
-              cardId: drag.id,
-              folderId: dropFolderId
-            }
-          }));
-          setTimeout(() => {
-            window._cardDragged = false;
-          }, 100);
-        }, 350);
-      } else {
-        // snap clone to gap position with settle animation
-        const gapRect = gap.getBoundingClientRect();
-        clone.style.transition = "all 0.3s cubic-bezier(0.2,0.8,0.2,1)";
-        clone.style.top = gapRect.top + "px";
-        clone.style.left = gapRect.left + "px";
-        clone.style.transform = "scale(1) rotate(0deg)";
-        clone.style.boxShadow = "0 4px 12px rgba(0,0,0,0.2)";
-        setTimeout(() => {
-          clone.remove();
-          el.style.display = "";
-          const gapParent = gap.parentNode;
-          const children = Array.from(gapParent.children).filter(x => x.hasAttribute("data-stackitem") || x.hasAttribute("data-drag-gap"));
-          const gapPos = children.indexOf(gap);
-          gap.remove();
-          let toIdx = gapPos > startIdx ? gapPos - 1 : gapPos;
-          if (toIdx < 0) toIdx = 0;
-          if (toIdx !== startIdx) {
-            window.dispatchEvent(new CustomEvent("card-reorder", {
-              detail: {
-                from: startIdx,
-                to: toIdx
-              }
-            }));
-          }
-          setTimeout(() => {
-            window._cardDragged = false;
-          }, 100);
-        }, 200);
-      }
-      try {
-        el.releasePointerCapture(e.pointerId);
-      } catch {}
-      drag = null;
-    }
-    function cancel() {
-      if (drag) {
-        drag.clone.remove();
-        drag.gap.remove();
-        drag.el.style.display = "";
-        if (drag.overEl) {
-          drag.overEl.style.outline = "";
-          drag.overEl.style.outlineOffset = "";
-          drag.overEl.style.transform = "";
-        }
-        drag = null;
-      }
-      pending = null;
-      window._cardDragged = false;
-    }
-    container.addEventListener("pointerdown", down);
-    container.addEventListener("pointermove", move);
-    container.addEventListener("pointerup", up);
-    container.addEventListener("pointercancel", cancel);
-    const noScroll = e => {
-      if (drag) e.preventDefault();
-    };
-    container.addEventListener("touchmove", noScroll, {
-      passive: false
-    });
-    return () => {
-      container.removeEventListener("pointerdown", down);
-      container.removeEventListener("pointermove", move);
-      container.removeEventListener("pointerup", up);
-      container.removeEventListener("pointercancel", cancel);
-      container.removeEventListener("touchmove", noScroll);
-    };
-  }, [showList, expandedFolders, cardOrder, activeCardIdx]);
+  }, [showList]);
   const allCards = [{
     name: CARD_GROUPS[0].name,
     last4: CARD_GROUPS[0].last4,
@@ -8268,9 +8317,8 @@ function CardsScreen({
     color: c.color
   }))];
   const activeCard = allCards[activeCardIdx] || allCards[0];
-  // Trigger deal-in animation when switching to a new card
-  const prevCardRef = useRef(activeCardIdx);
-  useEffect(() => {
+  const prevCardRef = (0, _react.useRef)(activeCardIdx);
+  (0, _react.useEffect)(() => {
     if (prevCardRef.current !== activeCardIdx) {
       setDealingIn(true);
       setTimeout(() => setDealingIn(false), 600);
@@ -8278,212 +8326,293 @@ function CardsScreen({
     }
   }, [activeCardIdx]);
   const handleSelectCard = idx => {
-    setTossedCard(activeCardIdx);
-    setTimeout(() => {
-      setTossedCard(null);
-      setActiveCardIdx(idx);
-      setShowList(false);
-    }, 400);
+    setActiveCardIdx(idx);
+    setShowList(false);
+  };
+  const moveCardToFolder = (last4, folderId) => {
+    setCardFolders(prev => {
+      const next = {
+        ...prev
+      };
+      if (folderId === null) delete next[last4];else next[last4] = folderId;
+      return next;
+    });
+  };
+  const deleteFolder = folderId => {
+    // move all cards in folder back to ungrouped
+    setCardFolders(prev => {
+      const next = {
+        ...prev
+      };
+      Object.keys(next).forEach(k => {
+        if (next[k] === folderId) delete next[k];
+      });
+      return next;
+    });
+    setFolders(prev => prev.filter(f => f.id !== folderId));
+    setSwipingFolder(null);
   };
   const toggleFolder = fid => setExpandedFolders(prev => ({
     ...prev,
     [fid]: !prev[fid]
   }));
   const addFolder = name => {
+    const colors = ["#7B2FFF", "#2563eb", "#FF4500", "#00CC66", "#e11d48"];
+    const color = colors[folders.length % colors.length];
     const id = `folder_${Date.now()}`;
     setFolders(prev => [...prev, {
       id,
-      name
+      name,
+      color
     }]);
     setExpandedFolders(prev => ({
       ...prev,
       [id]: true
     }));
-    setShowFolder(false);
   };
-  const peekHeight = 52;
 
-  // Peek card component
-  const PeekCard = ({
-    card,
-    idx,
-    onClick
-  }) => /*#__PURE__*/React.createElement("div", {
-    onClick: onClick,
-    style: {
-      marginBottom: -(220 - peekHeight),
-      position: "relative",
-      zIndex: idx + 1,
-      cursor: "pointer",
-      transition: "all 0.3s cubic-bezier(0.32,0.72,0,1)"
+  // drag refs — avoid setState on every frame
+  const ghostRef = (0, _react.useRef)(null);
+  const dragCardRef = (0, _react.useRef)(null);
+  const dropTargetRef = (0, _react.useRef)(null);
+  const longPressTimer = (0, _react.useRef)(null);
+  const lastDragY = (0, _react.useRef)(0);
+  const velocityRef = (0, _react.useRef)(0);
+  const autoScrollRAF = (0, _react.useRef)(null);
+  const autoExpandTimer = (0, _react.useRef)(null);
+  const updateDropTarget = clientY => {
+    let found = null;
+    Object.entries(folderRefs.current).forEach(([fid, ref]) => {
+      if (!ref) return;
+      const r = ref.getBoundingClientRect();
+      if (clientY >= r.top - 10 && clientY <= r.bottom + 10) found = fid;
+    });
+    if (!found && scrollRef.current) {
+      const r = scrollRef.current.getBoundingClientRect();
+      if (clientY < r.top + 140) found = "ungrouped";
     }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: "100%",
-      aspectRatio: "1.586",
-      borderRadius: 18,
-      position: "relative",
-      overflow: "hidden",
-      background: card.color === "#000000" ? "#111" : card.color,
-      boxShadow: "0 2px 12px rgba(0,0,0,0.4)"
+    if (found !== dropTargetRef.current) {
+      dropTargetRef.current = found;
+      setDropTarget(found);
+      // auto-expand collapsed folder after 600ms hover
+      clearTimeout(autoExpandTimer.current);
+      if (found && found !== "ungrouped") {
+        autoExpandTimer.current = setTimeout(() => {
+          setExpandedFolders(prev => {
+            if (!prev[found]) return {
+              ...prev,
+              [found]: true
+            };
+            return prev;
+          });
+        }, 600);
+      }
     }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "absolute",
-      inset: 0,
-      borderRadius: 18,
-      border: "1px solid rgba(255,255,255,0.08)",
-      pointerEvents: "none",
-      zIndex: 2
+  };
+  const startAutoScroll = clientY => {
+    const scroll = scrollRef.current;
+    if (!scroll) return;
+    const rect = scroll.getBoundingClientRect();
+    const ZONE = 80;
+    const TOP_EDGE = rect.top + ZONE;
+    const BOT_EDGE = rect.bottom - ZONE;
+    let speed = 0;
+    if (clientY < TOP_EDGE) speed = -((TOP_EDGE - clientY) / ZONE) * 12;else if (clientY > BOT_EDGE) speed = (clientY - BOT_EDGE) / ZONE * 12;
+    cancelAnimationFrame(autoScrollRAF.current);
+    if (speed !== 0) {
+      const tick = () => {
+        scroll.scrollTop += speed;
+        autoScrollRAF.current = requestAnimationFrame(tick);
+      };
+      autoScrollRAF.current = requestAnimationFrame(tick);
     }
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "relative",
-      zIndex: 3,
-      padding: "12px 18px",
-      display: "flex",
-      justifyContent: "space-between",
-      alignItems: "center"
-    }
-  }, /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 15,
-      fontWeight: 600,
-      color: "rgba(255,255,255,0.8)"
-    }
-  }, card.name), /*#__PURE__*/React.createElement("span", {
-    style: {
-      fontSize: 15,
-      fontWeight: 600,
-      color: "rgba(255,255,255,0.4)",
-      fontFamily: "'Replica Mono', monospace"
-    }
-  }, "\u2022\u2022\u2022\u2022 ", card.last4))));
-  if (!hasCards) return /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: "100%",
-      height: "100%",
-      display: "flex",
-      flexDirection: "column",
-      background: C.bg,
-      position: "relative"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      position: "relative",
-      zIndex: 1,
-      flex: 1,
-      display: "flex",
-      flexDirection: "column",
-      padding: "10px 18px 110px"
-    }
-  }, /*#__PURE__*/React.createElement(BalancePill, {
-    progress: 1
-  }), /*#__PURE__*/React.createElement("div", {
-    style: {
-      flex: 1,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      gap: 16
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
-      width: 80,
-      height: 50,
-      borderRadius: 12,
-      background: "rgba(255,255,255,0.04)",
-      border: "1px solid rgba(255,255,255,0.08)",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    }
-  }, /*#__PURE__*/React.createElement("svg", {
-    width: "28",
-    height: "28",
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "rgba(255,255,255,0.15)",
-    strokeWidth: "1.5"
-  }, /*#__PURE__*/React.createElement("rect", {
-    x: "2",
-    y: "5",
-    width: "20",
-    height: "14",
-    rx: "2.5"
-  }), /*#__PURE__*/React.createElement("line", {
-    x1: "2",
-    y1: "10",
-    x2: "22",
-    y2: "10"
-  }))), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 15,
-      fontWeight: 600,
-      color: C.text
-    }
-  }, "Ready to start spending?"), /*#__PURE__*/React.createElement("div", {
-    style: {
-      fontSize: 13,
-      color: C.muted,
-      textAlign: "center",
-      maxWidth: 240,
-      lineHeight: 1.5
-    }
-  }, "Create your first virtual card. It takes a few seconds."), /*#__PURE__*/React.createElement("button", {
-    className: "press-scale",
-    onClick: onCreateCard,
-    style: {
-      padding: "14px 32px",
-      borderRadius: 20,
-      border: "none",
-      cursor: "pointer",
-      background: C.orange,
-      fontSize: 15,
-      fontWeight: 700,
-      color: "#fff",
-      fontFamily: "'Replica', sans-serif",
-      boxShadow: `0 6px 24px ${C.orange}40`,
-      marginTop: 8
-    }
-  }, "Create Card"))));
-  if (!showList && !showDeleted && !showFolder) return /*#__PURE__*/React.createElement(CardControlsView, {
+  };
+  const onCardPointerDown = (e, card, folderId) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const el = e.currentTarget;
+    try {
+      el.setPointerCapture(e.pointerId);
+    } catch {}
+    const containerW = stackContainerRef.current ? stackContainerRef.current.offsetWidth : 288;
+    const cH = Math.round(containerW / 1.586);
+    const elRect = el.getBoundingClientRect();
+    const pressOffsetY = e.clientY - elRect.top;
+    lastDragY.current = e.clientY;
+    let moved = false;
+    const earlyMove = ev => {
+      const dx = Math.abs(ev.clientX - e.clientX);
+      const dy = Math.abs(ev.clientY - e.clientY);
+      if (dx > 8 || dy > 8) {
+        moved = true;
+        clearTimeout(longPressTimer.current);
+      }
+    };
+    window.addEventListener("pointermove", earlyMove, {
+      once: false
+    });
+    longPressTimer.current = setTimeout(() => {
+      window.removeEventListener("pointermove", earlyMove);
+      if (moved) return;
+      const data = {
+        cardLast4: card.last4,
+        card,
+        originFolderId: folderId,
+        rectW: containerW,
+        rectH: cH,
+        pressOffsetY: Math.min(pressOffsetY, cH)
+      };
+      dragCardRef.current = data;
+      setDragState({
+        ...data,
+        x: e.clientX,
+        y: e.clientY
+      });
+    }, 480);
+    const onMove = ev => {
+      if (!dragCardRef.current) return;
+      velocityRef.current = ev.clientY - lastDragY.current;
+      lastDragY.current = ev.clientY;
+      const ghost = ghostRef.current;
+      if (ghost) {
+        const d = dragCardRef.current;
+        ghost.style.left = ev.clientX - d.rectW / 2 + "px";
+        ghost.style.top = ev.clientY - d.pressOffsetY + "px";
+        // velocity tilt
+        const tilt = Math.max(-8, Math.min(8, velocityRef.current * 0.4));
+        ghost.style.transform = `rotate(${-2 + tilt}deg) scale(1.04)`;
+      }
+      updateDropTarget(ev.clientY);
+      startAutoScroll(ev.clientY);
+    };
+    const onUp = () => {
+      clearTimeout(longPressTimer.current);
+      cancelAnimationFrame(autoScrollRAF.current);
+      clearTimeout(autoExpandTimer.current);
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+      const data = dragCardRef.current;
+      const dt = dropTargetRef.current;
+      dragCardRef.current = null;
+      dropTargetRef.current = null;
+      if (data && dt && dt !== data.originFolderId) {
+        moveCardToFolder(data.cardLast4, dt === "ungrouped" ? null : dt);
+        if (dt !== "ungrouped") {
+          setExpandedFolders(ef => ({
+            ...ef,
+            [dt]: true
+          }));
+          // drop flash delight
+          setDropFlash(dt);
+          setTimeout(() => setDropFlash(null), 600);
+        }
+      }
+      setDragState(null);
+      setDropTarget(null);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+    el._cleanupDrag = onUp;
+  };
+  const cancelDrag = e => {
+    var _e$currentTarget;
+    clearTimeout(longPressTimer.current);
+    if (e !== null && e !== void 0 && (_e$currentTarget = e.currentTarget) !== null && _e$currentTarget !== void 0 && _e$currentTarget._cleanupDrag) e.currentTarget._cleanupDrag();
+    dragCardRef.current = null;
+    setDragState(null);
+    setDropTarget(null);
+  };
+  if (!hasCards) return null;
+  if (!showList && !showDeleted) return /*#__PURE__*/React.createElement(CardControlsView, {
     card: activeCard,
-    onSeeAll: () => {
-      setExpandedFolders({});
-      setShowList(true);
-    },
+    onSeeAll: () => setShowList(true),
     onCreateCard: onCreateCard,
     onTxDetail: onTxDetail,
     allCards: allCards,
     activeCardIdx: activeCardIdx,
     dealingIn: dealingIn,
     onPrev: activeCardIdx > 0 ? () => setActiveCardIdx(i => i - 1) : null,
-    onNext: activeCardIdx < allCards.length - 1 ? () => setActiveCardIdx(i => i + 1) : null
+    onNext: activeCardIdx < allCards.length - 1 ? () => setActiveCardIdx(i => i + 1) : null,
+    onAdd: onAdd,
+    onWithdraw: onWithdraw
   });
   if (showDeleted) return /*#__PURE__*/React.createElement(DeletedCardsSub, {
     onBack: () => setShowDeleted(false)
   });
-  if (showFolder) return /*#__PURE__*/React.createElement(AddFolderSub, {
-    onBack: () => setShowFolder(false),
-    onAdd: addFolder
-  });
 
-  // Group cards: ungrouped first, then each folder
-  const ungrouped = allCards.filter((c, i) => !cardFolders[c.last4]).map((c, i) => ({
-    ...c,
-    idx: allCards.findIndex(a => a.last4 === c.last4)
-  }));
+  // ── GROUP CARDS ──
+  const ungrouped = allCards.filter(c => !cardFolders[c.last4] && c.last4 !== activeCard.last4);
   const folderGroups = folders.map(f => ({
     ...f,
-    cards: allCards.filter(c => cardFolders[c.last4] === f.id).map(c => ({
-      ...c,
-      idx: allCards.findIndex(a => a.last4 === c.last4)
-    }))
+    cards: allCards.filter(c => cardFolders[c.last4] === f.id && c.last4 !== activeCard.last4)
   }));
-  const active = allCards[activeCardIdx] || allCards[0];
-  const isActiveUngrouped = !cardFolders[active.last4];
+  const CardItem = ({
+    card,
+    folderId,
+    stackIdx,
+    stackTotal
+  }) => {
+    const isActive = activeCard.last4 === card.last4;
+    const isDragging = (dragState === null || dragState === void 0 ? void 0 : dragState.cardLast4) === card.last4;
+    const [pressed, setPressed] = (0, _react.useState)(false);
+    const [selectFlash, setSelectFlash] = (0, _react.useState)(false);
+
+    // fan out when something is being dragged nearby
+    const isDragActive = !!dragState && !isDragging;
+    const fanOffset = isDragActive && stackIdx !== undefined ? stackIdx * 4 : 0;
+    const doSelect = () => {
+      if (dragState) return;
+      setSelectFlash(true);
+      setTimeout(() => {
+        setSelectFlash(false);
+        handleSelectCard(allCards.findIndex(c => c.last4 === card.last4));
+      }, 120);
+    };
+    return /*#__PURE__*/React.createElement("div", {
+      onPointerDown: e => {
+        setPressed(true);
+        onCardPointerDown(e, card, folderId);
+      },
+      onPointerUp: e => {
+        setPressed(false);
+        clearTimeout(e.currentTarget._dragTimer);
+        doSelect();
+      },
+      onPointerLeave: () => setPressed(false),
+      onPointerCancel: e => {
+        setPressed(false);
+        cancelDrag(e);
+      },
+      style: {
+        opacity: isDragging ? 0.2 : 1,
+        transition: isDragging ? "opacity 0.15s ease" : "opacity 0.3s ease, transform 0.35s cubic-bezier(0.34,1.56,0.64,1)",
+        transform: isDragging ? "scale(0.95)" : pressed ? "scale(0.97)" : isDragActive ? `translateY(${-fanOffset}px)` : "scale(1)",
+        cursor: dragState ? "grabbing" : "grab",
+        userSelect: "none",
+        touchAction: "none",
+        position: "relative"
+      }
+    }, (isActive || selectFlash) && /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: "absolute",
+        top: -2,
+        left: -2,
+        right: -2,
+        bottom: -2,
+        borderRadius: 22,
+        border: `1.5px solid ${C.orange}${selectFlash ? "ff" : "60"}`,
+        zIndex: 10,
+        pointerEvents: "none",
+        boxShadow: `0 0 0 3px ${C.orange}${selectFlash ? "30" : "15"}`,
+        transition: "all 0.15s ease"
+      }
+    }), /*#__PURE__*/React.createElement(MachinesCard, {
+      name: card.name,
+      last4: card.last4,
+      color: card.color,
+      active: false
+    }));
+  };
   return /*#__PURE__*/React.createElement("div", {
     style: {
       width: "100%",
@@ -8505,351 +8634,481 @@ function CardsScreen({
       background: `radial-gradient(circle, ${C.purple}12 0%, transparent 70%)`,
       pointerEvents: "none"
     }
-  }), /*#__PURE__*/React.createElement("div", {
+  }), dragState && (() => {
+    const w = dragState.rectW || 288;
+    return /*#__PURE__*/React.createElement("div", {
+      ref: ghostRef,
+      style: {
+        position: "fixed",
+        left: dragState.x - w / 2,
+        top: dragState.y - (dragState.pressOffsetY || 40),
+        width: w,
+        zIndex: 999,
+        pointerEvents: "none",
+        transform: "rotate(-2deg) scale(1.04)",
+        willChange: "transform, top, left",
+        filter: "drop-shadow(0 32px 48px rgba(0,0,0,0.8))"
+      }
+    }, /*#__PURE__*/React.createElement(MachinesCard, {
+      name: dragState.card.name,
+      last4: dragState.card.last4,
+      color: dragState.card.color,
+      active: false
+    }));
+  })(), dragState && /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 50,
+      padding: "10px 18px",
+      display: "flex",
+      justifyContent: "center"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: () => {
+      setDragState(null);
+      setDropTarget(null);
+    },
+    style: {
+      padding: "8px 24px",
+      borderRadius: 99,
+      background: "rgba(30,30,30,0.95)",
+      border: "1px solid rgba(255,255,255,0.1)",
+      fontSize: 13,
+      fontWeight: 600,
+      color: C.orange,
+      cursor: "pointer",
+      backdropFilter: "blur(20px)"
+    }
+  }, "Cancel")), /*#__PURE__*/React.createElement("div", {
+    ref: scrollRef,
     style: {
       position: "relative",
       zIndex: 1,
-      display: "flex",
-      flexDirection: "column",
-      height: "100%"
-    }
-  }, /*#__PURE__*/React.createElement("div", {
-    style: {
       flex: 1,
       overflowY: "auto",
       scrollbarWidth: "none",
-      padding: "10px 18px 110px"
+      padding: "10px 18px 130px",
+      opacity: listVisible ? 1 : 0,
+      transition: "opacity 0.2s ease"
     },
     className: "no-scroll"
   }, /*#__PURE__*/React.createElement(BalancePill, {
-    progress: 1
+    progress: 1,
+    onAdd: onAdd,
+    onWithdraw: onWithdraw
   }), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       marginTop: 16,
-      marginBottom: 4
+      marginBottom: 16
     }
   }, /*#__PURE__*/React.createElement("span", {
     style: {
       fontSize: 15,
-      fontWeight: 600,
+      fontWeight: 700,
       color: C.text
     }
-  }, "All Cards"), /*#__PURE__*/React.createElement("span", {
-    onClick: () => setShowList(false),
-    className: "link-slide",
-    style: {
-      fontSize: 11,
-      color: C.orange,
-      cursor: "pointer",
-      display: "inline-block",
-      transition: "transform 0.15s ease"
-    }
-  }, "\u2190 Active Card")), /*#__PURE__*/React.createElement("div", {
+  }, "All Cards"), /*#__PURE__*/React.createElement("div", {
     style: {
       display: "flex",
-      gap: 8,
-      marginBottom: 14
+      gap: 8
     }
-  }, [{
-    label: "Create Card",
-    action: () => onCreateCard && onCreateCard()
-  }, {
-    label: "Deleted Cards",
-    action: () => setShowDeleted(true)
-  }, {
-    label: "Add Folder",
-    action: () => setShowFolder(true)
-  }].map(b => /*#__PURE__*/React.createElement("div", {
-    key: b.label,
-    className: "press-scale",
-    onClick: b.action,
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: () => {
+      setShowFolderSheet(true);
+      setTimeout(() => {
+        var _newFolderInputRef$cu;
+        return (_newFolderInputRef$cu = newFolderInputRef.current) === null || _newFolderInputRef$cu === void 0 ? void 0 : _newFolderInputRef$cu.focus();
+      }, 100);
+    },
     style: {
-      padding: "8px 14px",
-      borderRadius: 16,
-      cursor: "pointer",
+      padding: "6px 12px",
+      borderRadius: 99,
       background: "rgba(255,255,255,0.04)",
-      border: "1px solid rgba(255,255,255,0.06)",
+      border: "1px solid rgba(255,255,255,0.07)",
       fontSize: 11,
       fontWeight: 600,
       color: C.muted,
-      whiteSpace: "nowrap"
+      cursor: "pointer"
     }
-  }, b.label))), /*#__PURE__*/React.createElement("div", {
-    ref: stackRef,
+  }, "+ Folder"), /*#__PURE__*/React.createElement("div", {
+    onClick: () => onCreateCard && onCreateCard(),
     style: {
-      position: "relative",
-      animation: "stackGroupIn 0.3s ease both"
-    },
-    onClick: e => {
-      if (window._cardDragged) {
-        window._cardDragged = false;
-        return;
-      }
-      const y = e.clientY;
-      const items = Array.from(stackRef.current.querySelectorAll("[data-stackitem]"));
-      // walk items top to bottom — first peek zone that contains the click wins
-      for (let idx = 0; idx < items.length; idx++) {
-        const it = items[idx];
-        const r = it.getBoundingClientRect();
-        if (y >= r.top && y < r.top + peekHeight) {
-          const fid = it.getAttribute("data-folder-id");
-          if (fid) {
-            toggleFolder(fid);
-            return;
-          }
-          const cid = it.getAttribute("data-card-id");
-          if (cid) {
-            const cardIdx = allCards.findIndex(c => c.last4 === cid);
-            if (cardIdx >= 0) handleSelectCard(cardIdx);
-            return;
-          }
-        }
-      }
+      padding: "6px 12px",
+      borderRadius: 99,
+      background: `${C.orange}15`,
+      border: `1px solid ${C.orange}30`,
+      fontSize: 11,
+      fontWeight: 600,
+      color: C.orange,
+      cursor: "pointer"
     }
-  }, (() => {
-    const items = [];
-    ungrouped.filter(c => c.idx !== activeCardIdx).forEach(c => items.push({
-      type: "card",
-      ...c
-    }));
-    folderGroups.forEach(folder => {
-      if (folder.cards.length === 0) return;
-      const isExp = expandedFolders[folder.id];
-      items.push({
-        type: "folder",
-        ...folder,
-        expanded: isExp
-      });
-      if (isExp) folder.cards.filter(c => c.idx !== activeCardIdx).forEach(c => items.push({
-        type: "card",
-        ...c,
-        inFolder: folder.id
-      }));
-    });
-    itemsRef.current = items;
-    const sortedItems = cardOrder ? items.slice().sort((a, b) => {
-      const ka = a.type === "folder" ? `f-${a.id}` : a.last4;
-      const kb = b.type === "folder" ? `f-${b.id}` : b.last4;
-      const ia = cardOrder.indexOf(ka);
-      const ib = cardOrder.indexOf(kb);
-      return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
-    }) : items;
-    itemsRef.current = sortedItems;
-    return /*#__PURE__*/React.createElement(React.Fragment, null, sortedItems.map((item, i) => {
-      const isFolder = item.type === "folder";
-      if (isFolder) {
-        const cardW = stackRef.current ? stackRef.current.offsetWidth : 320;
-        const cardFullH = Math.round(cardW / 1.586);
-        return /*#__PURE__*/React.createElement("div", {
-          key: `f-${item.id}`,
-          "data-stackitem": "true",
-          "data-folder-id": item.id,
-          style: {
-            marginBottom: -(cardFullH - peekHeight),
-            position: "relative",
-            zIndex: i + 1,
-            transition: "all 0.3s cubic-bezier(0.32,0.72,0,1)",
-            cursor: "pointer"
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            width: "100%",
-            aspectRatio: "1.586",
-            borderRadius: 18,
-            position: "relative",
-            overflow: "hidden",
-            background: "#1a1a1a",
-            boxShadow: "0 2px 12px rgba(0,0,0,0.4)"
-          }
-        }, /*#__PURE__*/React.createElement("div", {
-          style: {
-            position: "absolute",
-            inset: 0,
-            borderRadius: 18,
-            pointerEvents: "none",
-            zIndex: 2,
-            border: "1px solid rgba(255,255,255,0.06)",
-            boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)"
-          }
-        }), /*#__PURE__*/React.createElement("div", {
-          style: {
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            height: 1,
-            zIndex: 3,
-            pointerEvents: "none",
-            background: "linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.06) 70%, transparent 90%)"
-          }
-        }), /*#__PURE__*/React.createElement("div", {
-          style: {
-            position: "relative",
-            zIndex: 4,
-            padding: "14px 18px",
-            display: "flex",
-            alignItems: "center"
-          }
-        }, /*#__PURE__*/React.createElement("svg", {
-          width: "14",
-          height: "14",
-          viewBox: "0 0 24 24",
-          fill: "none",
-          stroke: C.orange,
-          strokeWidth: "2",
-          strokeLinecap: "round",
-          strokeLinejoin: "round",
-          style: {
-            marginRight: 10,
-            flexShrink: 0
-          }
-        }, /*#__PURE__*/React.createElement("rect", {
-          x: "4",
-          y: "14",
-          width: "16",
-          height: "6",
-          rx: "2"
-        }), /*#__PURE__*/React.createElement("rect", {
-          x: "6",
-          y: "10",
-          width: "12",
-          height: "4",
-          rx: "1.5",
-          opacity: "0.5"
-        }), /*#__PURE__*/React.createElement("rect", {
-          x: "8",
-          y: "7",
-          width: "8",
-          height: "3",
-          rx: "1",
-          opacity: "0.3"
-        })), /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 15,
-            fontWeight: 700,
-            color: "rgba(255,255,255,0.9)",
-            flex: 1
-          }
-        }, item.name), /*#__PURE__*/React.createElement("span", {
-          style: {
-            fontSize: 11,
-            fontWeight: 700,
-            color: C.orange,
-            background: `${C.orange}18`,
-            padding: "2px 8px",
-            borderRadius: 6,
-            marginRight: 10
-          }
-        }, item.cards.length), /*#__PURE__*/React.createElement("svg", {
-          width: "10",
-          height: "10",
-          viewBox: "0 0 24 24",
-          fill: "none",
-          stroke: "rgba(255,255,255,0.3)",
-          strokeWidth: "2.5",
-          strokeLinecap: "round"
-        }, /*#__PURE__*/React.createElement("polyline", {
-          points: item.expanded ? "18 15 12 9 6 15" : "6 9 12 15 18 9"
-        })))));
-      }
-      const cardW = stackRef.current ? stackRef.current.offsetWidth : 320;
-      const cardFullH = Math.round(cardW / 1.586);
-      const isDark = !item.color || item.color === "#ffffff" || item.color === "#000000";
-      const bg = isDark ? "#111" : item.color;
-      return /*#__PURE__*/React.createElement("div", {
-        key: item.last4,
-        "data-stackitem": "true",
-        "data-draggable": "true",
-        "data-card-id": item.last4,
-        style: {
-          marginBottom: -(cardFullH - peekHeight),
-          position: "relative",
-          zIndex: i + 1,
-          touchAction: "none",
-          cursor: "grab",
-          transition: "all 0.3s cubic-bezier(0.32,0.72,0,1)"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          width: "100%",
-          aspectRatio: "1.586",
-          borderRadius: 18,
-          position: "relative",
-          overflow: "hidden",
-          background: bg,
-          boxShadow: "0 2px 12px rgba(0,0,0,0.4)"
-        }
-      }, /*#__PURE__*/React.createElement("div", {
-        style: {
-          position: "absolute",
-          inset: 0,
-          borderRadius: 18,
-          pointerEvents: "none",
-          zIndex: 2,
-          border: isDark ? "1px solid rgba(255,255,255,0.08)" : `1px solid ${item.color}30`,
-          boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)"
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: 1,
-          zIndex: 3,
-          pointerEvents: "none",
-          background: "linear-gradient(90deg, transparent 10%, rgba(255,255,255,0.1) 30%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.1) 70%, transparent 90%)"
-        }
-      }), /*#__PURE__*/React.createElement("div", {
-        style: {
-          position: "relative",
-          zIndex: 4,
-          padding: "14px 18px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center"
-        }
-      }, /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 15,
-          fontWeight: 700,
-          color: "rgba(255,255,255,0.9)"
-        }
-      }, item.name), /*#__PURE__*/React.createElement("span", {
-        style: {
-          fontSize: 11,
-          fontWeight: 600,
-          color: "rgba(255,255,255,0.4)",
-          fontFamily: "'Replica Mono', monospace"
-        }
-      }, "\u2022\u2022\u2022\u2022 ", item.last4))));
-    }), /*#__PURE__*/React.createElement("div", {
+  }, "+ Card"))), /*#__PURE__*/React.createElement("div", {
+    ref: stackContainerRef
+  }, ungrouped.length > 0 && (() => {
+    const peek = 38;
+    const stackH = ungrouped.length > 1 ? cardH + (ungrouped.length - 1) * peek : cardH;
+    return /*#__PURE__*/React.createElement("div", {
+      ref: el => folderRefs.current["ungrouped"] = el,
       style: {
         position: "relative",
-        zIndex: sortedItems.length + 1
+        height: stackH,
+        marginBottom: 16,
+        outline: dropTarget === "ungrouped" ? `2px solid ${C.orange}55` : "2px solid transparent",
+        outlineOffset: 4,
+        borderRadius: 22,
+        transition: "outline 0.2s"
+      }
+    }, ungrouped.map((card, i) => /*#__PURE__*/React.createElement("div", {
+      key: card.last4,
+      style: {
+        position: "absolute",
+        top: i * peek,
+        left: 0,
+        right: 0,
+        zIndex: i + 1,
+        transition: "top 0.4s cubic-bezier(0.34,1.56,0.64,1)",
+        animation: listVisible ? `fadeSlide 0.35s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.06}s both` : "none"
+      }
+    }, /*#__PURE__*/React.createElement(CardItem, {
+      card: card,
+      folderId: null,
+      stackIdx: i,
+      stackTotal: ungrouped.length
+    }))));
+  })(), folderGroups.map(folder => {
+    const isExp = expandedFolders[folder.id];
+    const isTarget = dropTarget === folder.id;
+    const isFlash = dropFlash === folder.id;
+    const peek = 38;
+    const fCards = folder.cards;
+    return /*#__PURE__*/React.createElement("div", {
+      key: folder.id,
+      style: {
+        marginBottom: 14
       }
     }, /*#__PURE__*/React.createElement("div", {
       style: {
-        position: "absolute",
-        inset: -40,
-        borderRadius: "50%",
-        background: `radial-gradient(circle, ${active.color === "#000000" ? C.orange : active.color}08 0%, transparent 70%)`,
-        pointerEvents: "none",
-        zIndex: 0
+        position: isExp ? "sticky" : "relative",
+        top: isExp ? 0 : "auto",
+        zIndex: 10,
+        overflow: "hidden",
+        borderRadius: 14,
+        marginBottom: isExp && fCards.length > 0 ? 10 : 6
       }
-    }), /*#__PURE__*/React.createElement(MachinesCard, {
-      name: active.name,
-      last4: active.last4,
-      color: active.color,
-      active: true,
-      onClick: () => setShowList(false)
-    })));
-  })()))));
+    }, (swipingFolder === null || swipingFolder === void 0 ? void 0 : swipingFolder.id) === folder.id && swipingFolder.x < -60 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        position: "absolute",
+        right: 0,
+        top: 0,
+        bottom: 0,
+        width: 80,
+        background: "rgba(239,68,68,0.9)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: "0 14px 14px 0"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: "#fff"
+      }
+    }, "Delete")), /*#__PURE__*/React.createElement("div", {
+      ref: el => folderRefs.current[folder.id] = el,
+      onClick: () => !dragState && !swipingFolder && toggleFolder(folder.id),
+      onPointerDown: e => {
+        const startX = e.clientX;
+        const onM = ev => {
+          const dx = ev.clientX - startX;
+          if (dx < 0) setSwipingFolder({
+            id: folder.id,
+            x: dx
+          });
+        };
+        const onU = () => {
+          window.removeEventListener("pointermove", onM);
+          window.removeEventListener("pointerup", onU);
+          setSwipingFolder(prev => {
+            if ((prev === null || prev === void 0 ? void 0 : prev.id) === folder.id && prev.x < -120) {
+              // full swipe — delete
+              setTimeout(() => deleteFolder(folder.id), 280);
+              return {
+                ...prev,
+                x: -300
+              };
+            }
+            // didn't swipe far enough — snap back
+            return null;
+          });
+        };
+        window.addEventListener("pointermove", onM);
+        window.addEventListener("pointerup", onU);
+      },
+      style: {
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        padding: "10px 14px",
+        borderRadius: 14,
+        background: isFlash ? `${folder.color}30` : isTarget ? `${folder.color}18` : "rgba(255,255,255,0.03)",
+        border: isFlash ? `1.5px solid ${folder.color}` : isTarget ? `1.5px solid ${folder.color}55` : "1px solid rgba(255,255,255,0.06)",
+        cursor: "pointer",
+        transform: (swipingFolder === null || swipingFolder === void 0 ? void 0 : swipingFolder.id) === folder.id ? `translateX(${swipingFolder.x}px)` : isTarget ? "scale(1.025)" : "scale(1)",
+        transition: (swipingFolder === null || swipingFolder === void 0 ? void 0 : swipingFolder.id) === folder.id ? "none" : "all 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+        boxShadow: isFlash ? `0 0 0 3px ${folder.color}40, 0 8px 24px rgba(0,0,0,0.4)` : isTarget ? `0 0 0 3px ${folder.color}25, 0 8px 24px rgba(0,0,0,0.4)` : "none",
+        position: "relative",
+        zIndex: 1
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      style: {
+        width: 8,
+        height: 8,
+        borderRadius: "50%",
+        background: folder.color,
+        flexShrink: 0,
+        boxShadow: `0 0 ${isFlash ? 12 : 6}px ${folder.color}${isFlash ? "ff" : "80"}`,
+        transition: "box-shadow 0.3s ease",
+        animation: isFlash ? "fabBreathe 0.3s ease" : "none"
+      }
+    }), /*#__PURE__*/React.createElement("span", {
+      style: {
+        flex: 1,
+        fontSize: 13,
+        fontWeight: 600,
+        color: isFlash ? folder.color : isTarget ? folder.color : "rgba(255,255,255,0.7)"
+      }
+    }, folder.name), /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 11,
+        fontWeight: 700,
+        color: isFlash ? folder.color : C.muted,
+        background: isFlash ? `${folder.color}20` : "rgba(255,255,255,0.06)",
+        padding: "2px 8px",
+        borderRadius: 6,
+        marginRight: 4,
+        transition: "all 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+        transform: isFlash ? "scale(1.2)" : "scale(1)",
+        display: "inline-block"
+      }
+    }, fCards.length), /*#__PURE__*/React.createElement("svg", {
+      width: "11",
+      height: "11",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "rgba(255,255,255,0.25)",
+      strokeWidth: "2.5",
+      strokeLinecap: "round",
+      style: {
+        transition: "transform 0.3s cubic-bezier(0.34,1.2,0.64,1)",
+        transform: isExp ? "rotate(180deg)" : "rotate(0deg)"
+      }
+    }, /*#__PURE__*/React.createElement("polyline", {
+      points: "6 9 12 15 18 9"
+    })))), isExp && fCards.length > 0 && (() => {
+      const stackH = fCards.length > 1 ? cardH + (fCards.length - 1) * peek : cardH;
+      return /*#__PURE__*/React.createElement("div", {
+        style: {
+          position: "relative",
+          height: stackH
+        }
+      }, /*#__PURE__*/React.createElement("div", {
+        style: {
+          position: "absolute",
+          left: -14,
+          top: 0,
+          bottom: 0,
+          width: 2,
+          background: `${folder.color}40`,
+          borderRadius: 2
+        }
+      }), fCards.map((card, i) => /*#__PURE__*/React.createElement("div", {
+        key: card.last4,
+        style: {
+          position: "absolute",
+          top: i * peek,
+          left: 0,
+          right: 0,
+          zIndex: i + 1,
+          transition: "top 0.4s cubic-bezier(0.34,1.56,0.64,1)",
+          animation: `fadeSlide 0.25s cubic-bezier(0.34,1.56,0.64,1) ${i * 0.05}s both`
+        }
+      }, /*#__PURE__*/React.createElement(CardItem, {
+        card: card,
+        folderId: folder.id,
+        stackIdx: i,
+        stackTotal: fCards.length
+      }))));
+    })(), isExp && fCards.length === 0 && /*#__PURE__*/React.createElement("div", {
+      style: {
+        marginLeft: 12,
+        padding: "20px",
+        borderRadius: 16,
+        border: `1.5px dashed ${folder.color}35`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      }
+    }, /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontSize: 12,
+        color: C.muted
+      }
+    }, "Hold a card to drag it here")));
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: -38,
+      position: "relative",
+      cursor: "pointer",
+      zIndex: 50
+    },
+    onClick: () => setShowList(false)
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      position: "absolute",
+      inset: -30,
+      borderRadius: "50%",
+      background: `radial-gradient(ellipse, ${activeCard.color === "#000000" ? C.orange : activeCard.color}20 0%, transparent 70%)`,
+      pointerEvents: "none",
+      animation: "breatheGlow 3s ease-in-out infinite"
+    }
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "center",
+      marginBottom: 8
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      gap: 5,
+      padding: "4px 14px",
+      borderRadius: 99,
+      background: "rgba(255,255,255,0.04)",
+      border: "1px solid rgba(255,255,255,0.06)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 11,
+      fontWeight: 600,
+      color: C.orange
+    }
+  }, "Active Card"), /*#__PURE__*/React.createElement("svg", {
+    width: "10",
+    height: "10",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: C.orange,
+    strokeWidth: "2.5",
+    strokeLinecap: "round"
+  }, /*#__PURE__*/React.createElement("polyline", {
+    points: "6 9 12 15 18 9"
+  })))), /*#__PURE__*/React.createElement("div", {
+    style: {
+      animation: listVisible ? `fadeSlide 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.1s both` : "none"
+    }
+  }, /*#__PURE__*/React.createElement(MachinesCard, {
+    name: activeCard.name,
+    last4: activeCard.last4,
+    color: activeCard.color,
+    active: true,
+    onClick: () => setShowList(false)
+  }))))), showFolderSheet && /*#__PURE__*/React.createElement("div", {
+    onClick: () => setShowFolderSheet(false),
+    style: {
+      position: "absolute",
+      inset: 0,
+      background: "rgba(0,0,0,0.6)",
+      backdropFilter: "blur(8px)",
+      zIndex: 40,
+      display: "flex",
+      alignItems: "flex-end"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    onClick: e => e.stopPropagation(),
+    style: {
+      width: "100%",
+      background: "linear-gradient(180deg, rgba(22,22,22,0.99), rgba(10,10,10,1))",
+      border: "1px solid rgba(255,255,255,0.08)",
+      borderBottom: "none",
+      borderRadius: "22px 22px 0 0",
+      padding: "20px 20px 48px",
+      animation: "slideUp 0.25s cubic-bezier(0.32,0.72,0,1)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 16
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontSize: 15,
+      fontWeight: 700,
+      color: C.text
+    }
+  }, "New Folder"), /*#__PURE__*/React.createElement("span", {
+    onClick: () => setShowFolderSheet(false),
+    style: {
+      fontSize: 13,
+      color: C.orange,
+      cursor: "pointer"
+    }
+  }, "Cancel")), /*#__PURE__*/React.createElement("input", {
+    ref: newFolderInputRef,
+    value: newFolderName,
+    onChange: e => setNewFolderName(e.target.value),
+    onKeyDown: e => {
+      if (e.key === "Enter" && newFolderName.trim()) {
+        addFolder(newFolderName.trim());
+        setNewFolderName("");
+        setShowFolderSheet(false);
+      }
+    },
+    placeholder: "Folder name",
+    style: {
+      width: "100%",
+      background: "rgba(255,255,255,0.04)",
+      border: "1px solid rgba(255,255,255,0.08)",
+      borderRadius: 14,
+      padding: "14px 16px",
+      fontSize: 15,
+      color: C.text,
+      fontFamily: "'Replica', sans-serif",
+      outline: "none"
+    }
+  }), /*#__PURE__*/React.createElement("button", {
+    onClick: () => {
+      if (newFolderName.trim()) {
+        addFolder(newFolderName.trim());
+        setNewFolderName("");
+        setShowFolderSheet(false);
+      }
+    },
+    style: {
+      width: "100%",
+      marginTop: 12,
+      padding: "16px",
+      border: "none",
+      borderRadius: 16,
+      background: newFolderName.trim() ? C.orange : "rgba(255,255,255,0.04)",
+      color: newFolderName.trim() ? "#fff" : "rgba(255,255,255,0.2)",
+      fontSize: 15,
+      fontWeight: 700,
+      cursor: newFolderName.trim() ? "pointer" : "default",
+      fontFamily: "'Replica', sans-serif",
+      transition: "all 0.2s"
+    }
+  }, "Create Folder"))));
 }
-
 /* ═══ HISTORY SCREEN ═══ */
 const ALL_TXS = [{
   id: 1,
@@ -8950,9 +9209,9 @@ function HistoryScreen({
   onBack
 }) {
   const privacy = usePrivacy();
-  const [filter, setFilter] = useState("Transactions");
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
+  const [filter, setFilter] = (0, _react.useState)("Transactions");
+  const [mounted, setMounted] = (0, _react.useState)(false);
+  (0, _react.useEffect)(() => {
     requestAnimationFrame(() => setMounted(true));
   }, []);
 
@@ -9218,9 +9477,9 @@ function TxDetailScreen({
   onBack
 }) {
   const privacy = usePrivacy();
-  const [detailMounted, setDetailMounted] = useState(false);
-  const [amtVisible, setAmtVisible] = useState(false);
-  useEffect(() => {
+  const [detailMounted, setDetailMounted] = (0, _react.useState)(false);
+  const [amtVisible, setAmtVisible] = (0, _react.useState)(false);
+  (0, _react.useEffect)(() => {
     requestAnimationFrame(() => setDetailMounted(true));
     const t = setTimeout(() => setAmtVisible(true), 300);
     return () => clearTimeout(t);
@@ -9655,7 +9914,9 @@ function ProfileScreen({
     },
     className: "no-scroll"
   }, /*#__PURE__*/React.createElement(BalancePill, {
-    progress: 1
+    progress: 1,
+    onAdd: onAdd,
+    onWithdraw: onWithdraw
   }), /*#__PURE__*/React.createElement(ProfileSectionLabel, {
     text: "USER"
   }), /*#__PURE__*/React.createElement("div", {
@@ -10099,23 +10360,23 @@ const ADDRESS_CONTACTS = [{
 function AddressBookScreen({
   onBack
 }) {
-  const [filter, setFilter] = useState("All");
-  const [search, setSearch] = useState("");
-  const [mounted, setMounted] = useState(false);
-  const [expandedContact, setExpandedContact] = useState(null);
-  const [copiedId, setCopiedId] = useState(null);
-  const [showAdd, setShowAdd] = useState(null);
-  const [contacts, setContacts] = useState(ADDRESS_CONTACTS);
-  const [searchFocused, setSearchFocused] = useState(false);
+  const [filter, setFilter] = (0, _react.useState)("All");
+  const [search, setSearch] = (0, _react.useState)("");
+  const [mounted, setMounted] = (0, _react.useState)(false);
+  const [expandedContact, setExpandedContact] = (0, _react.useState)(null);
+  const [copiedId, setCopiedId] = (0, _react.useState)(null);
+  const [showAdd, setShowAdd] = (0, _react.useState)(null);
+  const [contacts, setContacts] = (0, _react.useState)(ADDRESS_CONTACTS);
+  const [searchFocused, setSearchFocused] = (0, _react.useState)(false);
   // Add wallet state
-  const [walletName, setWalletName] = useState("");
-  const [walletAddr, setWalletAddr] = useState("");
-  const [walletNetwork, setWalletNetwork] = useState("Ethereum");
+  const [walletName, setWalletName] = (0, _react.useState)("");
+  const [walletAddr, setWalletAddr] = (0, _react.useState)("");
+  const [walletNetwork, setWalletNetwork] = (0, _react.useState)("Ethereum");
   // New deposit state
-  const [depName, setDepName] = useState("");
-  const [depNetwork, setDepNetwork] = useState("Base");
-  const [generated, setGenerated] = useState(null);
-  useEffect(() => {
+  const [depName, setDepName] = (0, _react.useState)("");
+  const [depNetwork, setDepNetwork] = (0, _react.useState)("Base");
+  const [generated, setGenerated] = (0, _react.useState)(null);
+  (0, _react.useEffect)(() => {
     requestAnimationFrame(() => setMounted(true));
   }, []);
   const generateAddr = () => {
@@ -10513,7 +10774,8 @@ function AddressBookScreen({
       }
     }, /*#__PURE__*/React.createElement("button", {
       onClick: () => {
-        navigator.clipboard?.writeText(generated.addr);
+        var _navigator$clipboard;
+        (_navigator$clipboard = navigator.clipboard) === null || _navigator$clipboard === void 0 || _navigator$clipboard.writeText(generated.addr);
       },
       className: "press-scale",
       style: {
@@ -11581,22 +11843,22 @@ function FundsScreen({
   onBack,
   initialMode = "add"
 }) {
-  const [mode, setMode] = useState(initialMode);
-  const [amount, setAmount] = useState("50");
-  const [selToken, setSelToken] = useState(0);
-  const [selNetwork, setSelNetwork] = useState(0);
-  const [selWallet, setSelWallet] = useState(1);
-  const [selDest, setSelDest] = useState(0);
-  const [tray, setTray] = useState(null);
-  const [favTokens, setFavTokens] = useState([]);
-  const [favNetworks, setFavNetworks] = useState([]);
-  const [favWallets, setFavWallets] = useState([]);
-  const [favDests, setFavDests] = useState([]);
+  const [mode, setMode] = (0, _react.useState)(initialMode);
+  const [amount, setAmount] = (0, _react.useState)("50");
+  const [selToken, setSelToken] = (0, _react.useState)(0);
+  const [selNetwork, setSelNetwork] = (0, _react.useState)(0);
+  const [selWallet, setSelWallet] = (0, _react.useState)(1);
+  const [selDest, setSelDest] = (0, _react.useState)(0);
+  const [tray, setTray] = (0, _react.useState)(null);
+  const [favTokens, setFavTokens] = (0, _react.useState)([]);
+  const [favNetworks, setFavNetworks] = (0, _react.useState)([]);
+  const [favWallets, setFavWallets] = (0, _react.useState)([]);
+  const [favDests, setFavDests] = (0, _react.useState)([]);
   const toggleFav = set => i => set(prev => prev.includes(i) ? prev.filter(x => x !== i) : [...prev, i]);
   const num = parseFloat(amount) || 0;
   const over = mode === "withdraw" && num > 3240;
   const ready = mode === "add" ? num > 0 : num > 0 && num <= 3240;
-  const accentColor = mode === "add" ? C.orange : C.purple;
+  const accentColor = mode === "add" ? C.green : C.purple;
   const tokenItems = TOKENS.map(t => ({
     label: t.n,
     sub: t.n,
@@ -11752,7 +12014,7 @@ function FundsScreen({
         borderRadius: 17,
         border: "none",
         cursor: "pointer",
-        background: on ? m === "add" ? C.orange : C.purple : "transparent",
+        background: on ? m === "add" ? C.green : C.purple : "transparent",
         fontSize: 11,
         fontWeight: 600,
         color: on ? "#fff" : C.muted,
@@ -12014,7 +12276,7 @@ function FundsScreen({
       left: 0,
       right: 0,
       zIndex: 10,
-      padding: "0 18px 96px",
+      padding: "0 18px 160px",
       paddingTop: 16,
       background: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 40%)"
     }
@@ -12513,9 +12775,9 @@ function SearchCatIcon({
 function SearchScreen({
   onBack
 }) {
-  const [query, setQuery] = useState("");
-  const [scope, setScope] = useState("All");
-  const [quickFilter, setQuickFilter] = useState(null);
+  const [query, setQuery] = (0, _react.useState)("");
+  const [scope, setScope] = (0, _react.useState)("All");
+  const [quickFilter, setQuickFilter] = (0, _react.useState)(null);
   const applyQuick = id => {
     if (id === "deposits") return SEARCH_DATA.filter(d => d.icon === "deposit");
     if (id === "spend") return SEARCH_DATA.filter(d => d.icon === "spend");
@@ -12955,7 +13217,7 @@ function IdentityScreen({
   identity,
   setIdentity
 }) {
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = (0, _react.useState)(false);
   const id = identity || {
     name: "Alex",
     email: "alex@machines.cash",
@@ -13624,11 +13886,11 @@ function ReferralsScreen({
 function AgentScreen({
   onBack
 }) {
-  const [messages, setMessages] = useState([{
+  const [messages, setMessages] = (0, _react.useState)([{
     role: "agent",
     text: "Hi, I'm your Machines agent. I can help you manage cards, check balances, send money, and more. What would you like to do?"
   }]);
-  const [input, setInput] = useState("");
+  const [input, setInput] = (0, _react.useState)("");
   const send = () => {
     if (!input.trim()) return;
     const userMsg = input.trim();
@@ -13900,7 +14162,7 @@ function PlanScreen({
 function QuickstartScreen({
   onBack
 }) {
-  const [done, setDone] = useState({});
+  const [done, setDone] = (0, _react.useState)({});
   const toggle = id => setDone(d => ({
     ...d,
     [id]: !d[id]
@@ -14383,7 +14645,7 @@ function GuideScreen({
       a: "Tap the + button → switch to Withdraw. Choose a destination wallet and amount. Each withdrawal uses a fresh single-use address."
     }]
   }];
-  const [open, setOpen] = useState({});
+  const [open, setOpen] = (0, _react.useState)({});
   const toggle = key => setOpen(o => ({
     ...o,
     [key]: !o[key]
@@ -14563,7 +14825,7 @@ function ConfettiBurst({
   onDone
 }) {
   const colors = ["#FF4500", "#00CC66", "#3b82f6", "#a855f7", "#f59e0b", "#ec4899", "#14b8a6", "#ef4444"];
-  const particles = useRef(Array.from({
+  const particles = (0, _react.useRef)(Array.from({
     length: 60
   }, (_, i) => ({
     x: 50 + (Math.random() - 0.5) * 30,
@@ -14573,7 +14835,7 @@ function ConfettiBurst({
     size: 4 + Math.random() * 6,
     drift: (Math.random() - 0.5) * 60
   }))).current;
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     const t = setTimeout(onDone, 2500);
     return () => clearTimeout(t);
   }, []);
@@ -14608,7 +14870,7 @@ function StarBurst({
   y,
   onDone
 }) {
-  const dots = useRef(Array.from({
+  const dots = (0, _react.useRef)(Array.from({
     length: 6
   }, (_, i) => {
     const angle = i / 6 * Math.PI * 2;
@@ -14618,7 +14880,7 @@ function StarBurst({
       delay: i * 0.03
     };
   })).current;
-  useEffect(() => {
+  (0, _react.useEffect)(() => {
     const t = setTimeout(onDone, 500);
     return () => clearTimeout(t);
   }, []);
@@ -14656,25 +14918,27 @@ function StarBurst({
 
 /* ═══ APP ROOT ═══ */
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [preview, setPreview] = useState(false);
-  const [previewIdx, setPreviewIdx] = useState(0);
-  const [confetti, setConfetti] = useState(false);
-  const [cardCount, setCardCount] = useState(8); // existing demo cards
-  const [screen, setScreen] = useState("home");
-  const [tab, setTab] = useState(2);
-  const [bills, setBills] = useState(BILLS);
-  const [onboarding, setOnboarding] = useState(true);
-  const [obStep, setObStep] = useState(0);
-  const [accent, setAccent] = useState("#FF4500");
-  const [txDetail, setTxDetail] = useState(null);
-  const [privacyMode, setPrivacyMode] = useState(false);
-  const [agentOpen, setAgentOpen] = useState(false);
-  const [agentVerb, setAgentVerb] = useState("");
-  const [agentHistory, setAgentHistory] = useState([]);
-  const [agentSessionMemory, setAgentSessionMemory] = useState([]);
-  const [dismissedNudges, setDismissedNudges] = useState([]);
-  const [identity, setIdentity] = useState({
+  const [loggedIn, setLoggedIn] = (0, _react.useState)(false);
+  const [preview, setPreview] = (0, _react.useState)(false);
+  const [previewIdx, setPreviewIdx] = (0, _react.useState)(0);
+  const [confetti, setConfetti] = (0, _react.useState)(false);
+  const [cardCount, setCardCount] = (0, _react.useState)(8); // existing demo cards
+  const [screen, setScreen] = (0, _react.useState)("home");
+  const [tab, setTab] = (0, _react.useState)(2);
+  const [bills, setBills] = (0, _react.useState)(BILLS);
+  const [onboarding, setOnboarding] = (0, _react.useState)(true);
+  const [obStep, setObStep] = (0, _react.useState)(0);
+  const [accent, setAccent] = (0, _react.useState)("#FF4500");
+  const [txDetail, setTxDetail] = (0, _react.useState)(null);
+  const [privacyMode, setPrivacyMode] = (0, _react.useState)(false);
+  const [agentOpen, setAgentOpen] = (0, _react.useState)(false);
+  const [fabOpen, setFabOpen] = (0, _react.useState)(false);
+  const [fabExpanded, setFabExpanded] = (0, _react.useState)(false);
+  const [agentVerb, setAgentVerb] = (0, _react.useState)("");
+  const [agentHistory, setAgentHistory] = (0, _react.useState)([]);
+  const [agentSessionMemory, setAgentSessionMemory] = (0, _react.useState)([]);
+  const [dismissedNudges, setDismissedNudges] = (0, _react.useState)([]);
+  const [identity, setIdentity] = (0, _react.useState)({
     name: "Alex",
     email: "alex@machines.cash",
     phone: "+1 (555) 123-4567",
@@ -14729,7 +14993,7 @@ function App() {
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
         @keyframes skeletonPulse{0%{background-position:-200% 0}100%{background-position:200% 0}}
         @keyframes holoSweep{0%{left:-60%;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:140%;opacity:0}}
-        @keyframes fabBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+        @keyframes fabBreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}} @keyframes fabShortcutIn{0%{opacity:0;transform:translateY(20px) scale(0.8)}100%{opacity:1;transform:translateY(0) scale(1)}}
         @keyframes cardToss{0%{transform:translateY(0) rotate(0deg) scale(1)}60%{transform:translateY(-20px) rotate(-3deg) scale(0.97)}100%{transform:translateY(0) rotate(0deg) scale(1)}}
         @keyframes confettiDrop{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0.3}}
         @keyframes digitRoll{0%{transform:translateY(-100%);opacity:0}40%{transform:translateY(10%);opacity:1}70%{transform:translateY(-3%)}100%{transform:translateY(0)}}
@@ -15599,7 +15863,9 @@ function App() {
     onTxDetail: tx => {
       setTxDetail(tx);
       setScreen("txDetail");
-    }
+    },
+    onAdd: () => setScreen("addMoney"),
+    onWithdraw: () => setScreen("withdraw")
   })), screen === "home" && tab === 2 && /*#__PURE__*/React.createElement(ScreenWrap, {
     key: "h",
     anim: "fadeIn"
@@ -15611,7 +15877,9 @@ function App() {
       setTxDetail(tx);
       setScreen("txDetail");
     },
-    onAddReminder: () => setScreen("addReminder")
+    onAddReminder: () => setScreen("addReminder"),
+    onAdd: () => setScreen("addMoney"),
+    onWithdraw: () => setScreen("withdraw")
   })), screen === "history" && /*#__PURE__*/React.createElement(ScreenWrap, null, /*#__PURE__*/React.createElement(HistoryScreen, {
     onTxDetail: tx => {
       setTxDetail(tx);
@@ -15621,8 +15889,20 @@ function App() {
   })), /*#__PURE__*/React.createElement(TabBar, {
     activeTab: tab,
     setActiveTab: handleTabChange,
+    fabExpanded: fabExpanded,
+    onFabToggle: () => setFabExpanded(e => !e),
+    onShortcut: s => {
+      setFabExpanded(false);
+      if (s === "card") setScreen("createCard");
+      if (s === "search") setScreen("search");
+      if (s === "agent") {
+        setAgentVerb("");
+        setAgentOpen(true);
+      }
+    },
     onAction: a => {
       if (a === "addMoney") {
+        setFabExpanded(false);
         screen === "addMoney" ? setScreen("home") : setScreen("addMoney");
       }
     },
@@ -15677,9 +15957,7 @@ function App() {
     }
   })));
 }
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement(App));
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(exports.default || App));
 </script>
 </body>
 </html>
