@@ -9963,7 +9963,9 @@ function ProfileSectionLabel({
   }));
 }
 function ProfileScreen({
-  onNavigate
+  onNavigate,
+  onAdd,
+  onWithdraw
 }) {
   return /*#__PURE__*/React.createElement("div", {
     style: {
@@ -15953,7 +15955,9 @@ function App() {
     key: "p",
     anim: "fadeIn"
   }, /*#__PURE__*/React.createElement(ProfileScreen, {
-    onNavigate: s => setScreen(s)
+    onNavigate: s => setScreen(s),
+    onAdd: () => setScreen("addMoney"),
+    onWithdraw: () => setScreen("withdraw")
   })), screen === "home" && tab === 1 && /*#__PURE__*/React.createElement(ScreenWrap, {
     key: "c",
     anim: "fadeIn"
