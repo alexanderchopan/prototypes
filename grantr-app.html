@@ -294,6 +294,58 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 .qaTile span{color:var(--text1);font-size:13px;font-weight:700;text-align:center;line-height:16px}
 .qaIcon{width:38px;height:38px;border-radius:999px;background:var(--fill);display:flex;align-items:center;justify-content:center}
 
+/* ---- security / contacts / fileverse ---- */
+.trayHint{color:var(--text2);font-size:15px;line-height:19px;font-weight:400}
+.trayEmpty{color:var(--text2);font-size:17px;line-height:22px;font-weight:500;padding:8px 0}
+.rowActions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.miniSave{border-color:transparent;background:var(--green)}
+.miniSave span{color:var(--bg);font-weight:700}
+.rowBtn{min-width:86px;height:44px;border-radius:17px;padding:0 14px;display:flex;align-items:center;justify-content:center;
+        cursor:pointer;flex-shrink:0;border:1px solid rgba(255,69,58,.28);background:rgba(255,69,58,.08)}
+.rowBtn span{color:var(--red);font-size:12px;line-height:16px;font-weight:800}
+.thresh{margin-bottom:12px}
+.threshLabel{color:var(--text3);font-size:10px;font-weight:500;margin-bottom:7px}
+.threshBtns{height:40px;display:flex;gap:8px}
+.threshBtn{flex:1;border-radius:10px;display:flex;align-items:center;justify-content:center;border:0;background:transparent;
+           cursor:pointer;color:var(--text2);font-family:var(--font);font-size:12px;font-weight:680}
+.threshBtn.on{color:var(--green)}
+.threshCap{color:var(--text2);font-size:15px;line-height:19px;font-weight:400;margin-top:8px}
+.rosterRow{min-height:52px;padding:10px 0;display:flex;align-items:center;gap:10px}
+.sugPlus{color:var(--green);font-size:16px;line-height:18px;font-weight:760}
+.sugList2{display:flex;flex-direction:column;gap:9px;margin:-4px 0 14px}
+.ghostBtn{height:54px;border-radius:17px;border:1px solid transparent;background:var(--green);display:flex;
+          align-items:center;justify-content:center;cursor:pointer;margin-top:4px;width:100%}
+.ghostBtn span{color:var(--bg);font-size:16px;line-height:21px;font-weight:820}
+.dangerBtn{height:54px;border-radius:17px;border:1px solid rgba(255,69,58,.28);background:rgba(255,69,58,.08);
+           display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:6px;width:100%}
+.dangerBtn span{color:var(--red);font-size:15px;font-weight:800}
+.cList{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.cRow{min-height:46px;padding:6px 0;display:flex;align-items:center;gap:9px;background:transparent;border:0;width:100%;
+      text-align:left;cursor:pointer}
+.cName{color:var(--text1);font-size:14px;line-height:16px;font-weight:600;display:block}
+.cAddr{color:var(--text2);font-size:12px;line-height:14px;font-weight:500;display:block}
+.cSearchRow{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.cSearch{flex:1;height:44px;border:0;background:transparent;color:var(--text1);font-family:var(--font);font-size:17px;
+         font-weight:600;outline:none}
+.cSearch::placeholder{color:var(--text3)}
+.cHead{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.cDetailName{color:var(--text1);font-size:17px;line-height:24px;font-weight:700}
+.cChips{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px}
+.cChip{border-radius:999px;border:1px solid color-mix(in oklch, var(--green) 24%, transparent);background:var(--bgElevated);
+       color:var(--text2);font-size:10px;line-height:12px;font-weight:700;padding:3px 8px;text-transform:uppercase}
+.av{border-radius:999px;flex-shrink:0;overflow:hidden;display:block}
+.modeSeg{display:flex;gap:2px;margin-bottom:14px;border-radius:14px;padding:3px;background:rgba(255,255,255,.04)}
+.modeSeg button{flex:1;min-height:34px;border-radius:11px;border:0;background:transparent;cursor:pointer;
+                color:var(--text2);font-family:var(--font);font-size:12px;font-weight:600}
+.modeSeg button.on{background:var(--blue);color:var(--bg);font-weight:700}
+.docRow{min-height:56px;padding:9px 0;display:flex;align-items:center;gap:10px}
+.docIcon{width:34px;height:34px;border-radius:11px;background:var(--fill);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.statusPill{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;
+            background:rgba(48,209,88,.10);border:1px solid rgba(48,209,88,.24);margin-bottom:12px}
+.statusPill span{color:var(--green);font-size:12px;font-weight:700}
+.statusPill.off{background:rgba(255,159,10,.10);border-color:rgba(255,159,10,.24)}
+.statusPill.off span{color:var(--amber)}
+
 /* toast */
 .toast{position:absolute;left:20px;right:20px;bottom:104px;z-index:30;min-height:46px;border-radius:16px;
        background:rgba(20,22,21,.97);border:1px solid rgba(48,209,88,.26);display:flex;align-items:center;
@@ -387,6 +439,20 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
         </div>
       </div>
       <div class="trayBody" id="sendBody"></div>
+    </div>
+
+    <!-- security / contacts / fileverse — all ride the one DetailTray shell -->
+    <div class="tray detail" id="secTray">
+      <div class="band">
+        <div class="handle"></div>
+        <div class="bandHead">
+          <button class="back" id="secBack" onclick="backToQA()"><span>‹</span></button>
+          <button class="close" onclick="closeTrays()"><span>×</span></button>
+          <div class="leadIcon" id="secIcon"></div>
+          <div class="bandCopy" id="secCopy"><div class="trayTitle" id="secTitle"></div><div class="traySub" id="secSub"></div></div>
+        </div>
+      </div>
+      <div class="trayBody" id="secBody"></div>
     </div>
 
     <div class="toast" id="toast"><span></span></div>
@@ -559,22 +625,31 @@ function bodyPortfolio(){
 function bodyAccount(){
   const m = member.account;
   if(m === "Security"){
+    const kn = sec.keys.length, dn = sec.devices.length, gn = sec.guardians.length, sn = sec.sessions.length;
     const tiles = [
-      {icon:I.key("#30d158"), name:"Passkey", sub:"Active", tone:"ok"},
-      {icon:I.people("#30d158"), name:"Guardians", sub:"3 of 5", tone:"ok"},
-      {icon:I.shield("rgba(255,255,255,.38)"), name:"Spend limit", sub:"Needs 1claw signer", tone:""},
-      {icon:I.clock("rgba(255,255,255,.38)"), name:"Timelock", sub:"Needs 1claw signer", tone:""},
-      {icon:I.link("#ff9f0a"), name:"Connections", sub:"2 dapps", tone:"warn"},
-      {icon:I.check("#30d158"), name:"Devices", sub:"2 active", tone:"ok"}
-    ].map(t => `<button class="tile"><span class="tileIcon">${t.icon}</span>
+      {v:"keys",       icon:I.key(kn?"#30d158":"rgba(255,255,255,.38)"), name:"Keys", sub:kn?`${kn} passkey${kn===1?"":"s"}`:"None yet", tone:kn?"ok":""},
+      {v:"guardians",  icon:I.people(gn?"#30d158":"rgba(255,255,255,.38)"), name:"Guardians", sub:gn?`${sec.required} of ${gn}`:"None yet", tone:gn?"ok":""},
+      {v:"devices",    icon:I.check(dn?"#30d158":"rgba(255,255,255,.38)"), name:"Devices", sub:`${dn} active`, tone:dn?"ok":""},
+      {v:"recovery",   icon:I.shield(sec.email?"#30d158":"#ff9f0a"), name:"Recovery", sub:sec.email||"Not set", tone:sec.email?"ok":"warn"},
+      {v:"walletSettings", icon:I.key("#30d158"), name:"Signers", sub:"Signing methods", tone:""},
+      {v:"multisig",   icon:I.shield(sec.multisigOn?"#30d158":"rgba(255,255,255,.38)"), name:"Multisig", sub:sec.multisigOn?"2 of 2":"Single signer", tone:sec.multisigOn?"ok":""},
+      {v:"connections",icon:I.link(sn?"#ff9f0a":"rgba(255,255,255,.38)"), name:"Connections", sub:sn?`${sn} session${sn===1?"":"s"}`:"None", tone:sn?"warn":""},
+      {v:"fileverse",  icon:I.doc("#30d158"), name:"Fileverse", sub:`${sec.docs.length} document${sec.docs.length===1?"":"s"}`, tone:""},
+      /* MOBILE_POLICY_DISABLED_LABELS — real tiles, disabled with a stated reason */
+      {v:null, icon:I.shield("rgba(255,255,255,.38)"), name:"Spend limit", sub:POLICY_DISABLED_SUB, tone:""},
+      {v:null, icon:I.clock("rgba(255,255,255,.38)"), name:"Timelock", sub:POLICY_DISABLED_SUB, tone:""}
+    ].map(t => `<button class="tile" ${t.v?`onclick="openSec('${t.v}')"`:`onclick="toast('${POLICY_DISABLED_SUB}')"`}>
+        <span class="tileIcon">${t.icon}</span>
         <span><span class="tileName" style="display:block">${t.name}</span>
         <span class="tileSub ${t.tone}" style="display:block">${t.sub}</span></span></button>`).join("");
     return `<div class="sec"><div class="secTitle">Policies</div><div class="tiles">${tiles}</div></div>`;
   }
   if(m === "Contacts") return `<div class="sec"><div class="secTitle">Addresses</div>${listCard(
-      CONTACTS.map(c => `<div class="lrow"><span class="mark" style="width:38px;height:38px;background:#2c2f36;font-size:15px">${c.name[0]}</span>
+      sec.contacts.map(c => `<div class="lrow" onclick="openSec('contacts')">
+        ${avatar(c.addr || c.name, 38)}
         <span class="lmain"><span class="lname">${c.name}</span><span class="lsub">${c.addr}</span></span>
-        <span class="chev">›</span></div>`).join(""))}</div>`;
+        <span class="chev">›</span></div>`).join(""))}
+      <button class="ghostBtn" style="margin-top:12px" onclick="openSec('contacts')"><span>Manage addresses</span></button></div>`;
   return `<div class="sec"><div class="secTitle">Settings</div>${listCard(`
       <div class="lrow"><span class="lmain"><span class="lname">Network</span><span class="lsub">Base mainnet</span></span><span class="chev">›</span></div>
       <div class="lrow"><span class="lmain"><span class="lname">Language</span><span class="lsub">English</span></span><span class="chev">›</span></div>
@@ -582,11 +657,12 @@ function bodyAccount(){
 }
 
 function bodyAgents(){
-  if(member.agents === "Docs") return `<div class="sec"><div class="secTitle">Docs</div>${listCard(`
-      <div class="lrow"><span class="mark sq" style="width:38px;height:38px;background:#1c1f24">${I.doc("#0a84ff")}</span>
-        <span class="lmain"><span class="lname">Treasury policy</span><span class="lsub">Fileverse · edited 2d ago</span></span><span class="chev">›</span></div>
-      <div class="lrow"><span class="mark sq" style="width:38px;height:38px;background:#1c1f24">${I.doc("#0a84ff")}</span>
-        <span class="lmain"><span class="lname">Q3 rebalance plan</span><span class="lsub">Fileverse · edited 6d ago</span></span><span class="chev">›</span></div>`)}</div>`;
+  if(member.agents === "Docs") return `<div class="sec"><div class="secTitle">Docs</div>${listCard(
+      sec.docs.map(d => `<div class="lrow" onclick="openSec('fileverse')">
+        <span class="mark sq" style="width:38px;height:38px;background:#1c1f24">${I.doc("#0a84ff")}</span>
+        <span class="lmain"><span class="lname">${d.name}</span><span class="lsub">Fileverse · ${d.addr}</span></span>
+        <span class="chev">›</span></div>`).join(""))}
+      <button class="ghostBtn" style="margin-top:12px" onclick="openSec('fileverse')"><span>Open Fileverse</span></button></div>`;
   return `<div class="sec">
       <div class="chatWrap">
         <div class="bubble them">Morning. ETH is up 1.4% overnight and your USDC sits idle at $412.90.</div>
@@ -637,7 +713,7 @@ function showTray(id, fromQA){
   if(copy) document.getElementById(copy).classList.toggle("withBack", !!fromQA);
 }
 function closeTrays(silent){
-  ["qaTray","swapTray","sendTray"].forEach(id => document.getElementById(id).classList.remove("on"));
+  ["qaTray","swapTray","sendTray","secTray"].forEach(id => document.getElementById(id).classList.remove("on"));
   document.getElementById("backdrop").classList.remove("on");
   document.getElementById("fab").classList.remove("open");
   openTray = null;
@@ -654,11 +730,13 @@ function renderQA(){
   const groups = [
     {title:"Portfolio", items:[{l:"Explore",i:I.compass("#0a84ff")},{l:"Rebalance",i:I.scales("#0a84ff")},{l:"Watchlist",i:I.star("#0a84ff")}]},
     {title:"Move",      items:[{l:"Send",i:I.send("#30d158"),go:"send"},{l:"Swap",i:I.swap("#30d158"),go:"swap"},{l:"Auto approve",i:I.bolt("#30d158")}]},
-    {title:"Agent",     items:[{l:"Daily brief",i:I.doc("#0a84ff")},{l:"Chat",i:I.agents("#0a84ff")},{l:"Docs",i:I.doc("#0a84ff")}]}
+    {title:"Agent",     items:[{l:"Daily brief",i:I.doc("#0a84ff")},{l:"Chat",i:I.agents("#0a84ff")},{l:"Docs",i:I.doc("#0a84ff"),sec:"fileverse"}]}
   ];
   document.getElementById("qaBody").innerHTML = groups.map(g => `
     <div class="qaGroup"><div class="qaTitle">${g.title}</div><div class="qaGrid">${g.items.map(it => `
-      <button class="qaTile" ${it.go?`onclick="open${it.go==="send"?"Send":"Swap"}(true)"`:`onclick="toast('${it.l} is not built in this prototype')"`}>
+      <button class="qaTile" ${it.go ? `onclick="open${it.go==="send"?"Send":"Swap"}(true)"`
+        : it.sec ? `onclick="openSec('${it.sec}')"`
+        : `onclick="toast('${it.l} is not built in this prototype')"`}>
         <span class="qaIcon">${it.i}</span><span>${it.l}</span></button>`).join("")}</div></div>`).join("");
 }
 
@@ -918,6 +996,314 @@ function renderSwap(keepFocus){
 
   if(keepFocus && id){
     const el = document.getElementById(id);
+    if(el){ el.focus(); try{ el.setSelectionRange(selStart,selStart); }catch(e){} }
+  }
+}
+
+/* =========================================================================
+   SECURITY / CONTACTS / FILEVERSE TRAYS
+   Titles, eyebrows and subs are verbatim from the DetailTrayModel map.
+   All ride the one DetailTray shell, like the send tray.
+   ========================================================================= */
+const SEC = {
+  keys:      {title:"Add passkey",        eyebrow:"Passkeys",          sub:"Passkeys can open the app; only one signs for the account."},
+  devices:   {title:"Add device",         eyebrow:"Devices",           sub:"Devices with a passkey for this account."},
+  guardians: {title:"Add guardian",       eyebrow:"Guardian approvals",sub:"Other accounts who can sign to approve transactions."},
+  signer:    {title:"Add custom signer",  eyebrow:"Custom signer",     sub:"Add or remove addresses that can co-sign for this account."},
+  recovery:  {title:"Set up recovery",    eyebrow:"Recovery",          sub:"Use email to restore access if you lose this device."},
+  walletSettings:{title:"Signers",        eyebrow:"Signing methods",   sub:"Choose owner passkey, 1claw, or WalletConnect, and add custom signers."},
+  multisig:  {title:"Multisig",           eyebrow:"Owner + 1claw",     sub:"Turn on default 2/2 signing for guarded account actions."},
+  connections:{title:"Connections",       eyebrow:"Links + sessions",  sub:"Paste a WalletConnect URI or manage active sessions."},
+  fileverse: {title:"Fileverse",          eyebrow:"Fileverse",         sub:"Documents"},
+  contacts:  {title:"Addresses",          eyebrow:"Contacts",          sub:"Named addresses you send to and sign with."}
+};
+/* MOBILE_POLICY_DISABLED_LABELS / _SUB — disabled until a 1claw signer exists */
+const POLICY_DISABLED = {"Spend limit":1,"Timelock":1,"Token approvals":1};
+const POLICY_DISABLED_SUB = "Needs 1claw signer";
+
+const sec = {
+  variant:null, step:"list", active:null, query:"", mode:"docs",
+  keys:[{name:"iPhone 15 Pro", addr:"0xa41c…88b2", kinds:["Key"]}],
+  devices:[{name:"iPhone 15 Pro", addr:"0xa41c…88b2", kinds:["Device"]},
+           {name:"MacBook Pro", addr:"0x77de…10a4", kinds:["Device"]}],
+  guardians:[], signers:[{name:"1claw", addr:"0x1d70…9ab3", kinds:["Signer"]}],
+  required:1, email:"", draftName:"", draftAddr:"",
+  sessions:[{name:"Uniswap", addr:"app.uniswap.org"},{name:"Aerodrome", addr:"aerodrome.finance"}],
+  uri:"", docs:[{name:"Treasury policy", addr:"edited 2d ago"},{name:"Q3 rebalance plan", addr:"edited 6d ago"}],
+  docTitle:"", multisigOn:false, route:"owner-passkey",
+  contacts:CONTACTS.map(c => ({...c, kinds:["Contact"]}))
+};
+
+/* GrantrKeyAtomsAvatar stands in as a seeded mark — deterministic from the seed,
+   but NOT the real key-atoms geometry. */
+function avatar(seed, size){
+  let h = 0; for(let i=0;i<seed.length;i++) h = (h*31 + seed.charCodeAt(i)) >>> 0;
+  const a = h % 360, b = (h >> 8) % 360;
+  const dots = [0,1,2,3].map(i => {
+    const x = 6 + ((h >> (i*3)) % 3) * 9, y = 6 + ((h >> (i*5)) % 3) * 9;
+    return `<circle cx="${x+3}" cy="${y+3}" r="2.6" fill="hsl(${(a+i*40)%360} 70% 62%)"/>`;
+  }).join("");
+  return `<span class="av" style="width:${size}px;height:${size}px">
+    <svg width="${size}" height="${size}" viewBox="0 0 30 30">
+      <rect width="30" height="30" fill="hsl(${b} 30% 14%)"/>${dots}</svg></span>`;
+}
+
+function openSec(v){
+  sec.variant = v; sec.step = "list"; sec.active = null; sec.query = "";
+  sec.draftName = ""; sec.draftAddr = ""; sec.docTitle = ""; sec.uri = "";
+  const m = SEC[v];
+  document.getElementById("secTitle").textContent = m.title;
+  document.getElementById("secSub").textContent = m.eyebrow;
+  document.getElementById("secIcon").innerHTML = SEC_ICON[v] || I.shield("#30d158");
+  document.getElementById("secBack").style.display = "none";
+  document.getElementById("secCopy").classList.remove("withBack");
+  renderSec(); showTray("secTray", false);
+}
+const SEC_ICON = {
+  keys:I.key("#30d158"), devices:I.check("#30d158"), guardians:I.people("#30d158"),
+  signer:I.key("#30d158"), recovery:I.shield("#30d158"), walletSettings:I.key("#30d158"),
+  multisig:I.shield("#30d158"), connections:I.link("#30d158"), fileverse:I.doc("#30d158"),
+  contacts:I.people("#30d158")
+};
+
+const rosterKey = () => sec.variant === "keys" ? "keys" : sec.variant === "devices" ? "devices"
+  : sec.variant === "guardians" ? "guardians" : "signers";
+const nounFor = () => ({keys:"passkey", devices:"device", guardians:"guardian", signer:"custom signer"})[sec.variant] || "entry";
+
+function secAddRoster(){
+  const list = sec[rosterKey()];
+  if(!sec.draftName.trim() || !sec.draftAddr.trim()){ toast(`Add a name and address`); return; }
+  list.push({name:sec.draftName.trim(), addr:sec.draftAddr.trim(),
+             kinds:[sec.variant === "keys" ? "Key" : sec.variant === "guardians" ? "Guardian" : sec.variant === "devices" ? "Device" : "Signer"]});
+  /* "Saving a guardian also adds them to Contacts." */
+  if(sec.variant === "guardians") sec.contacts.push({name:sec.draftName.trim(), addr:sec.draftAddr.trim(), kinds:["Contact","Guardian"]});
+  sec.draftName = ""; sec.draftAddr = "";
+  if(sec.variant === "guardians") sec.required = Math.min(Math.max(sec.required,1), list.length);
+  renderSec(); toast(`Added ${nounFor()}`);
+}
+function secRevoke(i){
+  const list = sec[rosterKey()], gone = list[i];
+  list.splice(i,1);
+  if(sec.variant === "guardians") sec.required = Math.min(Math.max(sec.required,1), Math.max(1,list.length));
+  renderSec(); toast(`Removed ${gone.name}`);
+}
+function secField(k,v){ sec[k] = v; renderSec(true); }
+function secReq(n){ sec.required = n; renderSec(); }
+function secMode(m){ sec.mode = m; renderSec(); }
+function secRoute(r){ sec.route = r; renderSec(); toast("Signer set to " + r.replace("-"," ")); }
+function secMultisig(){ sec.multisigOn = !sec.multisigOn; renderSec(); toast(sec.multisigOn ? "Multisig on" : "Multisig off"); }
+function secAddSession(){
+  if(!sec.uri.trim().startsWith("wc:")){ toast("Paste a wc: URI"); return; }
+  sec.sessions.push({name:"New session", addr:sec.uri.slice(0,22) + "…"}); sec.uri = "";
+  renderSec(); toast("Session connected");
+}
+function secDropSession(i){ const g = sec.sessions[i]; sec.sessions.splice(i,1); renderSec(); toast(`Disconnected ${g.name}`); }
+function secAddDoc(){
+  if(!sec.docTitle.trim()){ toast("Name the document"); return; }
+  sec.docs.unshift({name:sec.docTitle.trim(), addr:"just now"}); sec.docTitle = "";
+  renderSec(); toast("Document created");
+}
+function secOpenContact(addr){ sec.active = sec.contacts.find(c => c.addr === addr); sec.step = "detail"; renderSec(); }
+function secContactBack(){ sec.step = "list"; sec.active = null; renderSec(); }
+function secAddContactStep(){ sec.step = "add"; sec.draftName = ""; sec.draftAddr = ""; renderSec(); }
+function secSaveContact(){
+  if(!sec.draftName.trim() || !sec.draftAddr.trim()){ toast("Add a name and address"); return; }
+  sec.contacts.push({name:sec.draftName.trim(), addr:sec.draftAddr.trim(), kinds:["Contact"]});
+  sec.step = "list"; sec.draftName = ""; sec.draftAddr = ""; renderSec(); toast("Saved contact");
+}
+function secRemoveContact(){
+  const gone = sec.active;
+  sec.contacts = sec.contacts.filter(c => c.addr !== gone.addr);
+  sec.step = "list"; sec.active = null; renderSec(); toast(`Removed ${gone.name}`);
+}
+
+const field = (label, key, ph, id) => `
+  <div><div class="fieldLabel">${label}</div>
+    <input class="trayInput" id="${id}" placeholder="${ph}" value="${sec[key]}" oninput="secField('${key}',this.value)" autocomplete="off"></div>`;
+
+function renderSec(keepFocus){
+  const act = document.activeElement, fid = act && act.id, selStart = act && act.selectionStart;
+  let html = "";
+  const v = sec.variant;
+
+  if(v === "keys" || v === "devices" || v === "guardians" || v === "signer"){
+    const list = sec[rosterKey()];
+    const roster = list.length ? list.map((r,i) => `
+      <div class="rosterRow">${avatar(r.addr || r.name, 32)}
+        <span class="signerMain"><span class="sugName">${r.name}</span><span class="signerAddr">${r.addr}</span></span>
+        <span class="rowActions">
+          <button class="rmBtn" onclick="toast('Editing is not built in this prototype')"><span>Edit</span></button>
+          <button class="rowBtn" onclick="secRevoke(${i})"><span>Revoke</span></button>
+        </span></div>`).join("")
+      : `<div class="trayEmpty">No ${nounFor()}s yet.</div>`;
+
+    const threshold = (v === "guardians" && list.length) ? `
+      <div class="thresh">
+        <div class="threshLabel">Approvals required</div>
+        <div class="threshBtns">${list.map((_,i) => `
+          <button class="threshBtn ${sec.required===i+1?"on":""}" onclick="secReq(${i+1})">${i+1}</button>`).join("")}</div>
+        <div class="threshCap">${sec.required} of ${list.length} guardian${list.length===1?"":"s"} required to approve transactions.</div>
+      </div>` : "";
+
+    const detailRows = v === "guardians" ? `
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Guardians</span><span class="rowValue ${list.length?"green":""}">${list.length}</span></div>
+        <div class="drow"><span class="rowLabel">Required</span><span class="rowValue ${list.length?"green":""}">${sec.required} approval${sec.required===1?"":"s"}</span></div>
+      </div>` : "";
+
+    const hint = v === "guardians"
+      ? "Saving a guardian also adds them to Contacts. Set how many guardians must approve once they are added."
+      : v === "keys" ? "Passkeys can open the app; only one signs for the account."
+      : v === "devices" ? "Each device holds its own passkey. Revoking one does not sign you out elsewhere."
+      : "Custom signers can co-sign but cannot change account policy.";
+
+    html = `<div class="sendRoot">
+      <div class="slab"><div class="slabBody">${roster}</div></div>
+      ${threshold}
+      <div class="slab"><div class="slabTitle">${SEC[v].title}</div><div class="slabBody">
+        ${detailRows}
+        ${field(v === "guardians" ? "Guardian name" : "Name", "draftName", "Name", "secName")}
+        ${field(v === "guardians" ? "Guardian address" : "Address", "draftAddr", "0x...", "secAddr")}
+        <div class="trayHint">${hint}</div>
+      </div></div>
+      <button class="btn primary wide" onclick="secAddRoster()"><span>${SEC[v].title}</span></button>
+    </div>`;
+  }
+
+  else if(v === "recovery"){
+    html = `<div class="sendRoot">
+      <div class="slab"><div class="slabBody">
+        <div class="rows"><div class="drow"><span class="rowLabel">Recovery email</span>
+          <span class="rowValue ${sec.email?"green":""}">${sec.email || "Not set"}</span></div></div>
+        ${field("Recovery email","email","you@example.com","secEmail")}
+        <div class="trayHint">Use email to restore access if you lose this device. The address is stored with your account, not with us.</div>
+      </div></div>
+      <button class="btn primary wide" ${sec.email.includes("@")?"":"disabled"}
+        onclick="toast('Recovery set up');setTimeout(closeTrays,700)"><span>Set up recovery</span></button>
+    </div>`;
+  }
+
+  else if(v === "walletSettings"){
+    const routes = [["owner-passkey","Owner passkey","Signs with the passkey on this device"],
+                    ["oneclaw","1claw","Signs through your 1claw vault policy"],
+                    ["walletconnect","WalletConnect","Signs in a connected wallet app"]];
+    html = `<div class="sendRoot">
+      <div class="slab"><div class="slabBody">
+        ${routes.map(([id,name,sub]) => `
+          <button class="cRow" onclick="secRoute('${id}')">
+            <span class="selMark">${I.key(sec.route===id?"#30d158":"rgba(255,255,255,.38)")}</span>
+            <span class="signerMain"><span class="sugName">${name}</span><span class="signerTag">${sub}</span></span>
+            <span class="check ${sec.route===id?"on":""}"></span></button>`).join("")}
+        <div class="trayHint">Choose owner passkey, 1claw, or WalletConnect, and add custom signers.</div>
+      </div></div>
+      <button class="ghostBtn" onclick="openSec('signer')"><span>Add custom signer</span></button>
+    </div>`;
+  }
+
+  else if(v === "multisig"){
+    html = `<div class="sendRoot">
+      <div class="slab"><div class="slabBody">
+        <div class="rows">
+          <div class="drow"><span class="rowLabel">Default signing</span>
+            <span class="rowValue ${sec.multisigOn?"green":""}">${sec.multisigOn?"2 of 2":"Single signer"}</span></div>
+          <div class="drow"><span class="rowLabel">Signers</span><span class="rowValue">Owner passkey · 1claw</span></div>
+        </div>
+        <div class="trayHint">Turn on default 2/2 signing for guarded account actions. Sends and swaps still follow your spend limit.</div>
+      </div></div>
+      <button class="btn primary wide" onclick="secMultisig()">
+        <span>${sec.multisigOn ? "Turn off 2/2 signing" : "Turn on 2/2 signing"}</span></button>
+    </div>`;
+  }
+
+  else if(v === "connections"){
+    const rows = sec.sessions.length ? sec.sessions.map((s,i) => `
+      <div class="rosterRow">${avatar(s.name, 32)}
+        <span class="signerMain"><span class="sugName">${s.name}</span><span class="signerAddr">${s.addr}</span></span>
+        <button class="rowBtn" onclick="secDropSession(${i})"><span>Disconnect</span></button></div>`).join("")
+      : `<div class="trayEmpty">No active sessions.</div>`;
+    html = `<div class="sendRoot">
+      <div class="slab"><div class="slabTitle">Active sessions</div><div class="slabBody">${rows}</div></div>
+      <div class="slab"><div class="slabBody">
+        ${field("WalletConnect URI","uri","wc:...","secUri")}
+        <div class="trayHint">Paste a WalletConnect URI or manage active sessions. Scanning a QR code needs the camera, which this prototype has no access to.</div>
+      </div></div>
+      <button class="btn primary wide" onclick="secAddSession()"><span>Connect</span></button>
+    </div>`;
+  }
+
+  else if(v === "fileverse"){
+    const docs = sec.docs.length ? sec.docs.map(d => `
+      <div class="docRow"><span class="docIcon">${I.doc("#0a84ff")}</span>
+        <span class="signerMain"><span class="sugName">${d.name}</span><span class="signerTag">${d.addr}</span></span>
+        <span class="chevR">›</span></div>`).join("") : `<div class="trayEmpty">No documents yet.</div>`;
+    html = `<div class="sendRoot">
+      <div class="statusPill"><span>Connector ready</span></div>
+      <div class="modeSeg">
+        <button class="${sec.mode==="docs"?"on":""}" onclick="secMode('docs')">Documents</button>
+        <button class="${sec.mode==="new"?"on":""}" onclick="secMode('new')">New</button>
+      </div>
+      ${sec.mode === "docs" ? `<div class="slab"><div class="slabBody">${docs}</div></div>` : `
+        <div class="slab"><div class="slabBody">
+          ${field("Title","docTitle","Document title","secDoc")}
+          <div class="trayHint">Documents are stored on Fileverse and signed with this account. The editor itself is not part of this prototype.</div>
+        </div></div>
+        <button class="btn primary wide" onclick="secAddDoc()"><span>Create document</span></button>`}
+    </div>`;
+  }
+
+  else if(v === "contacts"){
+    if(sec.step === "detail" && sec.active){
+      const c = sec.active;
+      html = `<div class="sendRoot">
+        <div class="slab"><div class="slabBody">
+          <div class="cHead">${avatar(c.addr || c.name, 44)}
+            <div style="flex:1;min-width:0">
+              <div class="cDetailName">${c.name}</div>
+              <div class="cChips">${c.kinds.map(k => `<span class="cChip">${k === "Key" ? "Passkey" : k}</span>`).join("")}</div>
+            </div>
+            <button class="rmBtn" onclick="toast('Editing is not built in this prototype')"><span>Edit</span></button>
+          </div>
+          <div class="rows">
+            <div class="drow"><span class="rowLabel">Address</span><span class="rowValue">${c.addr}</span></div>
+            <div class="drow"><span class="rowLabel">Kinds</span><span class="rowValue">${c.kinds.join(" · ")}</span></div>
+          </div>
+        </div></div>
+        <button class="ghostBtn" onclick="secContactBack()"><span>Back to addresses</span></button>
+        <button class="dangerBtn" onclick="secRemoveContact()"><span>Remove contact</span></button>
+      </div>`;
+    } else if(sec.step === "add"){
+      html = `<div class="sendRoot">
+        <div class="slab"><div class="slabTitle">Add contact</div><div class="slabBody">
+          ${field("Name","draftName","Name","secName")}
+          ${field("Address","draftAddr","0x...","secAddr")}
+          <div class="trayHint">Named addresses show up as suggestions when you send.</div>
+        </div></div>
+        <button class="btn primary wide" onclick="secSaveContact()"><span>Save contact</span></button>
+        <button class="ghostBtn" onclick="secContactBack()"><span>Cancel</span></button>
+      </div>`;
+    } else {
+      const q = sec.query.trim().toLowerCase();
+      const vis = sec.contacts.filter(c => !q || c.name.toLowerCase().includes(q) || c.addr.toLowerCase().includes(q));
+      /* the search row only appears past five contacts */
+      const search = sec.contacts.length > 5 ? `
+        <div class="cSearchRow">
+          <input class="cSearch" id="secQ" placeholder="Search name or address" value="${sec.query}" oninput="secField('query',this.value)">
+        </div>` : "";
+      const rows = vis.length ? vis.map(c => `
+        <button class="cRow" onclick="secOpenContact('${c.addr}')">${avatar(c.addr || c.name, 32)}
+          <span class="signerMain"><span class="cName">${c.name}</span><span class="cAddr">${c.addr}</span></span>
+          <span class="chevR">›</span></button>`).join("")
+        : `<div class="trayEmpty">${q ? "No contacts match." : "No contacts here yet."}</div>`;
+      html = `<div class="sendRoot">
+        <div class="slab"><div class="slabBody">${search}<div class="cList">${rows}</div></div></div>
+        <button class="ghostBtn" onclick="secAddContactStep()"><span>Add contact</span></button>
+      </div>`;
+    }
+  }
+
+  document.getElementById("secBody").innerHTML = html;
+  if(keepFocus && fid){
+    const el = document.getElementById(fid);
     if(el){ el.focus(); try{ el.setSelectionRange(selStart,selStart); }catch(e){} }
   }
 }
