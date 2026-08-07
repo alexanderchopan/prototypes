@@ -346,6 +346,67 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 .statusPill.off{background:rgba(255,159,10,.10);border-color:rgba(255,159,10,.24)}
 .statusPill.off span{color:var(--amber)}
 
+/* ---- agent trays (rebalance / re-range / refinance / auto approve) ---- */
+.segRow{height:40px;display:flex;gap:10px;margin-bottom:14px}
+.segBtn{flex:1;border-radius:10px;display:flex;align-items:center;justify-content:center;border:0;background:transparent;
+        cursor:pointer;color:var(--text2);font-family:var(--font);font-size:14px;line-height:17px;font-weight:800}
+.segBtn.on{color:var(--blue)}
+.secLabel{color:var(--text3);font-size:16px;line-height:20px;font-weight:500;margin:4px 0 10px}
+.cardHead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.targetTotal{color:var(--text2);font-size:13px;font-weight:500}
+.targetTotal.ok{color:var(--green)} .targetTotal.warn{color:var(--amber)}
+.warnLine{color:var(--amber);font-size:13px;line-height:17px;font-weight:500;margin:-2px 0 4px}
+.wCols{display:flex;align-items:center;padding:4px 0 2px}
+.wCol{width:82px;color:var(--text3);font-size:10px;font-weight:500;text-align:right}
+.wCol.asset{flex:1;text-align:left}
+.wList{display:flex;flex-direction:column;gap:4px;margin-bottom:6px}
+.wRow{min-height:36px;padding:4px 0;display:flex;align-items:center;gap:10px}
+.wAsset{flex:1;min-width:0;display:flex;align-items:center;gap:9px}
+.wName{color:var(--text1);font-size:14px;font-weight:600}
+.wCur{width:82px;color:var(--text1);font-size:14px;font-weight:600;text-align:right}
+.wTarget{width:82px;display:flex;align-items:center;justify-content:flex-end}
+.wInput{width:42px;height:30px;border:0;background:transparent;color:var(--text1);font-family:var(--font);font-size:14px;
+        font-weight:600;text-align:center;caret-color:var(--green);outline:none}
+.wPct{color:var(--text3);font-size:12px;font-weight:650;margin-left:2px}
+.histo{height:82px;padding:10px 0;display:flex;align-items:flex-end;gap:3px;margin:2px 0}
+.bar{flex:1;border-radius:2px;background:var(--green)}
+.lifecycle{display:flex;gap:10px;width:100%;margin-top:10px}
+.previewBlock{border-radius:22px;border:1px solid var(--border);background:var(--bgElevated);padding:20px 16px;text-align:center}
+.previewTitle{color:var(--text1);font-size:17px;line-height:22px;font-weight:700}
+.previewBody{color:var(--text2);font-size:15px;line-height:20px;font-weight:400;margin-top:6px}
+
+/* ---- desktop docked presentation ---- */
+body.desktop{padding:0;align-items:stretch;justify-content:flex-start}
+body.desktop .stage{gap:0;width:100%;align-items:stretch}
+body.desktop .screen{width:100%;height:100vh;border-radius:0;border:0}
+/* s.trayDesktop — right-docked, phone-width, full height */
+body.desktop .tray{left:auto;right:0;top:0;bottom:0;width:min(452px,94vw);height:100%;max-height:100%;
+                   border-radius:0;border-top-left-radius:30px;border:1px solid var(--frostBorder);
+                   transform:translateX(36px)}
+body.desktop .tray.on{transform:translateX(0)}
+/* s.trayBackdropDesktop — lighter, no blur */
+body.desktop .backdrop{background:rgba(0,0,0,.50);backdrop-filter:none}
+body.desktop .band{display:none}
+body.desktop .bandDesktop{display:flex}
+body.desktop .trayBody{padding:0 20px 24px;gap:16px}
+body.desktop .content{max-width:520px;margin:0 auto}
+body.desktop .tabBar{left:50%;transform:translateX(-50%);right:auto;width:420px}
+body.desktop .fab{right:calc(50% - 262px)}
+.bandDesktop{display:none;align-items:center;height:52px;padding:0 12px;flex-shrink:0;
+             border-bottom:1px solid rgba(255,255,255,.065)}
+.bdBtn{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.07);display:flex;align-items:center;
+       justify-content:center;border:0;cursor:pointer;flex-shrink:0}
+.bdBack{color:var(--blue);font-size:30px;line-height:28px;font-weight:300;margin-top:-2px}
+.bdClose{color:rgba(255,255,255,.75);font-size:22px;line-height:24px;font-weight:300}
+.bdTitle{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px}
+.bdTitleText{color:var(--text1);font-size:22px;line-height:25px;font-weight:700}
+.bdSubText{color:var(--text2);font-size:12px;line-height:20px;font-weight:500}
+.viewToggle{position:fixed;top:14px;right:16px;z-index:60;display:flex;gap:2px;padding:3px;border-radius:12px;
+            background:rgba(255,255,255,.06);border:1px solid var(--frostBorder)}
+.viewToggle button{border:0;background:transparent;color:var(--text2);font-family:var(--font);font-size:11px;
+                   font-weight:700;padding:6px 12px;border-radius:9px;cursor:pointer}
+.viewToggle button.on{background:var(--blue);color:var(--bg)}
+
 /* toast */
 .toast{position:absolute;left:20px;right:20px;bottom:104px;z-index:30;min-height:46px;border-radius:16px;
        background:rgba(20,22,21,.97);border:1px solid rgba(48,209,88,.26);display:flex;align-items:center;
@@ -369,6 +430,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 </style>
 </head>
 <body>
+<div class="viewToggle"><button id="vMobile" class="on" onclick="setView('mobile')">Mobile</button><button id="vDesktop" onclick="setView('desktop')">Desktop</button></div>
 <div class="stage">
 
   <div class="screen" id="screen">
@@ -400,6 +462,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 
     <!-- quick actions -->
     <div class="tray qa" id="qaTray">
+      <div class="bandDesktop" id="bd-qaTray"><span style="width:40px"></span><div class="bdTitle"><span class="bdTitleText">Quick actions</span></div><button class="bdBtn" onclick="closeTrays()"><span class="bdClose">&times;</span></button></div>
       <div class="band">
         <div class="handle"></div>
         <div class="bandHead compact">
@@ -412,6 +475,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 
     <!-- swap -->
     <div class="tray swap" id="swapTray">
+      <div class="bandDesktop" id="bd-swapTray"><button class="bdBtn" id="bdBack-swapTray" onclick="backToQA()" style="display:none"><span class="bdBack">&lsaquo;</span></button><div class="bdTitle"><span class="bdTitleText">Swap</span><span class="bdSubText">Swap, batch swap</span></div><button class="bdBtn" onclick="closeTrays()"><span class="bdClose">&times;</span></button></div>
       <div class="band">
         <div class="handle"></div>
         <div class="bandHead">
@@ -425,6 +489,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 
     <!-- send -->
     <div class="tray detail" id="sendTray">
+      <div class="bandDesktop" id="bd-sendTray"><button class="bdBtn" id="bdBack-sendTray" onclick="backToQA()" style="display:none"><span class="bdBack">&lsaquo;</span></button><div class="bdTitle"><span class="bdTitleText">Send</span><span class="bdSubText">Transfer, batch transfer</span></div><button class="bdBtn" onclick="closeTrays()"><span class="bdClose">&times;</span></button></div>
       <div class="band">
         <div class="handle"></div>
         <div class="bandHead">
@@ -443,6 +508,7 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 
     <!-- security / contacts / fileverse — all ride the one DetailTray shell -->
     <div class="tray detail" id="secTray">
+      <div class="bandDesktop" id="bd-secTray"><button class="bdBtn" id="bdBack-secTray" onclick="backToQA()" style="display:none"><span class="bdBack">&lsaquo;</span></button><div class="bdTitle"><span class="bdTitleText" id="bdTitle-secTray"></span><span class="bdSubText" id="bdSub-secTray"></span></div><button class="bdBtn" onclick="closeTrays()"><span class="bdClose">&times;</span></button></div>
       <div class="band">
         <div class="handle"></div>
         <div class="bandHead">
@@ -578,6 +644,8 @@ function renderPop(){
   }).join("");
 }
 function pick(m){ member[tab] = m; popOpen = false; renderPop(); render(); }
+/* AppActionRoute → a tab + FamilyMember, the way onActionRoute resolves one */
+function navTo(t,m){ closeTrays(); tab = t; member[t] = m; render(); document.getElementById("scroller").scrollTop = 0; }
 function go(t){ tab = t; popOpen = false; renderPop(); render(); document.getElementById("scroller").scrollTop = 0; }
 
 /* =========================================================================
@@ -727,16 +795,34 @@ function toggleQA(force){
 
 /* ---- quick actions: groups verbatim from QuickActionsSheet ---- */
 function renderQA(){
+  /* every tile now has a real destination — routes map to a tab+member or a tray */
   const groups = [
-    {title:"Portfolio", items:[{l:"Explore",i:I.compass("#0a84ff")},{l:"Rebalance",i:I.scales("#0a84ff")},{l:"Watchlist",i:I.star("#0a84ff")}]},
-    {title:"Move",      items:[{l:"Send",i:I.send("#30d158"),go:"send"},{l:"Swap",i:I.swap("#30d158"),go:"swap"},{l:"Auto approve",i:I.bolt("#30d158")}]},
-    {title:"Agent",     items:[{l:"Daily brief",i:I.doc("#0a84ff")},{l:"Chat",i:I.agents("#0a84ff")},{l:"Docs",i:I.doc("#0a84ff"),sec:"fileverse"}]}
+    {title:"Portfolio", items:[
+      {l:"Explore",   i:I.compass("#0a84ff"), nav:["portfolio","Explore"]},
+      {l:"Rebalance", i:I.scales("#0a84ff"),  sec:"rebalance"},
+      {l:"Watchlist", i:I.star("#0a84ff"),    nav:["portfolio","Watchlist"]}]},
+    {title:"Move", items:[
+      {l:"Send",         i:I.send("#30d158"), go:"send"},
+      {l:"Swap",         i:I.swap("#30d158"), go:"swap"},
+      {l:"Auto approve", i:I.bolt("#30d158"), sec:"autoApprove"}]},
+    {title:"Positions", items:[
+      {l:"Re-range",  i:I.bolt("#0a84ff"),  sec:"rerange"},
+      {l:"Refinance", i:I.swap("#0a84ff"),  sec:"refinance"},
+      {l:"Positions", i:I.scales("#0a84ff"), nav:["portfolio","Positions"]}]},
+    {title:"Agent", items:[
+      {l:"Chat", i:I.agents("#0a84ff"), nav:["agents","Chat"]},
+      {l:"Docs", i:I.doc("#0a84ff"),    sec:"fileverse"},
+      {l:"Signers", i:I.key("#0a84ff"), sec:"walletSettings"}]},
+    {title:"Account", items:[
+      {l:"Addresses",   i:I.people("#0a84ff"), sec:"contacts"},
+      {l:"Connections", i:I.link("#0a84ff"),   sec:"connections"},
+      {l:"Activity",    i:I.activity("#0a84ff"), nav:["activity","All"]}]}
   ];
   document.getElementById("qaBody").innerHTML = groups.map(g => `
     <div class="qaGroup"><div class="qaTitle">${g.title}</div><div class="qaGrid">${g.items.map(it => `
       <button class="qaTile" ${it.go ? `onclick="open${it.go==="send"?"Send":"Swap"}(true)"`
         : it.sec ? `onclick="openSec('${it.sec}')"`
-        : `onclick="toast('${it.l} is not built in this prototype')"`}>
+        : `onclick="navTo('${it.nav[0]}','${it.nav[1]}')"`}>
         <span class="qaIcon">${it.i}</span><span>${it.l}</span></button>`).join("")}</div></div>`).join("");
 }
 
@@ -1055,6 +1141,9 @@ function openSec(v){
   document.getElementById("secTitle").textContent = m.title;
   document.getElementById("secSub").textContent = m.eyebrow;
   document.getElementById("secIcon").innerHTML = SEC_ICON[v] || I.shield("#30d158");
+  /* TrayBandDesktop takes the same title, with the eyebrow as its sub */
+  document.getElementById("bdTitle-secTray").textContent = m.title;
+  document.getElementById("bdSub-secTray").textContent = m.eyebrow;
   document.getElementById("secBack").style.display = "none";
   document.getElementById("secCopy").classList.remove("withBack");
   renderSec(); showTray("secTray", false);
@@ -1126,7 +1215,11 @@ function renderSec(keepFocus){
   let html = "";
   const v = sec.variant;
 
-  if(v === "keys" || v === "devices" || v === "guardians" || v === "signer"){
+  if(v === "rebalance" || v === "rerange" || v === "refinance" || v === "autoApprove"){
+    html = agentTrayHTML(v);
+  }
+
+  else if(v === "keys" || v === "devices" || v === "guardians" || v === "signer"){
     const list = sec[rosterKey()];
     const roster = list.length ? list.map((r,i) => `
       <div class="rosterRow">${avatar(r.addr || r.name, 32)}
@@ -1306,6 +1399,171 @@ function renderSec(keepFocus){
     const el = document.getElementById(fid);
     if(el){ el.focus(); try{ el.setSelectionRange(selStart,selStart); }catch(e){} }
   }
+}
+
+/* =========================================================================
+   AGENT TRAYS — rebalance / re-range / refinance / auto approve
+   Titles, eyebrows, subs and copy verbatim from the quick-action model map.
+   ========================================================================= */
+Object.assign(SEC, {
+  rebalance:{title:"Rebalance", eyebrow:"Positions", sub:"Set target weights. Grantr routes the swaps."},
+  rerange:  {title:"Re-range",  eyebrow:"Positions", sub:"Adjust Uniswap v4 LP ranges and prepare a scoped maintenance action."},
+  refinance:{title:"Refinance", eyebrow:"Loans",     sub:"Move debt across available loan routes."},
+  autoApprove:{title:"Auto approve", eyebrow:"Agent", sub:"Use 1claw so approval prompts do not require a passkey every time."}
+});
+Object.assign(SEC_ICON, {
+  rebalance:I.scales("#30d158"), rerange:I.bolt("#30d158"),
+  refinance:I.swap("#30d158"), autoApprove:I.bolt("#30d158")
+});
+
+/* rangeProfiles — bars, active band, copy all verbatim from RerangeTrayContent */
+const RANGE = {
+  tighten:{value:"+18% fee focus", hint:"Narrows liquidity around the current price to prioritize fees.",
+    active:[6,13], bars:[16,20,24,31,40,52,64,76,86,91,88,78,66,52,38,28,21,16,12,10]},
+  widen:{value:"+42% coverage", hint:"Spreads liquidity wider so the position stays active through larger moves.",
+    active:[3,17], bars:[30,36,42,49,57,65,72,78,82,84,83,79,73,66,58,49,40,31,24,18]},
+  delegate:{value:"Auto adjust", hint:"Lets the Reranger agent monitor ticks and update the range when needed.",
+    active:[4,16], bars:[22,29,36,48,62,78,90,84,68,55,72,88,82,64,50,39,31,25,20,15]}
+};
+const agent = {
+  targets:{}, slippage:"1%", rangeMode:"tighten", amount:"50%", autoOn:false,
+  active:{rebalance:false, rerange:false, refinance:false}
+};
+/* seededAssets = tokens.slice(0,4); current weights from each token's share of total */
+const REBAL = TOKENS.slice(0,4);
+function agentInitTargets(){
+  const even = Math.floor(100 / REBAL.length); let remaining = 100;
+  agent.targets = {};
+  REBAL.forEach((t,i) => { const v = i === REBAL.length-1 ? remaining : even; remaining -= v; agent.targets[t.sym] = String(v); });
+}
+agentInitTargets();
+const targetTotal = () => REBAL.reduce((n,t) => n + (Number(agent.targets[t.sym]) || 0), 0);
+function agentTarget(sym,v){ agent.targets[sym] = v.replace(/[^0-9]/g,"").slice(0,3); renderSec(true); }
+function agentSlip(s){ agent.slippage = s; renderSec(); }
+function agentRange(m){ agent.rangeMode = m; renderSec(); }
+function agentAmount(a){ agent.amount = a; renderSec(); }
+function agentAuto(){ agent.autoOn = !agent.autoOn; renderSec(); toast(agent.autoOn ? "Auto approve on" : "Auto approve off"); }
+function runOnce(){
+  if(sec.variant === "rebalance" && targetTotal() !== 100){ toast("Set target weights to 100%"); return; }
+  toast("Running once"); setTimeout(closeTrays, 700);
+}
+function runAsAgent(){
+  if(sec.variant === "rebalance" && targetTotal() !== 100){ toast("Set target weights to 100%"); return; }
+  agent.active[sec.variant] = true; toast(`${SEC[sec.variant].title} agent active`); setTimeout(closeTrays, 700);
+}
+function agentPause(){ agent.active[sec.variant] = false; toast(`Paused ${SEC[sec.variant].title}`); setTimeout(closeTrays, 700); }
+function agentRevoke(){ agent.active[sec.variant] = false; toast(`Revoked ${SEC[sec.variant].title} access`); setTimeout(closeTrays, 700); }
+
+const seg = (opts, cur, fn) => `<div class="segRow">${opts.map(o =>
+  `<button class="segBtn ${cur===o?"on":""}" onclick="${fn}('${o}')">${o.charAt(0).toUpperCase()+o.slice(1)}</button>`).join("")}</div>`;
+const runFooter = (disabled) => `
+  <div class="actions">
+    <button class="btn primary" ${disabled?"disabled":""} onclick="runOnce()"><span>Run once</span></button>
+    <button class="btn secondary" ${disabled?"disabled":""} onclick="runAsAgent()"><span>Run as agent</span></button>
+  </div>
+  ${agent.active[sec.variant] ? `<div class="lifecycle">
+    <button class="btn secondary" onclick="agentPause()"><span>Pause agent</span></button>
+    <button class="btn" style="border:1px solid rgba(255,69,58,.28);background:rgba(255,69,58,.08)"
+      onclick="agentRevoke()"><span style="color:var(--red);font-weight:800">Revoke access</span></button>
+  </div>` : ""}`;
+
+function agentTrayHTML(v){
+  if(v === "rebalance"){
+    const tt = targetTotal();
+    return `<div class="sendRoot">
+      <div class="slab"><div class="slabBody">
+        <div class="cardHead"><span class="secLabel" style="margin:0">Target weights</span>
+          <span class="targetTotal ${tt===100?"ok":"warn"}">${tt}% target</span></div>
+        ${tt!==100?`<div class="warnLine">Adjust target weights to total 100% before rebalancing.</div>`:""}
+        <div class="wCols"><span class="wCol asset">Asset</span><span class="wCol">Current</span><span class="wCol">Target</span></div>
+        <div class="wList">${REBAL.map(t => {
+          const cur = Math.round((t.bal*t.price/total)*100);
+          return `<div class="wRow">
+            <span class="wAsset">${markEl(t,28)}<span class="wName">${t.sym}</span></span>
+            <span class="wCur">${cur}%</span>
+            <span class="wTarget"><input class="wInput" id="wt-${t.sym}" inputmode="numeric"
+              value="${agent.targets[t.sym]||""}" oninput="agentTarget('${t.sym}',this.value)"><span class="wPct">%</span></span>
+          </div>`;}).join("")}</div>
+      </div></div>
+      <details class="adv"><summary class="advToggle"><span class="advText">Settings</span><span class="advChev">⌄</span></summary>
+        <div class="advContent">
+          <div class="secLabel">Slippage</div>
+          ${seg(["0.5%","1%","2%"], agent.slippage, "agentSlip")}
+          <div class="rows">
+            <div class="drow"><span class="rowLabel">Slippage</span><span class="rowValue">${agent.slippage}</span></div>
+            <div class="drow"><span class="rowLabel">Planned swap</span><span class="rowValue">No route yet</span></div>
+          </div>
+        </div></details>
+      ${runFooter(tt !== 100)}
+    </div>`;
+  }
+  if(v === "rerange"){
+    const p = RANGE[agent.rangeMode];
+    return `<div class="sendRoot">
+      ${seg(["tighten","widen","delegate"], agent.rangeMode, "agentRange")}
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Position</span><span class="rowValue">ETH / USDC</span></div>
+        <div class="drow"><span class="rowLabel">Value</span><span class="rowValue green">$4,281.02</span></div>
+      </div>
+      <div class="secLabel">Price range · Uniswap v4</div>
+      <div class="slab"><div class="slabBody">
+        <div class="rosterRow">
+          <span class="mark" style="width:34px;height:34px;background:#627eea;font-size:13px">Ξ</span>
+          <span class="signerMain"><span class="sugName">ETH / USDC</span>
+            <span class="signerTag">${p.value} · $4,281.02</span></span>
+        </div>
+        <div class="histo">${p.bars.map((h,i) => `<span class="bar" style="height:${Math.round(h*.72)}px;opacity:${
+          i>=p.active[0] && i<=p.active[1] ? 1 : .35}"></span>`).join("")}</div>
+        <div class="trayHint">${p.hint}</div>
+      </div></div>
+      ${runFooter(false)}
+    </div>`;
+  }
+  if(v === "refinance"){
+    return `<div class="sendRoot">
+      <div class="secLabel">Move loan</div>
+      <div class="slab"><div class="slabBody">
+        <div class="rosterRow"><span class="mark" style="width:34px;height:34px;background:#627eea;font-size:13px">Ξ</span>
+          <span class="signerMain"><span class="sugName">Aave ETH loan</span><span class="signerTag">1,240 USDC debt</span></span></div>
+        <div class="rosterRow"><span class="mark" style="width:34px;height:34px;background:#2775ca;font-size:12px">$</span>
+          <span class="signerMain"><span class="sugName">Moonwell route</span>
+            <span class="signerTag" style="color:var(--green)">Lower rate available</span></span></div>
+      </div></div>
+      <div class="secLabel">Amount</div>
+      ${seg(["25%","50%","75%","100%"], agent.amount, "agentAmount")}
+      <details class="adv"><summary class="advToggle"><span class="advText">Route details</span><span class="advChev">⌄</span></summary>
+        <div class="advContent"><div class="rows">
+          <div class="drow"><span class="rowLabel">Route</span><span class="rowValue">Aave → Moonwell</span></div>
+          <div class="drow"><span class="rowLabel">Savings</span><span class="rowValue green">$18 / month</span></div>
+        </div></div></details>
+      ${runFooter(false)}
+    </div>`;
+  }
+  /* autoApprove */
+  return `<div class="sendRoot">
+    <div class="slab"><div class="slabBody">
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Auto approve</span>
+          <span class="rowValue ${agent.autoOn?"green":""}">${agent.autoOn?"On":"Off"}</span></div>
+        <div class="drow"><span class="rowLabel">Signer</span><span class="rowValue">1claw 0x1d70…9ab3</span></div>
+      </div>
+      <div class="trayHint">Use 1claw so approval prompts do not require a passkey every time. Your spend limit still applies.</div>
+    </div></div>
+    <button class="btn primary wide" onclick="agentAuto()">
+      <span>${agent.autoOn ? "Turn off auto approve" : "Turn on auto approve"}</span></button>
+  </div>`;
+}
+
+/* =========================================================================
+   VIEW — mobile vs the desktop docked presentation
+   ========================================================================= */
+let view = "mobile";
+function setView(v){
+  view = v;
+  document.body.classList.toggle("desktop", v === "desktop");
+  document.getElementById("vMobile").classList.toggle("on", v === "mobile");
+  document.getElementById("vDesktop").classList.toggle("on", v === "desktop");
+  closeTrays();
 }
 
 /* ---- boot ---- */
