@@ -481,6 +481,35 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
          font-size:13px;font-weight:820;cursor:pointer}
 .miniBtn.ghost{background:rgba(255,255,255,.06);border:1px solid var(--frostBorder);color:var(--text1)}
 
+/* ---- command brief ---- */
+.briefEyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.briefEyebrow.amber{color:var(--amber)} .briefEyebrow.green{color:var(--green)}
+.briefEyebrow.blue{color:var(--blue)} .briefEyebrow.neutral{color:var(--text3)}
+.briefLede{color:var(--text1);font-size:22px;line-height:28px;font-weight:800;margin-bottom:16px}
+.briefSecTitle{color:var(--text3);font-size:12px;font-weight:700;text-transform:uppercase;margin:16px 0 8px;padding-left:2px}
+.sigRow{min-height:60px;display:flex;align-items:center;gap:12px;padding:11px 0;background:transparent;border:0;
+        width:100%;text-align:left}
+.sigIcon{width:34px;height:34px;border-radius:11px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+         background:rgba(255,255,255,.05)}
+.sigLabel{color:var(--text1);font-size:15px;line-height:19px;font-weight:700;display:block}
+.sigDetail{color:var(--text2);font-size:13px;line-height:17px;font-weight:500;display:block;margin-top:2px}
+.sigValue{flex-shrink:0;font-size:15px;font-weight:800}
+.sigValue.amber{color:var(--amber)} .sigValue.green{color:var(--green)}
+.sigValue.blue{color:var(--blue)} .sigValue.neutral{color:var(--text2)}
+
+/* ---- agent workspace ---- */
+.wsTabs{display:flex;gap:2px;padding:3px;border-radius:14px;background:rgba(255,255,255,.04);margin-bottom:14px}
+.wsTab{flex:1;min-height:36px;border-radius:11px;border:0;background:transparent;cursor:pointer;display:flex;
+       align-items:center;justify-content:center;gap:6px;color:var(--text2);font-family:var(--font);font-size:12px;font-weight:700}
+.wsTab.on{background:var(--blue);color:var(--bg)}
+.wsRow{min-height:56px;display:flex;align-items:center;gap:10px;padding:9px 0;background:transparent;border:0;
+       width:100%;text-align:left;cursor:pointer}
+.wsName{color:var(--text1);font-size:15px;line-height:19px;font-weight:700;display:block}
+.wsMeta{color:var(--text2);font-size:13px;line-height:17px;font-weight:500;display:block;margin-top:2px}
+.createRow{min-height:46px;display:flex;align-items:center;gap:10px;padding:8px 0;background:transparent;border:0;
+           width:100%;text-align:left;cursor:pointer}
+.createRow span:nth-child(2){color:var(--text1);font-size:14px;font-weight:640}
+
 /* ---- desktop docked presentation ---- */
 body.desktop{padding:0;align-items:stretch;justify-content:flex-start}
 body.desktop .stage{gap:0;width:100%;align-items:stretch}
@@ -666,6 +695,15 @@ const TOKENS = [
   {sym:"UNI",  name:"Uniswap",   bal:12.40,  price:10.28,   color:"#ff007a", glyph:"U"},
   {sym:"DAI",  name:"Dai",       bal:88.02,  price:0.9999,  color:"#f5ac37", glyph:"D"},
   {sym:"AERO", name:"Aerodrome", bal:2690.0, price:0.71,    color:"#0052ff", glyph:"A"}
+];
+/* dir: "in" | "out" marks a transaction; no dir makes it an event —
+   which is what the Transactions / Events members split on */
+const ACTIVITY = [
+  {t:"Swap", s:"0.5 ETH → 184.02 UNI", v:"−$1,642", c:"#ff007a", g:"U", dir:"out"},
+  {t:"Sent", s:"Mara · 0.25 ETH", v:"−$821", c:"#627eea", g:"Ξ", dir:"out"},
+  {t:"Received", s:"Dev fund · 400 USDC", v:"+$400", c:"#2775ca", g:"$", dir:"in"},
+  {t:"Approval revoked", s:"Uniswap router", v:"", c:"#2c2f36", g:"✓"},
+  {t:"Guardian added", s:"jesse.base.eth", v:"", c:"#2c2f36", g:"G"}
 ];
 const CONTACTS = [
   {name:"Mara",           addr:"0x8f2a…41c9"},
@@ -882,6 +920,7 @@ function bodyAgents(){
 
   return `<div class="sec">
       <div class="secTitle">Agents</div>${roster}
+      <button class="ghostBtn" style="margin-top:4px" onclick="openSec('workspace')"><span>Open workspace</span></button>
       <div class="secTitle" style="margin-top:20px">Chat</div>
       <div class="chips">${BANKR_PROMPTS.map(p =>
         `<button class="chip2" onclick="bankrAsk('${p.replace(/'/g,"\\'")}')">${p}</button>`).join("")}</div>
@@ -896,16 +935,12 @@ function bodyAgents(){
 }
 
 function bodyActivity(){
-  const all = [
-    {t:"Swap", s:"0.5 ETH → 184.02 UNI", v:"−$1,642", c:"#ff007a", g:"U"},
-    {t:"Sent", s:"Mara · 0.25 ETH", v:"−$821", c:"#627eea", g:"Ξ"},
-    {t:"Received", s:"Dev fund · 400 USDC", v:"+$400", c:"#2775ca", g:"$"},
-    {t:"Approval revoked", s:"Uniswap router", v:"", c:"#2c2f36", g:"✓"},
-    {t:"Guardian added", s:"jesse.base.eth", v:"", c:"#2c2f36", g:"G"}
-  ];
+  const all = ACTIVITY;
   const m = member.activity;
-  const items = m === "Transactions" ? all.slice(0,3) : m === "Events" ? all.slice(3) : all;
-  return `<div class="sec"><div class="secTitle">${m === "All" ? "Recent" : m}</div>${listCard(
+  const items = m === "Transactions" ? all.filter(a => a.dir) : m === "Events" ? all.filter(a => !a.dir) : all;
+  return `<div class="sec">
+      <button class="ghostBtn" style="margin-bottom:16px" onclick="openSec('brief')"><span>Command brief</span></button>
+      <div class="secTitle">${m === "All" ? "Recent" : m}</div>${listCard(
     items.map(i => `<div class="lrow"><span class="mark" style="width:38px;height:38px;background:${i.c};font-size:15px">${i.g}</span>
       <span class="lmain"><span class="lname">${i.t}</span><span class="lsub">${i.s}</span></span>
       ${i.v?`<span class="lval"><span class="lvalNum">${pmoney(i.v)}</span></span>`:'<span class="chev">›</span>'}</div>`).join(""))}</div>`;
@@ -964,9 +999,13 @@ function renderQA(){
       {l:"Refinance", i:I.swap("#0a84ff"),  sec:"refinance"},
       {l:"Positions", i:I.scales("#0a84ff"), nav:["portfolio","Positions"]}]},
     {title:"Agent", items:[
+      {l:"Daily brief", i:I.doc("#0a84ff"),  sec:"brief"},
       {l:"Chat", i:I.agents("#0a84ff"), nav:["agents","Chat"]},
+      {l:"Workspace", i:I.compass("#0a84ff"), sec:"workspace"}]},
+    {title:"Files", items:[
       {l:"Docs", i:I.doc("#0a84ff"),    sec:"fileverse"},
-      {l:"Signers", i:I.key("#0a84ff"), sec:"walletSettings"}]},
+      {l:"Signers", i:I.key("#0a84ff"), sec:"walletSettings"},
+      {l:"Receive", i:I.send("#0a84ff"), sec:"receive"}]},
     {title:"Account", items:[
       {l:"Addresses",   i:I.people("#0a84ff"), sec:"contacts"},
       {l:"Connections", i:I.link("#0a84ff"),   sec:"connections"},
@@ -1479,6 +1518,10 @@ function renderSec(keepFocus){
   }
 
   else if(v === "fileverse"){ html = fileverseHTML(); }
+
+  else if(v === "brief"){ html = briefHTML(); }
+
+  else if(v === "workspace"){ html = workspaceHTML(); }
 
   else if(v === "contacts"){
     if(sec.step === "detail" && sec.active){
@@ -2124,6 +2167,167 @@ function bankrAction(go){
   if(go === "send") openSend(false);
   else if(go === "swap") openSwap(false);
   else openSec(go);
+}
+
+/* =========================================================================
+   COMMAND BRIEF — signals ranked by kind, the "Review approvals" action
+   ========================================================================= */
+Object.assign(SEC, {
+  brief:     {title:"Command brief", eyebrow:"Today",  sub:"What changed, and what wants a look."},
+  workspace: {title:"Workspace",     eyebrow:"Agent",  sub:"Chats, files and the account this agent acts for."}
+});
+Object.assign(SEC_ICON, { brief:I.doc("#30d158"), workspace:I.agents("#30d158") });
+
+/* CommandBriefSignalKind — review | money | work | setup | steady, in that rank */
+function briefSignals(){
+  const inflow  = ACTIVITY.filter(a => a.dir === "in");
+  const outflow = ACTIVITY.filter(a => a.dir === "out");
+  const events  = ACTIVITY.filter(a => !a.dir);
+  const out = [];
+  if(sys.approvals.length) out.push({kind:"review", tone:"amber", label:"Token approvals",
+    detail: sys.approvals.length === 1 ? "1 token approval can spend from this wallet"
+                                       : `${sys.approvals.length} token approvals can spend from this wallet`,
+    value:`${pnum(sys.approvals.length)} active`, icon:I.link("#ff9f0a"), go:"approvals"});
+  if(!sec.email) out.push({kind:"review", tone:"amber", label:"Recovery",
+    detail:"No recovery email set for this account", value:"Not set", icon:I.shield("#ff9f0a"), go:"recovery"});
+  if(inflow.length) out.push({kind:"money", tone:"green", label:"Deposits",
+    detail:"Funds arrived today", value:`${pnum(inflow.length)} in`, icon:I.send("#30d158"), go:null});
+  if(outflow.length) out.push({kind:"money", tone:"blue", label:"Outflows",
+    detail:"Funds moved out today", value:`${pnum(outflow.length)} out`, icon:I.send("#0a84ff"), go:null});
+  const activeAgents = bankr.agents.filter(a => a.on).length;
+  out.push({kind:"work", tone:activeAgents?"blue":"neutral", label:"Agent work",
+    detail: activeAgents ? "Agent workspace changed today" : "No agent ran today",
+    value:`${pnum(activeAgents)}`, icon:I.agents(activeAgents?"#0a84ff":"rgba(255,255,255,.38)"), go:"workspace"});
+  const done = [sec.keys.length>0, sec.devices.length>0, sec.guardians.length>0, Boolean(sec.email)].filter(Boolean).length;
+  out.push({kind:"setup", tone:"green", label:"Account setup",
+    detail:`${done} of 4 security features in place`, value:`${pnum(done)} done`,
+    icon:I.check("#30d158"), go:null});
+  if(events.length) out.push({kind:"work", tone:"neutral", label:"Events",
+    detail:"Account state changed today", value:`${pnum(events.length)}`,
+    icon:I.bolt("rgba(255,255,255,.62)"), go:null});
+  const RANK = {review:0, money:1, work:2, setup:3, steady:4};
+  return out.sort((a,b) => RANK[a.kind] - RANK[b.kind]);
+}
+function briefTone(){
+  const s = briefSignals();
+  if(s.some(x => x.kind === "review")) return {tone:"amber", eyebrow:"Needs a look",
+    lede:"A couple of things want your attention before anything else."};
+  if(s.some(x => x.kind === "money")) return {tone:"green", eyebrow:"Money moved",
+    lede:"Funds moved today and nothing needs review."};
+  return {tone:"neutral", eyebrow:"Steady", lede:"Nothing needs your attention today."};
+}
+function briefGo(i){
+  const g = briefSignals()[i].go;
+  if(!g) { toast("Nothing to open for this one"); return; }
+  if(g === "workspace") openSec("workspace"); else openSec(g);
+}
+
+/* =========================================================================
+   AGENT WORKSPACE — Chats / Files / Account
+   ========================================================================= */
+const ws = {
+  view:"chats", query:"",
+  sessions:[{name:"Rebalance plan", meta:"6 messages · today"},
+            {name:"Approval review", meta:"3 messages · yesterday"}],
+  folders:[{name:"Treasury", meta:"4 documents"},
+           {name:"Reports", meta:"2 documents"},
+           {name:"Imports", meta:"empty"}]
+};
+function wsView(v){ ws.view = v; renderSec(); }
+function wsField(k,v){ ws[k] = v; renderSec(true); }
+function wsNewChat(){
+  ws.sessions.unshift({name:"New chat", meta:"just now"});
+  renderSec(); toast("New chat");
+}
+function wsOpenChat(i){
+  const s = ws.sessions[i];
+  closeTrays(); tab = "agents"; member.agents = "Chat"; render(); toast(`Opened ${s.name}`);
+}
+function wsNewFolder(){ ws.folders.push({name:"Untitled folder", meta:"empty"}); renderSec(); toast("Folder created"); }
+
+const CREATE_ACTIONS = [
+  {icon:I.agents("#30d158"), label:"New chat",        fn:"wsNewChat()"},
+  {icon:I.doc("#30d158"),    label:"New document",    fn:"openSec('fileverse');fvMode('create')"},
+  {icon:I.compass("#30d158"),label:"New folder",      fn:"wsNewFolder()"},
+  {icon:I.swap("#30d158"),   label:"Get quotes",      fn:"openSwap(false)"},
+  {icon:I.shield("#30d158"), label:"Review allowances", fn:"openSec('approvals')"},
+  {icon:I.scales("#30d158"), label:"Rebalance",       fn:"openSec('rebalance')"}
+];
+
+function workspaceHTML(){
+  const q = ws.query.trim().toLowerCase();
+  const tabsRow = `<div class="wsTabs">
+    ${[["chats","Chats"],["files","Files"],["account","Account"]].map(([v,l]) =>
+      `<button class="wsTab ${ws.view===v?"on":""}" onclick="wsView('${v}')">${l}</button>`).join("")}</div>`;
+
+  if(ws.view === "chats"){
+    const rows = ws.sessions.length ? ws.sessions.map((s,i) => `
+      <button class="wsRow" onclick="wsOpenChat(${i})">
+        <span class="docIcon">${I.agents("#0a84ff")}</span>
+        <span class="signerMain"><span class="wsName">${s.name}</span><span class="wsMeta">${s.meta}</span></span>
+        <span class="chevR">›</span></button>`).join("") : `<div class="trayEmpty">No chats yet.</div>`;
+    return `<div class="sendRoot">${tabsRow}
+      <div class="slab"><div class="slabBody">
+        <button class="createRow" onclick="wsNewChat()">${I.bolt("#30d158")}<span>New chat</span></button>
+        ${rows}
+      </div></div></div>`;
+  }
+
+  if(ws.view === "files"){
+    const folders = ws.folders.filter(f => !q || (f.name+" "+f.meta).toLowerCase().includes(q));
+    const docs = fv.docs.filter(d => !q || d.name.toLowerCase().includes(q));
+    return `<div class="sendRoot">${tabsRow}
+      <div class="slab"><div class="slabBody">
+        <div class="searchWrap">${I.search("rgba(255,255,255,.38)")}
+          <input class="docSearch" id="wsQ" placeholder="Search folders" value="${ws.query}"
+            oninput="wsField('query',this.value)"></div>
+        ${folders.length ? folders.map(f => `<div class="wsRow">
+          <span class="docIcon">${I.compass("#0a84ff")}</span>
+          <span class="signerMain"><span class="wsName">${f.name}</span><span class="wsMeta">${f.meta}</span></span>
+          <span class="chevR">›</span></div>`).join("") : `<div class="trayEmpty">No folders match.</div>`}
+      </div></div>
+      <div class="slab"><div class="slabTitle">Documents</div><div class="slabBody">
+        ${docs.length ? docs.map(d => `<button class="wsRow" onclick="openSec('fileverse');fvOpen('${d.id}')">
+          <span class="docIcon">${I.doc("#0a84ff")}</span>
+          <span class="signerMain"><span class="wsName">${d.name}</span><span class="wsMeta">${d.id} · ${d.when}</span></span>
+          <span class="chevR">›</span></button>`).join("") : `<div class="trayEmpty">No documents match.</div>`}
+      </div></div>
+      <button class="ghostBtn" onclick="wsNewFolder()"><span>New folder</span></button></div>`;
+  }
+
+  /* account */
+  return `<div class="sendRoot">${tabsRow}
+    <div class="slab"><div class="slabBody">
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Acting for</span><span class="rowValue">${paddr("0x8f2a…41c9")}</span></div>
+        <div class="drow"><span class="rowLabel">Signer</span><span class="rowValue">${sec.route}</span></div>
+        <div class="drow"><span class="rowLabel">Spend limit</span>
+          <span class="rowValue ${sys.spendSet?"green":""}">${sys.spendSet ? `$${sys.spendSet.amount} · ${sys.spendSet.mode}` : "Not set"}</span></div>
+        <div class="drow"><span class="rowLabel">Auto approve</span>
+          <span class="rowValue ${agent.autoOn?"green":""}">${agent.autoOn?"On":"Off"}</span></div>
+      </div>
+      <div class="trayHint">Agents act through this account under the policies above. They never hold funds themselves.</div>
+    </div></div>
+    <div class="slab"><div class="slabTitle">Create</div><div class="slabBody">
+      ${CREATE_ACTIONS.map(a => `<button class="createRow" onclick="${a.fn}">${a.icon}<span>${a.label}</span></button>`).join("")}
+    </div></div></div>`;
+}
+
+function briefHTML(){
+  const t = briefTone(), sigs = briefSignals();
+  return `<div class="sendRoot">
+    <div class="briefEyebrow ${t.tone}">${t.eyebrow}</div>
+    <div class="briefLede">${t.lede}</div>
+    ${sigs.some(s => s.kind === "review") ? `
+      <button class="btn primary wide" style="margin-bottom:6px" onclick="openSec('approvals')">
+        <span>Review approvals</span></button>` : ""}
+    <div class="briefSecTitle">Today</div>
+    <div class="slab"><div class="slabBody">
+      ${sigs.map((s,i) => `<button class="sigRow" ${s.go?`onclick="briefGo(${i})"`:`onclick="toast('Nothing to open for this one')"`}>
+        <span class="sigIcon">${s.icon}</span>
+        <span class="signerMain"><span class="sigLabel">${s.label}</span><span class="sigDetail">${s.detail}</span></span>
+        <span class="sigValue ${s.tone}">${s.value}</span></button>`).join("")}
+    </div></div></div>`;
 }
 
 /* =========================================================================
