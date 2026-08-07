@@ -375,6 +375,50 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 .previewTitle{color:var(--text1);font-size:17px;line-height:22px;font-weight:700}
 .previewBody{color:var(--text2);font-size:15px;line-height:20px;font-weight:400;margin-top:6px}
 
+/* ---- policy trays (spend limit / timelock / sponsor gas) ---- */
+.bigBox{min-height:96px;display:flex;align-items:center;justify-content:center;gap:4px;padding:10px 0 16px}
+.bigCur{color:var(--text3);font-size:34px;line-height:40px;font-weight:700}
+.bigInput{width:170px;border:0;background:transparent;color:var(--text1);font-family:var(--font);font-size:46px;
+          line-height:50px;font-weight:800;text-align:center;caret-color:var(--green);outline:none;letter-spacing:-.02em}
+.bigInput::placeholder{color:var(--text4)}
+.bigDur{color:var(--text1);font-size:46px;line-height:50px;font-weight:800;letter-spacing:-.02em}
+
+/* ---- system trays (network / language / developer) ---- */
+.sysTray{padding:2px 0}
+.sysEyebrow{color:var(--text3);font-size:12px;font-weight:600;text-transform:uppercase;margin-bottom:10px}
+.sysRow{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.sysToggle{display:flex;gap:6px}
+.sysPill{padding:9px 16px;border-radius:999px;border:1px solid var(--frostBorder);background:transparent;cursor:pointer;
+         color:var(--text2);font-family:var(--font);font-size:13px;font-weight:700}
+.sysPill.on{background:rgba(48,209,88,.12);border-color:rgba(48,209,88,.30);color:var(--green)}
+.sysMeta{color:var(--text3);font-size:13px;font-weight:560}
+.langRow{min-height:50px;display:flex;align-items:center;justify-content:space-between;padding:8px 0;
+         background:transparent;border:0;width:100%;cursor:pointer;text-align:left}
+.langRow span:first-child{color:var(--text1);font-size:16px;font-weight:600}
+.langRow .tick{color:var(--green);font-size:16px;font-weight:900}
+.kv{display:flex;flex-direction:column;gap:2px;padding:9px 0}
+.kvK{color:var(--text3);font-size:12px;font-weight:600}
+.kvV{color:var(--text1);font-size:14px;font-weight:600;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;word-break:break-all}
+
+/* ---- guide ---- */
+.guideIntro{color:var(--text2);font-size:14px;line-height:20px;padding:4px 14px 12px}
+.guideSec{margin-bottom:14px}
+.guideEyebrow{color:var(--text3);font-size:12px;font-weight:600;text-transform:uppercase;margin-bottom:8px;padding-left:2px}
+.guideCard{border-radius:16px;border:1px solid var(--border);background:var(--bgElevated);overflow:hidden}
+.guideRow{min-height:58px;display:flex;align-items:center;gap:10px;padding:11px 14px;background:transparent;border:0;
+          width:100%;text-align:left;cursor:pointer}
+.guideRow+.guideRow{border-top:1px solid rgba(255,255,255,.05)}
+.guideT{color:var(--text1);font-size:15px;line-height:19px;font-weight:700;display:block}
+.guideS{color:var(--text2);font-size:13px;line-height:17px;font-weight:500;display:block;margin-top:2px}
+
+/* ---- receive ---- */
+.qr{width:180px;height:180px;margin:6px auto 14px;border-radius:18px;background:#fff;padding:12px;display:block}
+.qr svg{display:block;width:100%;height:100%}
+
+/* ---- privacy toggle in the header ---- */
+.eyeBtn{width:44px;height:44px;border-radius:15px;border:1px solid var(--chromeBorder);background:var(--bgElevated);
+        display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+
 /* ---- desktop docked presentation ---- */
 body.desktop{padding:0;align-items:stretch;justify-content:flex-start}
 body.desktop .stage{gap:0;width:100%;align-items:stretch}
@@ -438,6 +482,7 @@ body.desktop .fab{right:calc(50% - 262px)}
       <div class="content">
         <div class="header">
           <div class="h1" id="h1">Portfolio</div>
+          <button class="eyeBtn" onclick="togglePrivacy()" id="eyeBtn" aria-label="Toggle privacy"></button>
           <button class="chip" id="chip" onclick="togglePop()">
             <span class="chipText" id="chipText">Balances</span>
             <span class="chipChev">⌄</span>
@@ -629,6 +674,9 @@ function renderHeader(){
   h1.className = "h1" + (tab === "account" ? " account" : "");
   document.getElementById("chipText").textContent = memberLabel(member[tab]);
   document.getElementById("chip").style.visibility = FAMILIES[tab].length > 1 ? "visible" : "hidden";
+  document.getElementById("eyeBtn").innerHTML = sys.privacy
+    ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#30d158" stroke-width="1.7" stroke-linecap="round"><path d="M3 3l18 18M10.6 10.7a2 2 0 0 0 2.8 2.8"/><path d="M6.7 6.8C4.6 8.1 3 10 2 12c1.8 3.6 5.4 6 10 6 1.6 0 3.1-.3 4.4-.9M9.9 6.2A9.9 9.9 0 0 1 12 6c4.6 0 8.2 2.4 10 6a14 14 0 0 1-3 3.8"/></svg>`
+    : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.62)" stroke-width="1.7"><path d="M2 12c1.8-3.6 5.4-6 10-6s8.2 2.4 10 6c-1.8 3.6-5.4 6-10 6s-8.2-2.4-10-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>`;
 }
 function togglePop(){ popOpen = !popOpen; renderPop(); }
 function closePop(){ popOpen = false; renderPop(); }
@@ -659,41 +707,42 @@ function bodyPortfolio(){
     const rows = TOKENS.map(t => `
       <div class="lrow" onclick="openSend()">
         ${markEl(t,38)}
-        <span class="lmain"><span class="lname">${t.sym}</span><span class="lsub">${t.bal.toLocaleString()} · ${t.name}</span></span>
-        <span class="lval"><span class="lvalNum">${usd(t.bal*t.price)}</span>
-          <span class="lvalSub ${t.sym==="UNI"?"down":"up"}">${t.sym==="UNI"?"−2.1%":"+1.4%"}</span></span>
+        <span class="lmain"><span class="lname">${t.sym}</span><span class="lsub">${pnum(t.bal.toLocaleString())} · ${t.name}</span></span>
+        <span class="lval"><span class="lvalNum">${pmoney(usd(t.bal*t.price))}</span>
+          <span class="lvalSub ${t.sym==="UNI"?"down":"up"}">${sys.privacy ? "••" : (t.sym==="UNI"?"−2.1%":"+1.4%")}</span></span>
       </div>`).join("");
     return `<div class="hero">
         <div class="heroLabel">Total balance</div>
-        <div class="heroNum">${usd(total)}</div>
-        <div class="heroDelta"><span>+$214.08 today</span></div>
+        <div class="heroNum">${pmoney(usd(total))}</div>
+        <div class="heroDelta"><span>${sys.privacy ? "••• today" : "+$214.08 today"}</span></div>
       </div>
       <div class="sec"><div class="secTitle">Holdings</div>${listCard(rows)}</div>`;
   }
   if(m === "Positions") return `<div class="sec"><div class="secTitle">Liquidity</div>${listCard(`
       <div class="lrow"><span class="mark sq" style="width:38px;height:38px;background:#ff007a;font-size:14px">U</span>
         <span class="lmain"><span class="lname">ETH / USDC</span><span class="lsub">Uniswap v4 · in range</span></span>
-        <span class="lval"><span class="lvalNum">$4,281.02</span><span class="lvalSub up">+$62 fees</span></span></div>
+        <span class="lval"><span class="lvalNum">${pmoney("$4,281.02")}</span><span class="lvalSub up">${sys.privacy?"••":"+$62 fees"}</span></span></div>
       <div class="lrow"><span class="mark sq" style="width:38px;height:38px;background:#0052ff;font-size:14px">A</span>
         <span class="lmain"><span class="lname">AERO lock</span><span class="lsub">veAERO · ends 2028</span></span>
-        <span class="lval"><span class="lvalNum">2,690 AERO</span><span class="lvalSub">5,342 votes</span></span></div>`)}</div>`;
+        <span class="lval"><span class="lvalNum">${pnum("2,690")} AERO</span><span class="lvalSub">${pnum("5,342")} votes</span></span></div>`)}</div>`;
   if(m === "Loans") return `<div class="sec"><div class="secTitle">Loans</div>${listCard(`
       <div class="lrow" style="cursor:default"><span class="lmain"><span class="lname">Not available yet</span>
         <span class="lsub">LOANS_DISABLED — visible but disabled until the lending route is live</span></span></div>`)}</div>`;
   if(m === "Explore") return `<div class="sec"><div class="secTitle">Trending</div>${listCard(
       TOKENS.slice(0,4).map(t => `<div class="lrow">${markEl(t,38)}
-        <span class="lmain"><span class="lname">${t.name}</span><span class="lsub">${t.sym} · ${usd(t.price)}</span></span>
+        <span class="lmain"><span class="lname">${t.name}</span><span class="lsub">${t.sym} · ${pmoney(usd(t.price))}</span></span>
         <span class="chev">›</span></div>`).join(""))}</div>`;
   return `<div class="sec"><div class="secTitle">Watchlist</div>${listCard(
       TOKENS.slice(2).map(t => `<div class="lrow">${markEl(t,38)}
         <span class="lmain"><span class="lname">${t.sym}</span><span class="lsub">${t.name}</span></span>
-        <span class="lval"><span class="lvalNum">${usd(t.price)}</span></span></div>`).join(""))}</div>`;
+        <span class="lval"><span class="lvalNum">${pmoney(usd(t.price))}</span></span></div>`).join(""))}</div>`;
 }
 
 function bodyAccount(){
   const m = member.account;
   if(m === "Security"){
     const kn = sec.keys.length, dn = sec.devices.length, gn = sec.guardians.length, sn = sec.sessions.length;
+    const has1claw = sec.signers.some(s => /1claw/i.test(s.name));
     const tiles = [
       {v:"keys",       icon:I.key(kn?"#30d158":"rgba(255,255,255,.38)"), name:"Keys", sub:kn?`${kn} passkey${kn===1?"":"s"}`:"None yet", tone:kn?"ok":""},
       {v:"guardians",  icon:I.people(gn?"#30d158":"rgba(255,255,255,.38)"), name:"Guardians", sub:gn?`${sec.required} of ${gn}`:"None yet", tone:gn?"ok":""},
@@ -703,25 +752,44 @@ function bodyAccount(){
       {v:"multisig",   icon:I.shield(sec.multisigOn?"#30d158":"rgba(255,255,255,.38)"), name:"Multisig", sub:sec.multisigOn?"2 of 2":"Single signer", tone:sec.multisigOn?"ok":""},
       {v:"connections",icon:I.link(sn?"#ff9f0a":"rgba(255,255,255,.38)"), name:"Connections", sub:sn?`${sn} session${sn===1?"":"s"}`:"None", tone:sn?"warn":""},
       {v:"fileverse",  icon:I.doc("#30d158"), name:"Fileverse", sub:`${sec.docs.length} document${sec.docs.length===1?"":"s"}`, tone:""},
-      /* MOBILE_POLICY_DISABLED_LABELS — real tiles, disabled with a stated reason */
-      {v:null, icon:I.shield("rgba(255,255,255,.38)"), name:"Spend limit", sub:POLICY_DISABLED_SUB, tone:""},
-      {v:null, icon:I.clock("rgba(255,255,255,.38)"), name:"Timelock", sub:POLICY_DISABLED_SUB, tone:""}
-    ].map(t => `<button class="tile" ${t.v?`onclick="openSec('${t.v}')"`:`onclick="toast('${POLICY_DISABLED_SUB}')"`}>
+      /* MOBILE_POLICY_DISABLED_LABELS — gated on a 1claw signer, which is the
+         reason the app itself states. Remove 1claw under Signers and these
+         three go back to disabled. */
+      {v:"spendLimit", need1claw:true, icon:I.shield(has1claw?"#30d158":"rgba(255,255,255,.38)"), name:"Spend limit",
+       sub:has1claw ? (sys.spendSet ? `$${sys.spendSet.amount} · ${sys.spendSet.mode}` : "Not set") : POLICY_DISABLED_SUB,
+       tone:sys.spendSet?"ok":""},
+      {v:"timelock", need1claw:true, icon:I.clock(has1claw?"#30d158":"rgba(255,255,255,.38)"), name:"Timelock",
+       sub:has1claw ? (sys.tlSet ? sys.tlSet.delay : "Not set") : POLICY_DISABLED_SUB, tone:sys.tlSet?"ok":""},
+      {v:"approvals", need1claw:true, icon:I.link(has1claw?"#30d158":"rgba(255,255,255,.38)"), name:"Token approvals",
+       sub:has1claw ? `${pnum(sys.approvals.length)} active` : POLICY_DISABLED_SUB, tone:sys.approvals.length?"warn":""}
+    ].map(t => {
+      const off = t.need1claw && !has1claw;
+      return `<button class="tile" ${off ? `onclick="toast('${POLICY_DISABLED_SUB}')"` : `onclick="openSec('${t.v}')"`}>
         <span class="tileIcon">${t.icon}</span>
         <span><span class="tileName" style="display:block">${t.name}</span>
-        <span class="tileSub ${t.tone}" style="display:block">${t.sub}</span></span></button>`).join("");
+        <span class="tileSub ${off?"":t.tone}" style="display:block">${t.sub}</span></span></button>`;}).join("");
     return `<div class="sec"><div class="secTitle">Policies</div><div class="tiles">${tiles}</div></div>`;
   }
   if(m === "Contacts") return `<div class="sec"><div class="secTitle">Addresses</div>${listCard(
       sec.contacts.map(c => `<div class="lrow" onclick="openSec('contacts')">
         ${avatar(c.addr || c.name, 38)}
-        <span class="lmain"><span class="lname">${c.name}</span><span class="lsub">${c.addr}</span></span>
+        <span class="lmain"><span class="lname">${c.name}</span><span class="lsub">${paddr(c.addr)}</span></span>
         <span class="chev">›</span></div>`).join(""))}
       <button class="ghostBtn" style="margin-top:12px" onclick="openSec('contacts')"><span>Manage addresses</span></button></div>`;
-  return `<div class="sec"><div class="secTitle">Settings</div>${listCard(`
-      <div class="lrow"><span class="lmain"><span class="lname">Network</span><span class="lsub">Base mainnet</span></span><span class="chev">›</span></div>
-      <div class="lrow"><span class="lmain"><span class="lname">Language</span><span class="lsub">English</span></span><span class="chev">›</span></div>
-      <div class="lrow"><span class="lmain"><span class="lname">Developer tools</span><span class="lsub">Off</span></span><span class="chev">›</span></div>`)}</div>`;
+  const settings = [
+    {v:"network",    n:"Network",         s:sys.network === "base-mainnet" ? "Base Mainnet" : "Base Testnet"},
+    {v:"language",   n:"Language",        s:sys.language},
+    {v:"privacy",    n:"Privacy",         s:sys.privacy ? "On" : "Off"},
+    {v:"guide",      n:"Guide",           s:"A map of everything inside Grantr"},
+    {v:"sponsorGas", n:"Sponsor gas",     s:sys.gasSet ? `${sys.gasScope}${sys.gasCap?" · "+sys.gasCap:""}` : "Off"},
+    {v:"receive",    n:"Receive",         s:"Share your address"},
+    {v:"developer",  n:"Developer tools", s:"Account identity"},
+    {v:"exportAcct", n:"Export account",  s:"Private keys are not exported"}
+  ];
+  return `<div class="sec"><div class="secTitle">Settings</div>${listCard(
+    settings.map(r => `<div class="lrow" onclick="openSec('${r.v}')">
+      <span class="lmain"><span class="lname">${r.n}</span><span class="lsub">${r.s}</span></span>
+      <span class="chev">›</span></div>`).join(""))}</div>`;
 }
 
 function bodyAgents(){
@@ -754,7 +822,7 @@ function bodyActivity(){
   return `<div class="sec"><div class="secTitle">${m === "All" ? "Recent" : m}</div>${listCard(
     items.map(i => `<div class="lrow"><span class="mark" style="width:38px;height:38px;background:${i.c};font-size:15px">${i.g}</span>
       <span class="lmain"><span class="lname">${i.t}</span><span class="lsub">${i.s}</span></span>
-      ${i.v?`<span class="lval"><span class="lvalNum">${i.v}</span></span>`:'<span class="chev">›</span>'}</div>`).join(""))}</div>`;
+      ${i.v?`<span class="lval"><span class="lvalNum">${pmoney(i.v)}</span></span>`:'<span class="chev">›</span>'}</div>`).join(""))}</div>`;
 }
 
 function render(){
@@ -1215,15 +1283,21 @@ function renderSec(keepFocus){
   let html = "";
   const v = sec.variant;
 
+  const SYS_TRAYS = ["spendLimit","timelock","sponsorGas","approvals","network","language",
+                     "developer","guide","exportAcct","privacy","receive"];
   if(v === "rebalance" || v === "rerange" || v === "refinance" || v === "autoApprove"){
     html = agentTrayHTML(v);
+  }
+
+  else if(SYS_TRAYS.includes(v)){
+    html = sysTrayHTML(v);
   }
 
   else if(v === "keys" || v === "devices" || v === "guardians" || v === "signer"){
     const list = sec[rosterKey()];
     const roster = list.length ? list.map((r,i) => `
       <div class="rosterRow">${avatar(r.addr || r.name, 32)}
-        <span class="signerMain"><span class="sugName">${r.name}</span><span class="signerAddr">${r.addr}</span></span>
+        <span class="signerMain"><span class="sugName">${r.name}</span><span class="signerAddr">${paddr(r.addr)}</span></span>
         <span class="rowActions">
           <button class="rmBtn" onclick="toast('Editing is not built in this prototype')"><span>Edit</span></button>
           <button class="rowBtn" onclick="secRevoke(${i})"><span>Revoke</span></button>
@@ -1384,7 +1458,7 @@ function renderSec(keepFocus){
         </div>` : "";
       const rows = vis.length ? vis.map(c => `
         <button class="cRow" onclick="secOpenContact('${c.addr}')">${avatar(c.addr || c.name, 32)}
-          <span class="signerMain"><span class="cName">${c.name}</span><span class="cAddr">${c.addr}</span></span>
+          <span class="signerMain"><span class="cName">${c.name}</span><span class="cAddr">${paddr(c.addr)}</span></span>
           <span class="chevR">›</span></button>`).join("")
         : `<div class="trayEmpty">${q ? "No contacts match." : "No contacts here yet."}</div>`;
       html = `<div class="sendRoot">
@@ -1553,6 +1627,232 @@ function agentTrayHTML(v){
       <span>${agent.autoOn ? "Turn off auto approve" : "Turn on auto approve"}</span></button>
   </div>`;
 }
+
+/* =========================================================================
+   POLICY + SYSTEM TRAYS
+   ========================================================================= */
+Object.assign(SEC, {
+  spendLimit:{title:"Set spend limit", eyebrow:"Spend limit", sub:"Cap how much agents and sessions can move on your behalf."},
+  timelock:  {title:"Set timelock",    eyebrow:"Timelock",    sub:"Hold guarded actions for a delay before they can run."},
+  sponsorGas:{title:"Sponsor gas",     eyebrow:"Gas",         sub:"Cover gas for sessions and agents from this account."},
+  approvals: {title:"Token approvals", eyebrow:"Approvals",   sub:"Contracts allowed to move tokens from this account."},
+  network:   {title:"Network",         eyebrow:"Settings",    sub:"Choose Base Mainnet or Testnet for this account."},
+  language:  {title:"Language",        eyebrow:"Settings",    sub:"Choose your app language."},
+  developer: {title:"Developer tools", eyebrow:"Settings",    sub:"Inspect this account's onchain identity."},
+  guide:     {title:"Guide",           eyebrow:"Settings",    sub:"A map of everything inside Grantr."},
+  exportAcct:{title:"Export account",  eyebrow:"Settings",    sub:"Private keys are not exported from this app."},
+  privacy:   {title:"Privacy",         eyebrow:"Privacy mode",sub:"Masks numeric values app-wide while leaving active Send and Swap inputs visible."},
+  receive:   {title:"Receive",         eyebrow:"Transfer",    sub:"Share this address to receive tokens on Base."}
+});
+Object.assign(SEC_ICON, {
+  spendLimit:I.shield("#30d158"), timelock:I.clock("#30d158"), sponsorGas:I.bolt("#30d158"),
+  approvals:I.link("#30d158"), network:I.compass("#30d158"), language:I.doc("#30d158"),
+  developer:I.key("#30d158"), guide:I.compass("#30d158"), exportAcct:I.key("#30d158"),
+  privacy:I.shield("#30d158"), receive:I.send("#30d158")
+});
+
+const ACCOUNT_ADDR = "0x8f2ad41c907be3915fa2c1e7b1c9d0a4e6b5c318";
+const sys = {
+  spendAmount:"", spendMode:"Per day", spendLabel:"", spendSet:null,
+  delay:"1h", tlLabel:"", tlSet:null,
+  gasScope:"Sessions", gasCap:"", gasSet:false,
+  network:"base-mainnet", language:"English", privacy:false,
+  approvals:[{name:"Uniswap router", addr:"0x7a25…488D", allow:"Unlimited USDC"},
+             {name:"Aerodrome", addr:"0xcF77…9f43", allow:"Unlimited AERO"}]
+};
+const LANGUAGES = ["English","Español","Français","Deutsch","日本語","한국어","中文"];
+
+/* Privacy mode — masks balances, counts and chart captions app-wide.
+   Send and Swap inputs deliberately stay visible. */
+const pmoney = v => sys.privacy ? "$••,•••" : v;
+const pnum   = v => sys.privacy ? "••" : v;
+const paddr  = v => sys.privacy ? "0x••••…••••" : v;
+function togglePrivacy(){
+  sys.privacy = !sys.privacy;
+  render(); if(openTray === "secTray") renderSec();
+  toast(sys.privacy ? "Turned privacy on" : "Turned privacy off");
+}
+
+function sysSet(k,v){ sys[k] = v; renderSec(); }
+function sysField(k,v){ sys[k] = v; renderSec(true); }
+function setSpend(){
+  sys.spendSet = {amount:sys.spendAmount.trim() || "0", mode:sys.spendMode, label:sys.spendLabel.trim()};
+  toast("Spend limit set"); setTimeout(closeTrays, 700);
+}
+function clearSpend(){ sys.spendSet = null; toast("Spend limit off"); setTimeout(closeTrays, 700); }
+function setTimelock(){ sys.tlSet = {delay:sys.delay, label:sys.tlLabel.trim()}; toast("Timelock set"); setTimeout(closeTrays, 700); }
+function clearTimelock(){ sys.tlSet = null; toast("Timelock off"); setTimeout(closeTrays, 700); }
+function setGas(){ sys.gasSet = true; toast("Gas sponsorship on"); setTimeout(closeTrays, 700); }
+function revokeApproval(i){ const g = sys.approvals[i]; sys.approvals.splice(i,1); renderSec(); render(); toast(`Revoked ${g.name}`); }
+function switchNetwork(n){ sys.network = n; renderSec(); toast(n === "base-mainnet" ? "Base Mainnet" : "Base Testnet"); }
+function pickLanguage(l){ sys.language = l; renderSec(); toast(l); }
+function copyAddr(){ toast("Address copied"); }
+
+/* onboardingFeatureSections — verbatim, and every row still navigates */
+const GUIDE = [
+  {title:"Your account", rows:[
+    {t:"Security", s:"Keys, recovery, guardians and approvals", nav:["account","Security"]},
+    {t:"Addresses", s:"Saved keys, passkeys, and addresses", nav:["account","Contacts"]},
+    {t:"Settings", s:"Themes, privacy, language, export and sign out", nav:["account","Settings"]}]},
+  {title:"Portfolio", rows:[
+    {t:"Balances", s:"Your assets and tokens", nav:["portfolio","Balances"]},
+    {t:"Positions", s:"Liquidity ranges you manage", nav:["portfolio","Positions"]},
+    {t:"Loans", s:"Debt and health factor", nav:["portfolio","Loans"]},
+    {t:"Explore", s:"Browse tokens, stocks and more", nav:["portfolio","Explore"]},
+    {t:"Watchlist", s:"Markets you're tracking", nav:["portfolio","Watchlist"]}]},
+  {title:"Take action", rows:[
+    {t:"Swap", s:"Trade one or many tokens in a batch", swap:true},
+    {t:"Quick actions", s:"Hold the floating button for send, swap, re-range and more", hint:"Hold the floating button for quick actions"},
+    {t:"Activity", s:"Transactions and security events", nav:["activity","All"]}]},
+  {title:"Agents", rows:[
+    {t:"Bankr", s:"Portfolio actions and chat", nav:["agents","Chat"]},
+    {t:"Fileverse", s:"Docs, files and imports", nav:["agents","Docs"]}]}
+];
+function guideGo(si,ri){
+  const row = GUIDE[si].rows[ri];
+  if(row.swap){ openSwap(false); return; }
+  if(row.hint){ toast(row.hint); return; }
+  navTo(row.nav[0], row.nav[1]);
+}
+
+/* a deterministic block pattern standing in for a real QR code */
+function fakeQR(seed){
+  let h=0; for(let i=0;i<seed.length;i++) h=(h*31+seed.charCodeAt(i))>>>0;
+  let cells="";
+  for(let y=0;y<21;y++) for(let x=0;x<21;x++){
+    const corner=(x<7&&y<7)||(x>13&&y<7)||(x<7&&y>13);
+    const on = corner ? ((x===0||x===6||y===0||y===6||(x>1&&x<5&&y>1&&y<5)) ||
+                         (x>13&&(x===14||x===20||y===0||y===6||(x>15&&x<19&&y>1&&y<5))) ||
+                         (y>13&&(y===14||y===20||x===0||x===6||(y>15&&y<19&&x>1&&x<5))))
+                     : (((h>>((x*3+y*7)%29))^(x*y))&1)===1;
+    if(on) cells+=`<rect x="${x}" y="${y}" width="1" height="1"/>`;
+  }
+  return `<svg viewBox="0 0 21 21" fill="#000">${cells}</svg>`;
+}
+
+function sysTrayHTML(v){
+  if(v === "spendLimit") return `<div class="sendRoot">
+    <div class="slab"><div class="slabTitle">Spend rule</div><div class="slabBody">
+      <div class="bigBox"><span class="bigCur">$</span>
+        <input class="bigInput" id="spendAmt" inputmode="decimal" placeholder="0" value="${sys.spendAmount}"
+          oninput="sysField('spendAmount',this.value.replace(/[^0-9.]/g,''))"></div>
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Mode</span><span class="rowValue green">${sys.spendMode}</span></div>
+        <div class="drow"><span class="rowLabel">Approval</span><span class="rowValue green">Passkey</span></div>
+      </div>
+      ${seg(["Per transaction","Per day"], sys.spendMode, "sysSpendMode")}
+      <div><div class="fieldLabel">Label (optional)</div>
+        <input class="trayInput" id="spendLbl" placeholder="Daily card limit" value="${sys.spendLabel}"
+          oninput="sysField('spendLabel',this.value)"></div>
+    </div></div>
+    <div class="actions">
+      <button class="btn primary" onclick="setSpend()"><span>Set limit</span></button>
+      <button class="btn secondary" onclick="clearSpend()"><span>Turn off</span></button>
+    </div></div>`;
+
+  if(v === "timelock") return `<div class="sendRoot">
+    <div class="slab"><div class="slabTitle">Delay rule</div><div class="slabBody">
+      <div class="bigBox"><span class="bigDur">${sys.delay}</span></div>
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Delay</span><span class="rowValue green">${sys.delay}</span></div>
+        <div class="drow"><span class="rowLabel">Approval</span><span class="rowValue green">Passkey</span></div>
+      </div>
+      ${seg(["15m","1h","24h"], sys.delay, "sysDelay")}
+      <div><div class="fieldLabel">Label (optional)</div>
+        <input class="trayInput" id="tlLbl" placeholder="High value delay" value="${sys.tlLabel}"
+          oninput="sysField('tlLabel',this.value)"></div>
+    </div></div>
+    <div class="actions">
+      <button class="btn primary" onclick="setTimelock()"><span>Set timelock</span></button>
+      <button class="btn secondary" onclick="clearTimelock()"><span>Turn off</span></button>
+    </div></div>`;
+
+  if(v === "sponsorGas") return `<div class="sendRoot">
+    <div class="slab"><div class="slabTitle">Gas sponsorship</div><div class="slabBody">
+      ${seg(["Sessions","Agents","Both"], sys.gasScope, "sysGasScope")}
+      <div><div class="fieldLabel">Cap (optional)</div>
+        <input class="trayInput" id="gasCap" inputmode="decimal" placeholder="0.05 ETH" value="${sys.gasCap}"
+          oninput="sysField('gasCap',this.value)"></div>
+      <div class="trayHint">Gas is paid from this account's ETH. Sessions and agents never hold funds themselves.</div>
+    </div></div>
+    <button class="btn primary wide" onclick="setGas()"><span>Sponsor gas</span></button></div>`;
+
+  if(v === "approvals"){
+    const rows = sys.approvals.length ? sys.approvals.map((a,i) => `
+      <div class="rosterRow">${avatar(a.addr,32)}
+        <span class="signerMain"><span class="sugName">${a.name}</span>
+          <span class="signerAddr">${paddr(a.addr)} · ${a.allow}</span></span>
+        <button class="rowBtn" onclick="revokeApproval(${i})"><span>Revoke</span></button></div>`).join("")
+      : `<div class="trayEmpty">No token approvals.</div>`;
+    return `<div class="sendRoot">
+      <div class="slab"><div class="slabBody">${rows}</div></div>
+      <div class="slab"><div class="slabBody">
+        <div class="trayHint">Each approval lets a contract move that token from this account until you revoke it.</div>
+      </div></div></div>`;
+  }
+
+  if(v === "network") return `<div class="sendRoot"><div class="slab"><div class="slabBody"><div class="sysTray">
+      <div class="sysEyebrow">Network</div>
+      <div class="sysRow">
+        <div class="sysToggle">
+          <button class="sysPill ${sys.network==="base-testnet"?"on":""}" onclick="switchNetwork('base-testnet')">Testnet</button>
+          <button class="sysPill ${sys.network==="base-mainnet"?"on":""}" onclick="switchNetwork('base-mainnet')">Mainnet</button>
+        </div>
+        <span class="sysMeta">Gas · Account ETH</span>
+      </div>
+      <div class="trayHint">Switch this account between Base Mainnet and Base Testnet.</div>
+    </div></div></div></div>`;
+
+  if(v === "language") return `<div class="sendRoot"><div class="slab"><div class="slabBody">
+      ${LANGUAGES.map(l => `<button class="langRow" onclick="pickLanguage('${l}')">
+        <span>${l}</span>${sys.language===l?'<span class="tick">✓</span>':""}</button>`).join("")}
+    </div></div></div>`;
+
+  if(v === "developer") return `<div class="sendRoot"><div class="slab"><div class="slabBody">
+      <div class="kv"><span class="kvK">Account address</span><span class="kvV">${paddr(ACCOUNT_ADDR)}</span></div>
+      <div class="kv"><span class="kvK">Network</span><span class="kvV">${sys.network}</span></div>
+      <div class="kv"><span class="kvK">Signer route</span><span class="kvV">${sec.route}</span></div>
+      <div class="kv"><span class="kvK">Passkeys</span><span class="kvV">${pnum(sec.keys.length)}</span></div>
+      <div class="trayHint">These values are read from the account, never written.</div>
+    </div></div></div>`;
+
+  if(v === "exportAcct") return `<div class="sendRoot"><div class="slab"><div class="slabBody">
+      <div class="rows"><div class="drow"><span class="rowLabel">Private key</span>
+        <span class="rowValue">Not included</span></div></div>
+      <div class="trayHint">Private keys are not exported from this app. Your passkey stays in the device's secure enclave and cannot be copied out.</div>
+    </div></div>
+    <button class="btn primary wide" onclick="copyAddr()"><span>Copy address</span></button></div>`;
+
+  if(v === "privacy") return `<div class="sendRoot"><div class="slab"><div class="slabBody">
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Storage</span><span class="rowValue">Saved on this device</span></div>
+        <div class="drow"><span class="rowLabel">Masked values</span><span class="rowValue">Balances · counts · chart captions</span></div>
+        <div class="drow"><span class="rowLabel">Inputs</span><span class="rowValue">Send and Swap stay visible</span></div>
+      </div>
+    </div></div>
+    <button class="btn primary wide" onclick="togglePrivacy()">
+      <span>${sys.privacy ? "Turn privacy off" : "Turn privacy on"}</span></button></div>`;
+
+  if(v === "receive") return `<div class="sendRoot"><div class="slab"><div class="slabBody">
+      <span class="qr">${fakeQR(ACCOUNT_ADDR)}</span>
+      <div class="kv"><span class="kvK">Your address · Base</span><span class="kvV">${ACCOUNT_ADDR}</span></div>
+      <div class="trayHint">Only send Base assets to this address. The QR here is a placeholder pattern, not a scannable code.</div>
+    </div></div>
+    <button class="btn primary wide" onclick="copyAddr()"><span>Copy address</span></button></div>`;
+
+  /* guide */
+  return `<div class="sendRoot">
+    <div class="guideIntro">A quick map of everything inside Grantr. Tap anything to jump straight in.</div>
+    ${GUIDE.map((g,si) => `<div class="guideSec"><div class="guideEyebrow">${g.title}</div>
+      <div class="guideCard">${g.rows.map((r,ri) => `
+        <button class="guideRow" onclick="guideGo(${si},${ri})">
+          <span class="signerMain"><span class="guideT">${r.t}</span><span class="guideS">${r.s}</span></span>
+          <span class="chevR">›</span></button>`).join("")}</div></div>`).join("")}
+  </div>`;
+}
+function sysSpendMode(m){ sys.spendMode = m; renderSec(); }
+function sysDelay(d){ sys.delay = d; renderSec(); }
+function sysGasScope(g){ sys.gasScope = g; renderSec(); }
 
 /* =========================================================================
    VIEW — mobile vs the desktop docked presentation
