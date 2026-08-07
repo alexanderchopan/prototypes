@@ -419,6 +419,68 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}summary::ma
 .eyeBtn{width:44px;height:44px;border-radius:15px;border:1px solid var(--chromeBorder);background:var(--bgElevated);
         display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 
+/* ---- Fileverse editor ---- */
+.fvBack{background:none;border:0;color:var(--blue);font-family:var(--font);font-size:14px;font-weight:700;
+        cursor:pointer;padding:0 0 10px}
+.fvPanelHead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+.fvName{color:var(--text1);font-size:15px;line-height:20px;font-weight:760}
+.fvKind{color:var(--green);font-size:12px;line-height:15px;font-weight:760}
+.pill{min-height:40px;border-radius:999px;padding:10px 16px;display:inline-flex;align-items:center;justify-content:center;
+      background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.11);cursor:pointer}
+.pill span{color:var(--text1);font-size:14px;line-height:18px;font-weight:760}
+.setupInput{min-height:46px;width:100%;border-radius:13px;padding:0 12px;color:var(--text1);font-family:var(--font);
+            font-size:14px;font-weight:720;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.08);outline:none}
+.setupInput::placeholder{color:var(--text3)}
+.docTitleInput{min-height:46px;width:100%;color:var(--text1);font-family:var(--font);font-size:18px;line-height:22px;
+               font-weight:650;padding:0 2px 9px;border:0;border-bottom:1px solid rgba(255,255,255,.07);
+               background:transparent;outline:none}
+.docBodyInput{width:100%;min-height:200px;color:var(--text1);font-family:var(--font);font-size:15px;line-height:20px;
+              font-weight:500;padding:14px 16px 16px;border:1px solid rgba(255,255,255,.08);border-radius:14px;
+              background:rgba(255,255,255,.035);outline:none;resize:vertical}
+.docLabel{color:var(--text2);font-size:12px;line-height:15px;font-weight:600;margin:10px 0 6px;display:block}
+.encrypted{display:inline-flex;align-items:center;gap:6px;margin-bottom:10px}
+.encrypted span{color:var(--green);font-size:12px;line-height:15px;font-weight:760;opacity:.92}
+.searchWrap{display:flex;align-items:center;gap:9px;padding:0 2px 10px}
+.docSearch{flex:1;min-width:0;border:0;background:transparent;color:var(--text1);font-family:var(--font);
+           font-size:14px;padding:9px 0;outline:none}
+.docSearch::placeholder{color:var(--text3)}
+.shareChip{display:flex;align-items:center;gap:8px;padding:8px 0}
+.shareAv{width:28px;height:28px;border-radius:999px;background:rgba(255,255,255,.08);display:flex;align-items:center;
+         justify-content:center;color:var(--text2);font-size:12px;font-weight:800;flex-shrink:0}
+
+/* ---- Bankr chat ---- */
+.chatScroll{display:flex;flex-direction:column;gap:10px;padding-bottom:6px}
+.cbubble{max-width:88%;border-radius:20px;padding:11px 14px;border:1px solid;font-size:15px;line-height:21px;font-weight:520}
+.cbubble.user{background:rgba(10,132,255,.16);border-color:rgba(10,132,255,.24);border-top-right-radius:8px;
+              align-self:flex-end;color:var(--text1)}
+.cbubble.agent{background:rgba(3,3,4,.94);border-color:rgba(255,255,255,.065);border-top-left-radius:8px;
+               align-self:flex-start;color:var(--text1)}
+.cbubble.typing{color:var(--text3)}
+.chatComposer{display:flex;align-items:flex-end;gap:10px;min-height:70px;border-radius:20px;padding:9px 8px 9px 16px;
+              border:1px solid rgba(255,255,255,.10);background:rgba(0,0,0,.32);margin-top:14px}
+.chatComposer textarea{flex:1;border:0;background:transparent;color:var(--text1);font-family:var(--font);font-size:15px;
+                       line-height:20px;font-weight:600;min-height:50px;max-height:140px;padding:12px 0;outline:none;resize:none}
+.chatComposer textarea::placeholder{color:var(--text3)}
+.chatSend{width:44px;height:44px;border-radius:16px;border:1px solid rgba(88,232,122,.76);background:var(--green);
+          display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.chatSend[disabled]{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.11);cursor:default}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.chip2{padding:9px 13px;border-radius:999px;border:1px solid var(--frostBorder);background:var(--bgElevated);
+       color:var(--text2);font-family:var(--font);font-size:13px;font-weight:640;cursor:pointer}
+.chip2:hover{color:var(--text1)}
+.agentCard{border-radius:18px;border:1px solid var(--border);background:var(--bgElevated);padding:14px;margin-bottom:10px;
+           display:flex;align-items:center;gap:12px;cursor:pointer;width:100%;text-align:left}
+.agentDot{width:8px;height:8px;border-radius:999px;flex-shrink:0}
+.agentDot.on{background:var(--green)} .agentDot.off{background:var(--text4)}
+.actionCard{border-radius:16px;border:1px solid rgba(48,209,88,.26);background:rgba(48,209,88,.06);padding:12px 14px;
+            margin-top:8px}
+.actionCardT{color:var(--text1);font-size:14px;font-weight:760;display:block}
+.actionCardS{color:var(--text2);font-size:13px;line-height:17px;font-weight:500;display:block;margin-top:3px}
+.actionCardBtns{display:flex;gap:8px;margin-top:10px}
+.miniBtn{flex:1;height:40px;border-radius:13px;border:0;background:var(--green);color:var(--bg);font-family:var(--font);
+         font-size:13px;font-weight:820;cursor:pointer}
+.miniBtn.ghost{background:rgba(255,255,255,.06);border:1px solid var(--frostBorder);color:var(--text1)}
+
 /* ---- desktop docked presentation ---- */
 body.desktop{padding:0;align-items:stretch;justify-content:flex-start}
 body.desktop .stage{gap:0;width:100%;align-items:stretch}
@@ -751,7 +813,7 @@ function bodyAccount(){
       {v:"walletSettings", icon:I.key("#30d158"), name:"Signers", sub:"Signing methods", tone:""},
       {v:"multisig",   icon:I.shield(sec.multisigOn?"#30d158":"rgba(255,255,255,.38)"), name:"Multisig", sub:sec.multisigOn?"2 of 2":"Single signer", tone:sec.multisigOn?"ok":""},
       {v:"connections",icon:I.link(sn?"#ff9f0a":"rgba(255,255,255,.38)"), name:"Connections", sub:sn?`${sn} session${sn===1?"":"s"}`:"None", tone:sn?"warn":""},
-      {v:"fileverse",  icon:I.doc("#30d158"), name:"Fileverse", sub:`${sec.docs.length} document${sec.docs.length===1?"":"s"}`, tone:""},
+      {v:"fileverse",  icon:I.doc("#30d158"), name:"Fileverse", sub:`${pnum(fv.docs.length)} document${fv.docs.length===1?"":"s"}`, tone:""},
       /* MOBILE_POLICY_DISABLED_LABELS — gated on a 1claw signer, which is the
          reason the app itself states. Remove 1claw under Signers and these
          three go back to disabled. */
@@ -794,18 +856,42 @@ function bodyAccount(){
 
 function bodyAgents(){
   if(member.agents === "Docs") return `<div class="sec"><div class="secTitle">Docs</div>${listCard(
-      sec.docs.map(d => `<div class="lrow" onclick="openSec('fileverse')">
+      fv.docs.map(d => `<div class="lrow" onclick="openSec('fileverse');fvOpen('${d.id}')">
         <span class="mark sq" style="width:38px;height:38px;background:#1c1f24">${I.doc("#0a84ff")}</span>
-        <span class="lmain"><span class="lname">${d.name}</span><span class="lsub">Fileverse · ${d.addr}</span></span>
+        <span class="lmain"><span class="lname">${d.name}</span><span class="lsub">Fileverse · ${d.when}</span></span>
         <span class="chev">›</span></div>`).join(""))}
       <button class="ghostBtn" style="margin-top:12px" onclick="openSec('fileverse')"><span>Open Fileverse</span></button></div>`;
+
+  /* Chat — Bankr */
+  const roster = bankr.agents.map(a => `
+    <button class="agentCard" onclick="bankrToggleAgent('${a.id}')">
+      <span class="agentDot ${a.on?"on":"off"}"></span>
+      <span class="signerMain"><span class="lname">${a.name}</span><span class="lsub">${a.sub}</span></span>
+      <span class="tileSub ${a.on?"ok":""}">${a.on?"Active":"Off"}</span></button>`).join("");
+
+  const turns = bankr.turns.map(t => `
+    <div class="cbubble ${t.who}">${t.text.replace(/</g,"&lt;")}
+      ${t.action ? `<div class="actionCard">
+        <span class="actionCardT">${t.action.t}</span>
+        <span class="actionCardS">${t.action.s}</span>
+        <div class="actionCardBtns">
+          <button class="miniBtn" onclick="bankrAction('${t.action.go}')">Open</button>
+          <button class="miniBtn ghost" onclick="toast('Dismissed')">Not now</button>
+        </div></div>` : ""}
+    </div>`).join("") + (bankr.thinking ? `<div class="cbubble agent typing">Thinking…</div>` : "");
+
   return `<div class="sec">
-      <div class="chatWrap">
-        <div class="bubble them">Morning. ETH is up 1.4% overnight and your USDC sits idle at $412.90.</div>
-        <div class="bubble you">What would a rebalance look like?</div>
-        <div class="bubble them">Move 250 USDC into ETH and you'd sit at 78/22. I can prepare it — you approve before anything signs.</div>
+      <div class="secTitle">Agents</div>${roster}
+      <div class="secTitle" style="margin-top:20px">Chat</div>
+      <div class="chips">${BANKR_PROMPTS.map(p =>
+        `<button class="chip2" onclick="bankrAsk('${p.replace(/'/g,"\\'")}')">${p}</button>`).join("")}</div>
+      <div class="chatScroll">${turns}</div>
+      <div class="chatComposer">
+        <textarea id="bankrInput" placeholder="Ask Bankr" oninput="bankrDraft(this.value)"
+          onkeydown="bankrKey(event)">${bankr.draft}</textarea>
+        <button class="chatSend" ${bankr.draft.trim()?"":"disabled"} onclick="bankrAsk()">
+          ${I.send(bankr.draft.trim() ? "#000" : "rgba(255,255,255,.38)")}</button>
       </div>
-      <div class="composer">${I.bolt("rgba(255,255,255,.38)")}<input placeholder="Ask the agent"></div>
     </div>`;
 }
 
@@ -1176,15 +1262,15 @@ const POLICY_DISABLED = {"Spend limit":1,"Timelock":1,"Token approvals":1};
 const POLICY_DISABLED_SUB = "Needs 1claw signer";
 
 const sec = {
-  variant:null, step:"list", active:null, query:"", mode:"docs",
+  variant:null, step:"list", active:null, query:"",
   keys:[{name:"iPhone 15 Pro", addr:"0xa41c…88b2", kinds:["Key"]}],
   devices:[{name:"iPhone 15 Pro", addr:"0xa41c…88b2", kinds:["Device"]},
            {name:"MacBook Pro", addr:"0x77de…10a4", kinds:["Device"]}],
   guardians:[], signers:[{name:"1claw", addr:"0x1d70…9ab3", kinds:["Signer"]}],
   required:1, email:"", draftName:"", draftAddr:"",
   sessions:[{name:"Uniswap", addr:"app.uniswap.org"},{name:"Aerodrome", addr:"aerodrome.finance"}],
-  uri:"", docs:[{name:"Treasury policy", addr:"edited 2d ago"},{name:"Q3 rebalance plan", addr:"edited 6d ago"}],
-  docTitle:"", multisigOn:false, route:"owner-passkey",
+  uri:"",
+  multisigOn:false, route:"owner-passkey",
   contacts:CONTACTS.map(c => ({...c, kinds:["Contact"]}))
 };
 
@@ -1204,7 +1290,7 @@ function avatar(seed, size){
 
 function openSec(v){
   sec.variant = v; sec.step = "list"; sec.active = null; sec.query = "";
-  sec.draftName = ""; sec.draftAddr = ""; sec.docTitle = ""; sec.uri = "";
+  sec.draftName = ""; sec.draftAddr = ""; sec.uri = "";
   const m = SEC[v];
   document.getElementById("secTitle").textContent = m.title;
   document.getElementById("secSub").textContent = m.eyebrow;
@@ -1246,7 +1332,6 @@ function secRevoke(i){
 }
 function secField(k,v){ sec[k] = v; renderSec(true); }
 function secReq(n){ sec.required = n; renderSec(); }
-function secMode(m){ sec.mode = m; renderSec(); }
 function secRoute(r){ sec.route = r; renderSec(); toast("Signer set to " + r.replace("-"," ")); }
 function secMultisig(){ sec.multisigOn = !sec.multisigOn; renderSec(); toast(sec.multisigOn ? "Multisig on" : "Multisig off"); }
 function secAddSession(){
@@ -1255,11 +1340,6 @@ function secAddSession(){
   renderSec(); toast("Session connected");
 }
 function secDropSession(i){ const g = sec.sessions[i]; sec.sessions.splice(i,1); renderSec(); toast(`Disconnected ${g.name}`); }
-function secAddDoc(){
-  if(!sec.docTitle.trim()){ toast("Name the document"); return; }
-  sec.docs.unshift({name:sec.docTitle.trim(), addr:"just now"}); sec.docTitle = "";
-  renderSec(); toast("Document created");
-}
 function secOpenContact(addr){ sec.active = sec.contacts.find(c => c.addr === addr); sec.step = "detail"; renderSec(); }
 function secContactBack(){ sec.step = "list"; sec.active = null; renderSec(); }
 function secAddContactStep(){ sec.step = "add"; sec.draftName = ""; sec.draftAddr = ""; renderSec(); }
@@ -1398,25 +1478,7 @@ function renderSec(keepFocus){
     </div>`;
   }
 
-  else if(v === "fileverse"){
-    const docs = sec.docs.length ? sec.docs.map(d => `
-      <div class="docRow"><span class="docIcon">${I.doc("#0a84ff")}</span>
-        <span class="signerMain"><span class="sugName">${d.name}</span><span class="signerTag">${d.addr}</span></span>
-        <span class="chevR">›</span></div>`).join("") : `<div class="trayEmpty">No documents yet.</div>`;
-    html = `<div class="sendRoot">
-      <div class="statusPill"><span>Connector ready</span></div>
-      <div class="modeSeg">
-        <button class="${sec.mode==="docs"?"on":""}" onclick="secMode('docs')">Documents</button>
-        <button class="${sec.mode==="new"?"on":""}" onclick="secMode('new')">New</button>
-      </div>
-      ${sec.mode === "docs" ? `<div class="slab"><div class="slabBody">${docs}</div></div>` : `
-        <div class="slab"><div class="slabBody">
-          ${field("Title","docTitle","Document title","secDoc")}
-          <div class="trayHint">Documents are stored on Fileverse and signed with this account. The editor itself is not part of this prototype.</div>
-        </div></div>
-        <button class="btn primary wide" onclick="secAddDoc()"><span>Create document</span></button>`}
-    </div>`;
-  }
+  else if(v === "fileverse"){ html = fileverseHTML(); }
 
   else if(v === "contacts"){
     if(sec.step === "detail" && sec.active){
@@ -1853,6 +1915,216 @@ function sysTrayHTML(v){
 function sysSpendMode(m){ sys.spendMode = m; renderSec(); }
 function sysDelay(d){ sys.delay = d; renderSec(); }
 function sysGasScope(g){ sys.gasScope = g; renderSec(); }
+
+/* =========================================================================
+   FILEVERSE — the seven modes, FILEVERSE_MODE_TITLES verbatim
+   ========================================================================= */
+const FV_TITLES = {all:"Fileverse", access:"Enable access", signer:"Wallet & signer",
+                   share:"Share document", create:"New document", edit:"Open document", browse:"Documents"};
+const fv = {
+  mode:"browse", linked:true, query:"", createTitle:"",
+  openId:"", title:"", body:"", editing:null,
+  shareId:"", shareTo:"", sharedWith:[],
+  docs:[{id:"ddoc-4812", name:"Treasury policy", when:"edited 2d ago",
+         body:"Multisig threshold stays at 2 of 3 until the next review.\n\nAny single transfer above $25,000 requires a timelock."},
+        {id:"ddoc-2290", name:"Q3 rebalance plan", when:"edited 6d ago",
+         body:"Target weights: 40 ETH / 30 USDC / 20 UNI / 10 DAI.\n\nRun through the Rebalance agent, not by hand."}]
+};
+function fvMode(m){ fv.mode = m; renderSec(); }
+function fvField(k,v){ fv[k] = v; renderSec(true); }
+function fvToggleLink(){ fv.linked = !fv.linked; renderSec(); toast(fv.linked ? "Fileverse access enabled" : "Access disabled"); }
+function fvCreate(){
+  const name = fv.createTitle.trim() || "Untitled document";
+  const id = "ddoc-" + String(1000 + Math.floor(fv.docs.length*137 % 9000));
+  fv.docs.unshift({id, name, when:"just now", body:""});
+  fv.createTitle = ""; fv.mode = "browse"; renderSec(); render(); toast("Document created");
+}
+function fvOpen(id){
+  const d = fv.docs.find(x => x.id === id);
+  if(!d){ toast("No document with that ID"); return; }
+  fv.editing = d.id; fv.title = d.name; fv.body = d.body; fv.openId = d.id; fv.mode = "edit"; renderSec();
+}
+function fvOpenById(){ fvOpen(fv.openId.trim()); }
+function fvSave(){
+  const d = fv.docs.find(x => x.id === fv.editing);
+  if(d){ d.name = fv.title.trim() || d.name; d.body = fv.body; d.when = "just now"; }
+  fv.mode = "browse"; fv.editing = null; renderSec(); render(); toast("Saved");
+}
+function fvShare(){
+  if(!fv.shareTo.trim()){ toast("Name or wallet address"); return; }
+  fv.sharedWith.push({who:fv.shareTo.trim(), doc:fv.shareId.trim() || fv.editing || fv.docs[0].id});
+  fv.shareTo = ""; renderSec(); toast("Access granted");
+}
+function fvUnshare(i){ const g = fv.sharedWith[i]; fv.sharedWith.splice(i,1); renderSec(); toast(`Removed ${g.who}`); }
+
+function fileverseHTML(){
+  const m = fv.mode;
+  const back = m === "browse" ? "" : `<button class="fvBack" onclick="fvMode('browse')">‹ ${FV_TITLES[m]}</button>`;
+
+  if(m === "access") return `<div class="sendRoot">${back}
+    <div class="slab"><div class="slabBody">
+      <div class="fvPanelHead"><span class="fvName">Fileverse access</span>
+        <span class="fvKind">${fv.linked ? "Enabled" : "Enable required"}</span></div>
+      <div class="trayHint">Grant this account access to your encrypted Fileverse workspace. Documents are signed with the same signer you use everywhere else.</div>
+      <button class="pill" style="margin-top:12px" onclick="fvToggleLink()">
+        <span>${fv.linked ? "Refresh" : "Enable"}</span></button>
+    </div></div></div>`;
+
+  if(m === "signer") return `<div class="sendRoot">${back}
+    <div class="slab"><div class="slabBody">
+      <div class="fvPanelHead"><span class="fvName">Wallet &amp; signer</span><span class="fvKind">Connected</span></div>
+      <div class="rows">
+        <div class="drow"><span class="rowLabel">Signer</span><span class="rowValue">${sec.route}</span></div>
+        <div class="drow"><span class="rowLabel">Account</span><span class="rowValue">${paddr("0x8f2a…41c9")}</span></div>
+      </div>
+      <div class="trayHint">Documents are encrypted to this account. Changing the signer under Signers changes who can decrypt them.</div>
+    </div></div></div>`;
+
+  if(m === "create") return `<div class="sendRoot">${back}
+    <div class="slab"><div class="slabBody">
+      <div class="fvPanelHead"><span class="fvName">New document</span><span class="fvKind">Ready</span></div>
+      <input class="setupInput" id="fvNew" placeholder="Title (optional)" value="${fv.createTitle}"
+        oninput="fvField('createTitle',this.value)">
+      <div class="trayHint" style="margin-top:10px">Creates an empty document — open it to start writing. You can name it now or later.</div>
+    </div></div>
+    <button class="btn primary wide" onclick="fvCreate()"><span>Create document</span></button></div>`;
+
+  if(m === "edit"){
+    const d = fv.docs.find(x => x.id === fv.editing);
+    return `<div class="sendRoot">${back}
+      <div class="slab"><div class="slabBody">
+        <div class="fvPanelHead"><span class="fvName">Open document</span><span class="fvKind">Open by ID</span></div>
+        <div style="display:flex;gap:8px">
+          <input class="setupInput" id="fvId" placeholder="Document ID" value="${fv.openId}"
+            oninput="fvField('openId',this.value)">
+          <button class="pill" onclick="fvOpenById()"><span>Open</span></button>
+        </div>
+      </div></div>
+      ${d ? `<div class="slab"><div class="slabBody">
+        <span class="encrypted">${I.shield("#30d158")}<span>End-to-end encrypted</span></span>
+        <label class="docLabel">Title</label>
+        <input class="docTitleInput" id="fvTitle" placeholder="Enter title" value="${fv.title}"
+          oninput="fvField('title',this.value)">
+        <label class="docLabel">Body</label>
+        <textarea class="docBodyInput" id="fvBody" placeholder="Start writing"
+          oninput="fvField('body',this.value)">${fv.body}</textarea>
+      </div></div>
+      <div class="actions">
+        <button class="btn primary" onclick="fvSave()"><span>Save</span></button>
+        <button class="btn secondary" onclick="fvMode('share')"><span>Share</span></button>
+      </div>` : `<div class="trayEmpty">Open a document by ID, or pick one from Documents.</div>`}
+    </div>`;
+  }
+
+  if(m === "share"){
+    const shared = fv.sharedWith.length ? fv.sharedWith.map((s,i) => `
+      <div class="shareChip"><span class="shareAv">${(s.who[0]||"?").toUpperCase()}</span>
+        <span class="signerMain"><span class="sugName">${s.who}</span><span class="signerTag">${s.doc}</span></span>
+        <button class="rmBtn" onclick="fvUnshare(${i})"><span>Remove</span></button></div>`).join("") : "";
+    return `<div class="sendRoot">${back}
+      <div class="slab"><div class="slabBody">
+        <div class="fvPanelHead"><span class="fvName">Share document</span>
+          <span class="fvKind">${fv.sharedWith.length ? "Shared" : "Sharing"}</span></div>
+        ${shared ? `<div style="margin-bottom:6px"><div class="trayHint" style="margin-bottom:4px">This wallet can now open the document:</div>${shared}</div>` : ""}
+        <input class="setupInput" id="fvShareId" placeholder="Document ID" value="${fv.shareId}"
+          oninput="fvField('shareId',this.value)">
+        <div class="trayHint" style="margin:8px 0">Grant another wallet access to this encrypted document.</div>
+        <input class="setupInput" id="fvShareTo" placeholder="Name or wallet address" value="${fv.shareTo}"
+          oninput="fvField('shareTo',this.value)">
+      </div></div>
+      <button class="btn primary wide" onclick="fvShare()"><span>Share with someone else</span></button></div>`;
+  }
+
+  /* browse */
+  const q = fv.query.trim().toLowerCase();
+  const list = fv.docs.filter(d => !q || d.name.toLowerCase().includes(q) || d.id.includes(q));
+  const rows = list.length ? list.map(d => `
+    <button class="docRow" style="border:0;background:transparent;width:100%;text-align:left;cursor:pointer"
+      onclick="fvOpen('${d.id}')">
+      <span class="docIcon">${I.doc("#0a84ff")}</span>
+      <span class="signerMain"><span class="sugName">${d.name}</span>
+        <span class="signerTag">${d.id} · ${d.when}</span></span>
+      <span class="chevR">›</span></button>`).join("")
+    : `<div class="trayEmpty">${q ? "No documents match." : "No documents yet."}</div>`;
+  return `<div class="sendRoot">
+    <div class="statusPill ${fv.linked?"":"off"}"><span>${fv.linked ? "Connector ready" : "Access required"}</span></div>
+    <div class="modeSeg">
+      <button class="on" onclick="fvMode('browse')">Documents</button>
+      <button onclick="fvMode('create')">New</button>
+      <button onclick="fvMode('share')">Share</button>
+    </div>
+    <div class="slab"><div class="slabBody">
+      <span class="encrypted">${I.shield("#30d158")}<span>End-to-end encrypted</span></span>
+      <div class="searchWrap">${I.search("rgba(255,255,255,.38)")}
+        <input class="docSearch" id="fvQ" placeholder="Search documents" value="${fv.query}"
+          oninput="fvField('query',this.value)"></div>
+      ${rows}
+    </div></div>
+    <div class="actions">
+      <button class="btn secondary" onclick="fvMode('access')"><span>Access</span></button>
+      <button class="btn secondary" onclick="fvMode('signer')"><span>Signer</span></button>
+    </div></div>`;
+}
+
+/* =========================================================================
+   BANKR — the agent chat
+   ========================================================================= */
+const bankr = {
+  draft:"", thinking:false,
+  agents:[{id:"rebalance", name:"Rebalancer", sub:"Keeps target weights", on:false},
+          {id:"rerange",   name:"Reranger",   sub:"Watches LP ticks",     on:false},
+          {id:"refinance", name:"Refinancer", sub:"Moves debt on rate",   on:false}],
+  turns:[{who:"agent", text:"Morning. ETH is up 1.4% overnight and your USDC is sitting idle at $412.90."}]
+};
+const BANKR_PROMPTS = ["What changed overnight?","Rebalance to even weights","What can I earn on USDC?","Show my approvals"];
+
+/* Deterministic replies — no model, and the prototype says so. Some answers
+   hand back an action card that opens the tray that would really do it. */
+function bankrReply(q){
+  const s = q.toLowerCase();
+  if(/rebalance|weight/.test(s)) return {text:"Even weights across your top four would mean selling 0.18 ETH into USDC and UNI. I can set it up — you approve before anything signs.",
+    action:{t:"Rebalance", s:"Set target weights, then Run once or Run as agent", go:"rebalance"}};
+  if(/approval|revoke/.test(s)) return {text:`You have ${sys.approvals.length} active token approval${sys.approvals.length===1?"":"s"}. Unlimited allowances are the ones worth reviewing first.`,
+    action:{t:"Token approvals", s:"Review and revoke", go:"approvals"}};
+  /* intent verbs are matched BEFORE topic words — "send 5 USDC" is a transfer,
+     not a question about USDC */
+  if(/send|transfer|pay/.test(s)) return {text:"I can prepare a transfer. Pick who and how much — nothing leaves without your approval.",
+    action:{t:"Send", s:"Choose a recipient and amount", go:"send"}};
+  if(/swap|trade|buy|sell/.test(s)) return {text:"I can stage a swap against your balances.",
+    action:{t:"Swap", s:"Pick what to sell and what to buy", go:"swap"}};
+  if(/earn|yield|apy|interest|idle/.test(s)) return {text:"Your 412.90 USDC is idle. Aave on Base is the closest thing to a default here, but I can't quote a live rate in this prototype."};
+  if(/overnight|changed|brief/.test(s)) return {text:"ETH +1.4%, UNI −2.1%, everything else flat. No approvals changed and no agent ran while you were away."};
+  return {text:"This prototype answers from a small fixed script rather than a model, so I can only cover a handful of topics — try asking about your balances, approvals, or a rebalance."};
+}
+function bankrAsk(text){
+  const q = (text ?? bankr.draft).trim();
+  if(!q) return;
+  bankr.turns.push({who:"user", text:q});
+  bankr.draft = ""; bankr.thinking = true; render();
+  setTimeout(() => {
+    const r = bankrReply(q);
+    bankr.thinking = false;
+    bankr.turns.push({who:"agent", text:r.text, action:r.action});
+    render();
+    const sc = document.getElementById("scroller"); if(sc) sc.scrollTop = sc.scrollHeight;
+  }, 620);
+}
+function bankrDraft(v){
+  bankr.draft = v;
+  const b = document.querySelector(".chatSend");
+  if(b){ b.disabled = !v.trim(); b.innerHTML = I.send(v.trim() ? "#000" : "rgba(255,255,255,.38)"); }
+}
+function bankrKey(e){ if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); bankrAsk(); } }
+function bankrToggleAgent(id){
+  const a = bankr.agents.find(x => x.id === id);
+  a.on = !a.on; agent.active[id] = a.on; render();
+  toast(a.on ? `${a.name} active` : `Paused ${a.name}`);
+}
+function bankrAction(go){
+  if(go === "send") openSend(false);
+  else if(go === "swap") openSwap(false);
+  else openSec(go);
+}
 
 /* =========================================================================
    VIEW — mobile vs the desktop docked presentation
